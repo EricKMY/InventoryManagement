@@ -5,7 +5,7 @@ import main.java.domain.inventory.LabInventoryList;
 
 import java.util.UUID;
 
-public class LabMember implements ILabMember {
+public class LabMember {
     private String name;
     private String id;
     private String phone;
@@ -59,6 +59,10 @@ public class LabMember implements ILabMember {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setPermission(String permission){
+      this.permission = permission;
+    };
 
     public boolean setUserPermission(LabMember labMember, String permission) {
         return true;

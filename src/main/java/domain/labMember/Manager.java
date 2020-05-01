@@ -5,8 +5,4 @@ public class Manager extends LabMember {
         super(name, email, password);
         this.permission = "Manager";
     }
-
-    public boolean isManager() {
-        return permission.equals("Manager");
-    }
 }
