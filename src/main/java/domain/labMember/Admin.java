@@ -1,4 +1,4 @@
-package main.java.domain.labMember;
+package domain.labMember;
 
 public class Admin extends LabMember {
     public Admin(String name, String email, String password) {

@@ -1,4 +1,4 @@
-package main.java.domain.labMember;
+package domain.labMember;
 
 public class Viewer extends LabMember {
     public Viewer(String name, String email, String password) {

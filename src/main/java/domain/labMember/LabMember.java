@@ -1,7 +1,7 @@
-package main.java.domain.labMember;
+package domain.labMember;
 
-import main.java.domain.inventory.LabInventory;
-import main.java.domain.inventory.LabInventoryList;
+import domain.inventory.LabInventory;
+import domain.inventory.LabInventoryList;
 
 import java.util.UUID;
 

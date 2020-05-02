@@ -1,4 +1,4 @@
-package main.java.domain.controller;
+package domain.controller;
 
 public class controller {
 }

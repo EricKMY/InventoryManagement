@@ -1,7 +1,7 @@
 package test.java.domain.labMember;
 
 
-import main.java.domain.labMember.*;
+import domain.labMember.*;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package main.java.domain.labMember;
+package domain.labMember;
 
 import java.util.HashMap;
 import java.util.Map;

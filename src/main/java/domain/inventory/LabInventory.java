@@ -1,4 +1,4 @@
-package main.java.domain.inventory;
+package domain.inventory;
 
 public class LabInventory {
 }
