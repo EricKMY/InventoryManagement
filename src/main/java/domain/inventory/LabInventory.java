@@ -1,4 +1,84 @@
 package domain.inventory;
 
+import domain.labMember.LabMember;
+
+import java.util.UUID;
+
 public class LabInventory {
+    private String id;
+    private String name;
+    private String category;
+    private int amount;
+    private int limitNum;
+    private LabMember personInCharge;
+
+    public LabInventory(String category, String name, int amount, LabMember personInCharge){
+        this.name = name;
+        this.category = category;
+        this.amount = amount;
+        this.personInCharge = personInCharge;
+        this.id = UUID.randomUUID().toString();
+        this.limitNum = -1;
+    }
+
+    public boolean isUnderLimit(){
+        //diff from design class model
+        return amount < limitNum ? true:false;
+    }
+
+    public void add(int amount){
+        this.amount += amount;
+    }
+
+    public void minus(int amount){
+        this.amount -= amount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getLimitNum() {
+        return limitNum;
+    }
+
+    public void setLimitNum(int limitNum) {
+        this.limitNum = limitNum;
+    }
+
+    public LabMember getPersonInCharge() {
+        return personInCharge;
+    }
+
+    public void setPersonInCharge(LabMember personInCharge) {
+        this.personInCharge = personInCharge;
+    }
 }
