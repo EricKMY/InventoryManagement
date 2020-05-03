@@ -62,7 +62,7 @@ public class ControllerTest {
         controller.readInventory("groceries", "tissue").setLimitNum(3);
         assertTrue(controller.isInventoryUnderLimit("groceries", "tissue"));
         controller.updateInventoryAmount("groceries", "tissue", 5, labMember);
-        assertTrue(!controller.isInventoryUnderLimit("groceries", "tissue"));
+        assertFalse(controller.isInventoryUnderLimit("groceries", "tissue"));
     }
 
     @Test
