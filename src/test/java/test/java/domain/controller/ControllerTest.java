@@ -60,9 +60,9 @@ public class ControllerTest {
     public void isInventoryUnderLimitTest(){
         controller.createInventory("groceries", "tissue", 1, labMember);
         controller.readInventory("groceries", "tissue").setLimitNum(3);
-        assertTrue(controller.IsInventoryUnderLimit("groceries", "tissue"));
+        assertTrue(controller.isInventoryUnderLimit("groceries", "tissue"));
         controller.updateInventoryAmount("groceries", "tissue", 5, labMember);
-        assertTrue(!controller.IsInventoryUnderLimit("groceries", "tissue"));
+        assertTrue(!controller.isInventoryUnderLimit("groceries", "tissue"));
     }
 
     @Test

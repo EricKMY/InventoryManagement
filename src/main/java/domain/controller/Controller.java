@@ -61,7 +61,11 @@ public class Controller {
         return labInventoryList.deleteInventory(category, inventoryName, labMember);
     }
 
-    public boolean IsInventoryUnderLimit(String category, String inventoryName){
+    public boolean isInventoryUnderLimit(String category, String inventoryName){
         return labInventoryList.readInventory(category, inventoryName).isUnderLimit();
+    }
+
+    public boolean setUserPermission(LabMember labMember, String permission, LabMember targetLabMember){
+        return labMember.setUserPermission(targetLabMember, permission);
     }
 }
