@@ -1,4 +1,4 @@
-package domain.notification;
+package domain.notificationInfo;
 
 import java.util.ArrayList;
 import java.util.List;

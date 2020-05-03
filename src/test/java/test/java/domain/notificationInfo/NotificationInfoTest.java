@@ -1,6 +1,6 @@
 package test.java.domain.notificationInfo;
 
-import domain.notification.NotificationInfo;
+import domain.notificationInfo.NotificationInfo;
 import org.junit.Test;
 
 import java.util.Arrays;
