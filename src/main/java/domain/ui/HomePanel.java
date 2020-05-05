@@ -34,26 +34,26 @@ public class HomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        goToInventoryBtn = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        settingBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Go to Inventory");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        goToInventoryBtn.setText("Go to Inventory");
+        goToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                goToInventoryBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel1.setText("Lab Inventory System");
+        titleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        titleLabel.setText("Lab Inventory System");
 
-        jButton2.setText("Setting");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        settingBtn.setText("Setting");
+        settingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                settingBtnActionPerformed(evt);
             }
         });
 
@@ -63,47 +63,52 @@ public class HomePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(116, 116, 116)
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(167, 167, 167)
-                .addComponent(jButton1)
+                .addComponent(goToInventoryBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(settingBtn)
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(goToInventoryBtn)
+                    .addComponent(settingBtn))
                 .addContainerGap(371, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void goToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToInventoryBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getHomePanel());
         mainFrame.getContentPane().add(mainFrame.getInventoryPanel());
         mainFrame.getInventoryPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_goToInventoryBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void settingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingBtnActionPerformed
         // TODO add your handling code here:
+        mainFrame.getContentPane().remove(mainFrame.getHomePanel());
+        mainFrame.getContentPane().add(mainFrame.getSettingPanel());
+        mainFrame.getSettingPanel().setVisible(true);
+        mainFrame.revalidate();
+        mainFrame.repaint();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_settingBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton goToInventoryBtn;
+    private javax.swing.JButton settingBtn;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
 }

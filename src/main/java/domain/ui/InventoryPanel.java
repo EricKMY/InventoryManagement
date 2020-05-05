@@ -41,31 +41,31 @@ public class InventoryPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
-        inputTxt = new javax.swing.JTextField();
+        titleLabel = new javax.swing.JLabel();
+        goBackToHomeBtn = new javax.swing.JButton();
+        inputField = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         categoryList = new javax.swing.JList<>();
         updateBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        notificationBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel1.setText("Lab Inventory System");
+        titleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        titleLabel.setText("Lab Inventory System");
 
-        backBtn.setText("Go back Home");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        goBackToHomeBtn.setText("Go back Home");
+        goBackToHomeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                goBackToHomeBtnActionPerformed(evt);
             }
         });
 
-        inputTxt.addActionListener(new java.awt.event.ActionListener() {
+        inputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputTxtActionPerformed(evt);
+                inputFieldActionPerformed(evt);
             }
         });
 
@@ -97,10 +97,10 @@ public class InventoryPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Notification");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        notificationBtn.setText("Notification");
+        notificationBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                notificationBtnActionPerformed(evt);
             }
         });
 
@@ -111,20 +111,20 @@ public class InventoryPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(titleLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
-                                .addComponent(backBtn)))
+                                .addComponent(goBackToHomeBtn)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(notificationBtn)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(inputTxt)
+                                .addComponent(inputField)
                                 .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -132,15 +132,15 @@ public class InventoryPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backBtn)
-                    .addComponent(jButton1))
+                    .addComponent(goBackToHomeBtn)
+                    .addComponent(notificationBtn))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(inputTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(addBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -152,26 +152,26 @@ public class InventoryPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    private void goBackToHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackToHomeBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getInventoryPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
         mainFrame.getHomePanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-    }//GEN-LAST:event_backBtnActionPerformed
+    }//GEN-LAST:event_goBackToHomeBtnActionPerformed
 
-    private void inputTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTxtActionPerformed
+    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputTxtActionPerformed
+    }//GEN-LAST:event_inputFieldActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        String s = inputTxt.getText();
+        String s = inputField.getText();
         if (s.replace(" ", "").isEmpty()) return;
         controller.createCategory(s, new LabMember("", "", ""));
         add(s);
-        inputTxt.setText("");
+        inputField.setText("");
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -179,15 +179,15 @@ public class InventoryPanel extends javax.swing.JPanel {
         int selectedIndex = categoryList.getSelectedIndex();
         if (selectedIndex < 0) return;
         String oCategory = categoryList.getSelectedValue();
-        dm.setElementAt(inputTxt.getText(), selectedIndex);
-        controller.updateCategoryName(oCategory, inputTxt.getText(), new LabMember("", "", ""));
-        inputTxt.setText("");
+        dm.setElementAt(inputField.getText(), selectedIndex);
+        controller.updateCategoryName(oCategory, inputField.getText(), new LabMember("", "", ""));
+        inputField.setText("");
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void categoryListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryListMouseClicked
         // TODO add your handling code here:
         String selected = categoryList.getSelectedValue();
-        inputTxt.setText(selected);
+        inputField.setText(selected);
     }//GEN-LAST:event_categoryListMouseClicked
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
@@ -197,12 +197,17 @@ public class InventoryPanel extends javax.swing.JPanel {
         String category = categoryList.getSelectedValue();
         dm.removeElementAt(selectedIndex);
         controller.deleteCategory(category, new LabMember("", "", ""));
-        inputTxt.setText("");
+        inputField.setText("");
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void notificationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        mainFrame.getContentPane().remove(mainFrame.getInventoryPanel());
+        mainFrame.getContentPane().add(mainFrame.getNotificationPanel());
+        mainFrame.getNotificationPanel().setVisible(true);
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    }//GEN-LAST:event_notificationBtnActionPerformed
    
     private void add(String name){
         categoryList.setModel(dm);
@@ -211,13 +216,13 @@ public class InventoryPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JButton backBtn;
     private javax.swing.JList<String> categoryList;
     private javax.swing.JButton deleteBtn;
-    private javax.swing.JTextField inputTxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton goBackToHomeBtn;
+    private javax.swing.JTextField inputField;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton notificationBtn;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
