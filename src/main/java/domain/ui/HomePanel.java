@@ -81,7 +81,6 @@ public class HomePanel extends javax.swing.JPanel {
         mainFrame.getInventoryPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-        System.out.println(controller.getLabInventoryList().toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

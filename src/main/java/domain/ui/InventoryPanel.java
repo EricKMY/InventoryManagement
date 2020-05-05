@@ -6,6 +6,8 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.labMember.LabMember;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -15,8 +17,12 @@ public class InventoryPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Controller controller;
     
+    DefaultListModel dm = new DefaultListModel();
+    
     /**
      * Creates new form InventoryPanel
+     * @param mainFrame
+     * @param controller
      */
     public InventoryPanel(MainFrame mainFrame, Controller controller) {
         this.mainFrame = mainFrame;
@@ -36,29 +42,59 @@ public class InventoryPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+        inputTxt = new javax.swing.JTextField();
+        addBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        categoryList = new javax.swing.JList<>();
+        updateBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Lab Inventory System");
 
-        jButton2.setText("Go back Home");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backBtn.setText("Go back Home");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backBtnActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        inputTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                inputTxtActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Add");
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        categoryList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                categoryListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(categoryList);
+
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setLabel("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,13 +105,17 @@ public class InventoryPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(jButton2)
-                        .addGap(54, 54, 54)
+                        .addComponent(backBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
+                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputTxt)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel1))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,33 +123,83 @@ public class InventoryPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(64, 64, 64)
-                .addComponent(jButton2)
-                .addGap(56, 56, 56)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton1)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addComponent(backBtn)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inputTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(addBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(updateBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteBtn))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getInventoryPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
         mainFrame.getHomePanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backBtnActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void inputTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_inputTxtActionPerformed
 
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        String s = inputTxt.getText();
+        if (s.replace(" ", "").isEmpty()) return;
+        controller.createCategory(s, new LabMember("", "", ""));
+        add(s);
+        inputTxt.setText("");
+    }//GEN-LAST:event_addBtnActionPerformed
 
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedIndex = categoryList.getSelectedIndex();
+        if (selectedIndex < 0) return;
+        String oCategory = categoryList.getSelectedValue();
+        dm.setElementAt(inputTxt.getText(), selectedIndex);
+        controller.updateCategoryName(oCategory, inputTxt.getText(), new LabMember("", "", ""));
+        inputTxt.setText("");
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void categoryListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryListMouseClicked
+        // TODO add your handling code here:
+        String selected = categoryList.getSelectedValue();
+        inputTxt.setText(selected);
+    }//GEN-LAST:event_categoryListMouseClicked
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedIndex = categoryList.getSelectedIndex();
+        if (selectedIndex < 0) return;
+        String category = categoryList.getSelectedValue();
+        dm.removeElementAt(selectedIndex);
+        controller.deleteCategory(category, new LabMember("", "", ""));
+        inputTxt.setText("");
+    }//GEN-LAST:event_deleteBtnActionPerformed
+   
+    private void add(String name){
+        categoryList.setModel(dm);
+        dm.addElement(name);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JList<String> categoryList;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JTextField inputTxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

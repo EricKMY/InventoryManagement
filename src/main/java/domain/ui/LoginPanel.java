@@ -111,7 +111,7 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getLoginPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
-        mainFrame.getInventoryPanel().setVisible(true);
+        mainFrame.getHomePanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
