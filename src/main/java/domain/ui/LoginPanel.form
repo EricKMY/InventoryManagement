@@ -37,7 +37,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="loginBtn" pref="185" max="32767" attributes="0"/>
-                          <Component id="passwordPanel" max="32767" attributes="0"/>
+                          <Component id="passwordField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -58,11 +58,11 @@
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="passwordPanel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Component id="loginBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="168" max="32767" attributes="0"/>
+              <Component id="loginBtn" min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace pref="151" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,9 +88,9 @@
         <Property name="text" type="java.lang.String" value="Password:  "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="passwordPanel">
+    <Component class="javax.swing.JTextField" name="passwordField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordPanelActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="loginBtn">

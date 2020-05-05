@@ -6,6 +6,8 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.labMember.LabMemberList;
+import domain.labMember.Manager;
 
 /**
  *
@@ -14,12 +16,15 @@ import domain.controller.Controller;
 public class LoginPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Controller controller;
+    private LabMemberList labMemberList;
+    
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel(MainFrame mainFrame, Controller controller) {
+    public LoginPanel(MainFrame mainFrame, Controller controller, LabMemberList labMemberList) {
         this.mainFrame = mainFrame;
         this.controller = controller;
+        this.labMemberList = labMemberList;
         this.setBounds(0, 0, 500, 500);
         initComponents();
         this.setVisible(false);
@@ -38,7 +43,7 @@ public class LoginPanel extends javax.swing.JPanel {
         userNameLabel = new javax.swing.JLabel();
         userNameField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
-        passwordPanel = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -50,9 +55,9 @@ public class LoginPanel extends javax.swing.JPanel {
 
         passwordLabel.setText("Password:  ");
 
-        passwordPanel.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordPanelActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
 
@@ -81,7 +86,7 @@ public class LoginPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                            .addComponent(passwordPanel))))
+                            .addComponent(passwordField))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,31 +101,37 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
-                    .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
-                .addComponent(loginBtn)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordPanelActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordPanelActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
+        controller.loginLabMember(new Manager("Manager", "manager@gmail.com", "manager123"));
+        
         mainFrame.getContentPane().remove(mainFrame.getLoginPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
         mainFrame.getHomePanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
+        
+        userNameField.setText("");
+        passwordField.setText("");
+        mainFrame.getHomePanel().defaultLabel.setText("Welcome, " + controller.getLabMember().getName());
     }//GEN-LAST:event_loginBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton loginBtn;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JTextField passwordPanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JTextField userNameField;
     private javax.swing.JLabel userNameLabel;

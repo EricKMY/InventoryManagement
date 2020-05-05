@@ -11,6 +11,7 @@ import java.util.Map;
 public class Controller {
 
     private LabInventoryList labInventoryList;
+    private LabMember labMember;
 
     public Controller(){
         labInventoryList = new LabInventoryList();
@@ -67,5 +68,14 @@ public class Controller {
 
     public boolean setUserPermission(LabMember labMember, String permission, LabMember targetLabMember){
         return labMember.setUserPermission(targetLabMember, permission);
+    }
+    
+    public boolean loginLabMember(LabMember labMember) {
+        this.labMember = labMember;
+        return true;
+    }
+    
+    public LabMember getLabMember() {
+        return labMember;
     }
 }

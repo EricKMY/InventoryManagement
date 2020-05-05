@@ -37,6 +37,8 @@ public class HomePanel extends javax.swing.JPanel {
         goToInventoryBtn = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         settingBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        defaultLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -57,31 +59,50 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
 
+        logoutBtn.setText("Logout");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
+        defaultLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        defaultLabel.setText("Default Message");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(titleLabel)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(goToInventoryBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(settingBtn)
-                .addGap(52, 52, 52))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(titleLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(defaultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel)
-                .addGap(64, 64, 64)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goToInventoryBtn)
-                    .addComponent(settingBtn))
-                .addContainerGap(371, Short.MAX_VALUE))
+                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(123, 123, 123)
+                .addComponent(defaultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,12 +122,26 @@ public class HomePanel extends javax.swing.JPanel {
         mainFrame.getSettingPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
+        mainFrame.getSettingPanel().nameField.setText(controller.getLabMember().getName());
+        mainFrame.getSettingPanel().emailField.setText(controller.getLabMember().getEmail());
+        mainFrame.getSettingPanel().phoneField.setText(controller.getLabMember().getPhone());
         
     }//GEN-LAST:event_settingBtnActionPerformed
 
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        mainFrame.getContentPane().remove(mainFrame.getHomePanel());
+        mainFrame.getContentPane().add(mainFrame.getLoginPanel());
+        mainFrame.getLoginPanel().setVisible(true);
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    protected javax.swing.JLabel defaultLabel;
     private javax.swing.JButton goToInventoryBtn;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JButton settingBtn;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables

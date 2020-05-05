@@ -33,17 +33,68 @@ public class SettingPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        goBackToInventoryBtn = new javax.swing.JButton();
-        settingLabel = new javax.swing.JLabel();
+        goToInventoryBtn = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        goBackHomeBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        nameLabel = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
+        phoneLabel = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        updateBtn = new javax.swing.JButton();
 
-        goBackToInventoryBtn.setText("Go Back To Inventory");
-        goBackToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        goToInventoryBtn.setText("Go To Inventory");
+        goToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackToInventoryBtnActionPerformed(evt);
+                goToInventoryBtnActionPerformed(evt);
             }
         });
 
-        settingLabel.setText("Setting");
+        titleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        titleLabel.setText("Lab Inventory System");
+
+        goBackHomeBtn.setText("Go Back Home");
+        goBackHomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackHomeBtnActionPerformed(evt);
+            }
+        });
+
+        logoutBtn.setText("Logout");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
+        nameLabel.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        nameLabel.setText("Name:");
+
+        nameField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        nameField.setText("Name");
+
+        emailLabel.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        emailLabel.setText("Email:");
+
+        phoneLabel.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        phoneLabel.setText("Phone:");
+
+        emailField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        emailField.setText("Email");
+
+        phoneField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        phoneField.setText("Phone");
+
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -52,36 +103,109 @@ public class SettingPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(goBackToInventoryBtn))
+                        .addGap(116, 116, 116)
+                        .addComponent(titleLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(settingLabel)))
-                .addContainerGap(187, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameLabel)
+                                    .addComponent(emailLabel)
+                                    .addComponent(phoneLabel))
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(settingLabel)
-                .addGap(53, 53, 53)
-                .addComponent(goBackToInventoryBtn)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(titleLabel)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLabel)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneLabel)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void goBackToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackToInventoryBtnActionPerformed
+    private void goToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToInventoryBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getSettingPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
         mainFrame.getHomePanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-    }//GEN-LAST:event_goBackToInventoryBtnActionPerformed
+    }//GEN-LAST:event_goToInventoryBtnActionPerformed
+
+    private void goBackHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackHomeBtnActionPerformed
+        // TODO add your handling code here:
+        mainFrame.getContentPane().remove(mainFrame.getSettingPanel());
+        mainFrame.getContentPane().add(mainFrame.getHomePanel());
+        mainFrame.getHomePanel().setVisible(true);
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    }//GEN-LAST:event_goBackHomeBtnActionPerformed
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        mainFrame.getContentPane().remove(mainFrame.getSettingPanel());
+        mainFrame.getContentPane().add(mainFrame.getLoginPanel());
+        mainFrame.getLoginPanel().setVisible(true);
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        if(!nameField.getText().equals(controller.getLabMember().getName())){            
+            controller.getLabMember().setName(nameField.getText());
+            mainFrame.getHomePanel().defaultLabel.setText("Hello, " + controller.getLabMember().getName());
+        }
+        if(!emailField.getText().equals(controller.getLabMember().getEmail()))
+            controller.getLabMember().setEmail(emailField.getText());
+        if(!phoneField.getText().equals(controller.getLabMember().getPhone()))
+            controller.getLabMember().setPhone(phoneField.getText());
+    }//GEN-LAST:event_updateBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton goBackToInventoryBtn;
-    private javax.swing.JLabel settingLabel;
+    protected javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JButton goBackHomeBtn;
+    private javax.swing.JButton goToInventoryBtn;
+    private javax.swing.JButton logoutBtn;
+    protected javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
+    protected javax.swing.JTextField phoneField;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
