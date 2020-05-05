@@ -16,6 +16,9 @@ public class MainFrame extends javax.swing.JFrame {
     private InventoryPanel inventoryPanel;
     private LoginPanel loginPanel;
     private Controller controller;
+    private SettingPanel settingPanel;
+    private NotificationPanel notificationPanel;
+    
     /**
      * Creates new form MainFrame
      */
@@ -24,9 +27,14 @@ public class MainFrame extends javax.swing.JFrame {
         homePanel = new HomePanel(this, controller);
         inventoryPanel = new InventoryPanel(this, controller);
         loginPanel = new LoginPanel(this, controller);
+        settingPanel = new SettingPanel(this, controller);
+        notificationPanel = new NotificationPanel(this, controller);
+        
         this.add(loginPanel);
         this.add(homePanel);
         this.add(inventoryPanel);
+        this.add(settingPanel);
+        this.add(notificationPanel);
         loginPanel.setVisible(true);
         initComponents();
     }
@@ -41,6 +49,14 @@ public class MainFrame extends javax.swing.JFrame {
     
     public InventoryPanel getInventoryPanel() {
         return inventoryPanel;
+    }
+    
+    public SettingPanel getSettingPanel() {
+        return settingPanel;
+    }
+        
+    public NotificationPanel getNotificationPanel() {
+        return notificationPanel;
     }
 
     /**
