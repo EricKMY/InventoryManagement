@@ -9,6 +9,7 @@ import domain.controller.Controller;
 import domain.inventory.LabInventory;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -29,6 +30,7 @@ public class InventoryPanel extends javax.swing.JPanel {
      * Creates new form InventoryPanel
      * @param mainFrame
      * @param controller
+     * @param labMemberList
      */
     public InventoryPanel(MainFrame mainFrame, Controller controller, LabMemberList labMemberList) {
         this.mainFrame = mainFrame;
@@ -54,15 +56,18 @@ public class InventoryPanel extends javax.swing.JPanel {
 
         titleLabel = new javax.swing.JLabel();
         goBackToHomeBtn = new javax.swing.JButton();
-        inputField = new javax.swing.JTextField();
-        addBtn = new javax.swing.JButton();
+        inputCategoryField = new javax.swing.JTextField();
+        addCategoryBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         categoryList = new javax.swing.JList<>();
-        updateBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
+        updateCategoryBtn = new javax.swing.JButton();
+        deleteCategoryBtn = new javax.swing.JButton();
         notificationBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         inventoryList = new javax.swing.JList<>();
+        deleteInventoryBtn = new javax.swing.JButton();
+        inputInventoryField = new javax.swing.JTextField();
+        addInventoryBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,17 +81,17 @@ public class InventoryPanel extends javax.swing.JPanel {
             }
         });
 
-        inputField.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        inputField.addActionListener(new java.awt.event.ActionListener() {
+        inputCategoryField.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        inputCategoryField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputFieldActionPerformed(evt);
+                inputCategoryFieldActionPerformed(evt);
             }
         });
 
-        addBtn.setText("Add");
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
+        addCategoryBtn.setText("Add");
+        addCategoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                addCategoryBtnActionPerformed(evt);
             }
         });
 
@@ -97,17 +102,17 @@ public class InventoryPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(categoryList);
 
-        updateBtn.setText("Update");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+        updateCategoryBtn.setText("Update");
+        updateCategoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
+                updateCategoryBtnActionPerformed(evt);
             }
         });
 
-        deleteBtn.setLabel("Delete");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        deleteCategoryBtn.setLabel("Delete");
+        deleteCategoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                deleteCategoryBtnActionPerformed(evt);
             }
         });
 
@@ -120,61 +125,77 @@ public class InventoryPanel extends javax.swing.JPanel {
 
         jScrollPane2.setViewportView(inventoryList);
 
+        deleteInventoryBtn.setText("Delete");
+        deleteInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteInventoryBtnActionPerformed(evt);
+            }
+        });
+
+        addInventoryBtn.setLabel("Add");
+        addInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addInventoryBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(titleLabel)
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(goBackToHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(notificationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputCategoryField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(addCategoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateCategoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(deleteCategoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(notificationBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(deleteInventoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inputInventoryField)
+                    .addComponent(addInventoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(164, 164, 164)
+                .addComponent(goBackToHomeBtn)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(goBackToHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(115, 115, 115)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(goBackToHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(notificationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputInventoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(notificationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inputCategoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(addCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(202, Short.MAX_VALUE))
+                        .addComponent(updateCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(deleteCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,47 +208,50 @@ public class InventoryPanel extends javax.swing.JPanel {
         mainFrame.repaint();
     }//GEN-LAST:event_goBackToHomeBtnActionPerformed
 
-    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
+    private void inputCategoryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCategoryFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputFieldActionPerformed
+    }//GEN-LAST:event_inputCategoryFieldActionPerformed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+    private void addCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCategoryBtnActionPerformed
         // TODO add your handling code here:
-        String s = inputField.getText();
+        String s = inputCategoryField.getText();
         if (s.replace(" ", "").isEmpty()) return;
-        controller.createCategory(s, new LabMember("", "", ""));
+        controller.createCategory(s, labMember);
         /* here set default value to debug, remove while CRUD for LabInventory button done */
-        controller.createInventory(s, "defualtLabInventory", 1, new LabMember("", "", ""));
+        controller.createInventory(s, "defualtLabInventory", 1, labMember);
         add(s);
-        inputField.setText("");
-    }//GEN-LAST:event_addBtnActionPerformed
+        inputCategoryField.setText("");
+        clearInventoryList();
+    }//GEN-LAST:event_addCategoryBtnActionPerformed
 
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+    private void updateCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCategoryBtnActionPerformed
         // TODO add your handling code here:
         int selectedIndex = categoryList.getSelectedIndex();
         if (selectedIndex < 0) return;
         String oCategory = categoryList.getSelectedValue();
-        dm.setElementAt(inputField.getText(), selectedIndex);
-        controller.updateCategoryName(oCategory, inputField.getText(), new LabMember("", "", ""));
-        inputField.setText("");
-    }//GEN-LAST:event_updateBtnActionPerformed
+        dm.setElementAt(inputCategoryField.getText(), selectedIndex);
+        controller.updateCategoryName(oCategory, inputCategoryField.getText(), labMember);
+        inputCategoryField.setText("");
+    }//GEN-LAST:event_updateCategoryBtnActionPerformed
 
     private void categoryListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryListMouseClicked
         // TODO add your handling code here:
         String selected = categoryList.getSelectedValue();
-        inputField.setText(selected);
+        if( selected == null ) return;
+        inputCategoryField.setText(selected);
         popInventoryList(controller.getLabInventoryList().getLabInventoryMap().get(selected));
     }//GEN-LAST:event_categoryListMouseClicked
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void deleteCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCategoryBtnActionPerformed
         // TODO add your handling code here:
         int selectedIndex = categoryList.getSelectedIndex();
         if (selectedIndex < 0) return;
         String category = categoryList.getSelectedValue();
         dm.removeElementAt(selectedIndex);
-        controller.deleteCategory(category, new LabMember("", "", ""));
-        inputField.setText("");
-    }//GEN-LAST:event_deleteBtnActionPerformed
+        controller.deleteCategory(category, labMember);
+        inputCategoryField.setText("");
+        clearInventoryList();
+    }//GEN-LAST:event_deleteCategoryBtnActionPerformed
 
     private void notificationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationBtnActionPerformed
         // TODO add your handling code here:
@@ -237,32 +261,58 @@ public class InventoryPanel extends javax.swing.JPanel {
         mainFrame.revalidate();
         mainFrame.repaint();
     }//GEN-LAST:event_notificationBtnActionPerformed
+
+    private void deleteInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        controller.deleteInventory(categoryList.getSelectedValue(), inputInventoryField.getText(), labMember);
+        popInventoryList(controller.getLabInventoryList().getLabInventoryMap().get(categoryList.getSelectedValue()));
+        inputInventoryField.setText("");
+    }//GEN-LAST:event_deleteInventoryBtnActionPerformed
+
+    private void addInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        if (inputInventoryField.getText().replace(" ", "").isEmpty()) return;
+        controller.createInventory(categoryList.getSelectedValue(), inputInventoryField.getText(), 0, labMember);
+        popInventoryList(controller.getLabInventoryList().getLabInventoryMap().get(categoryList.getSelectedValue()));
+        inputInventoryField.setText("");
+    }//GEN-LAST:event_addInventoryBtnActionPerformed
    
     private void add(String name){
         categoryList.setModel(dm);
         dm.addElement(name);
     }
     
+    private void clearInventoryList(){
+        inventoryList.setModel(dm_inventory_list);
+        dm_inventory_list.clear();
+    }
+    
     private void popInventoryList(List<LabInventory> listInventory){
+        inventoryList.getComponent(0).setBackground(Color.BLUE);
         inventoryList.setModel(dm_inventory_list);
         dm_inventory_list.clear();
         for( LabInventory lit : listInventory ){
             dm_inventory_list.addElement(lit.getName());
         }
+//        inventoryList.getComponent(0).setBackground(Color.RED);
+//        inventoryList.getComponent(0).setForeground(Color.BLUE);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBtn;
+    private javax.swing.JButton addCategoryBtn;
+    private javax.swing.JButton addInventoryBtn;
     private javax.swing.JList<String> categoryList;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton deleteCategoryBtn;
+    private javax.swing.JButton deleteInventoryBtn;
     private javax.swing.JButton goBackToHomeBtn;
-    private javax.swing.JTextField inputField;
+    private javax.swing.JTextField inputCategoryField;
+    private javax.swing.JTextField inputInventoryField;
     private javax.swing.JList<String> inventoryList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton notificationBtn;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JButton updateBtn;
+    private javax.swing.JButton updateCategoryBtn;
     // End of variables declaration//GEN-END:variables
 
 }
