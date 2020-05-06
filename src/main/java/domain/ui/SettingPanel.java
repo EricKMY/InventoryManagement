@@ -295,6 +295,7 @@ public class SettingPanel extends javax.swing.JPanel {
         mainFrame.getLoginPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
+        mainFrame.getLoginPanel().labMember = null;
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed

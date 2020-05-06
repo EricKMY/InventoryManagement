@@ -20,7 +20,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Controller controller;
     private LabMemberList labMemberList;
-    private LabMember labMember;
+    protected LabMember labMember;
     
     /**
      * Creates new form LoginPanel
