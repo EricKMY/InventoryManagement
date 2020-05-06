@@ -8,6 +8,7 @@ package domain.ui;
 import domain.controller.Controller;
 import domain.inventory.LabInventory;
 import domain.labMember.LabMember;
+import domain.labMember.LabMemberList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -18,6 +19,8 @@ import javax.swing.DefaultListModel;
 public class InventoryPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Controller controller;
+    private LabMember labMember;
+    private LabMemberList labMemberList;
     
     DefaultListModel dm = new DefaultListModel();
     DefaultListModel dm_inventory_list = new DefaultListModel();
@@ -27,12 +30,17 @@ public class InventoryPanel extends javax.swing.JPanel {
      * @param mainFrame
      * @param controller
      */
-    public InventoryPanel(MainFrame mainFrame, Controller controller) {
+    public InventoryPanel(MainFrame mainFrame, Controller controller, LabMemberList labMemberList) {
         this.mainFrame = mainFrame;
         this.controller = controller;
+        this.labMemberList = labMemberList;
         this.setBounds(0, 0, 500, 500);
         initComponents();
         this.setVisible(false);
+    }
+    
+    public void setLabMember(LabMember labMember) {
+        this.labMember = labMember;
     }
 
     /**
@@ -256,4 +264,5 @@ public class InventoryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -6,7 +6,9 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.labMember.Admin;
 import domain.labMember.LabMemberList;
+import domain.labMember.Manager;
 
 /**
  *
@@ -27,10 +29,10 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         controller = new Controller();
         labMemberList = new LabMemberList();
-//        labMemberList.addLabMember(new Admin("Admin", "admin@gmail.com", "admin"));
-//        labMemberList.addLabMember(new Manager("Manager", "manager@gmail.com", "manager"));
+        labMemberList.addLabMember(new Admin("Admin", "admin@gmail.com", "admin"));
+        labMemberList.addLabMember(new Manager("Manager", "manager@gmail.com", "manager"));
         homePanel = new HomePanel(this, controller);
-        inventoryPanel = new InventoryPanel(this, controller);
+        inventoryPanel = new InventoryPanel(this, controller, labMemberList);
         loginPanel = new LoginPanel(this, controller, labMemberList);
         settingPanel = new SettingPanel(this, controller);
         notificationPanel = new NotificationPanel(this, controller);

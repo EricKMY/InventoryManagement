@@ -7,6 +7,8 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.labMember.LabMember;
+
 
 /**
  *
@@ -15,6 +17,7 @@ import domain.controller.Controller;
 public class HomePanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Controller controller;
+    private LabMember labMember;
     
     /** Creates new form HomePanel */
     public HomePanel(MainFrame mainFrame, Controller controller) {
@@ -23,6 +26,10 @@ public class HomePanel extends javax.swing.JPanel {
         this.setBounds(0, 0, 500, 500);
         initComponents();
         this.setVisible(false);
+    }
+    
+    public void setLabMember(LabMember labMember) {
+        this.labMember = labMember;
     }
 
     /** This method is called from within the constructor to
@@ -122,9 +129,9 @@ public class HomePanel extends javax.swing.JPanel {
         mainFrame.getSettingPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-        mainFrame.getSettingPanel().nameField.setText(controller.getLabMember().getName());
-        mainFrame.getSettingPanel().emailField.setText(controller.getLabMember().getEmail());
-        mainFrame.getSettingPanel().phoneField.setText(controller.getLabMember().getPhone());
+        mainFrame.getSettingPanel().nameField.setText(labMember.getName());
+        mainFrame.getSettingPanel().emailField.setText(labMember.getEmail());
+        mainFrame.getSettingPanel().phoneField.setText(labMember.getPhone());
         
     }//GEN-LAST:event_settingBtnActionPerformed
 

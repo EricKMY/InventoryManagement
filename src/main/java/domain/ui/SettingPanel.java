@@ -6,6 +6,7 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.labMember.LabMember;
 import java.awt.Dialog.ModalityType;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -20,6 +21,7 @@ public class SettingPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Controller controller;
     private ImageIcon icon;
+    private LabMember labMember;
     
     public SettingPanel(MainFrame mainFrame, Controller controller) {
         this.mainFrame = mainFrame;
@@ -27,6 +29,10 @@ public class SettingPanel extends javax.swing.JPanel {
         this.setBounds(0, 0, 500, 500);
         initComponents();
         this.setVisible(false);
+    }
+    
+    public void setLabMember(LabMember labMember) {
+        this.labMember = labMember;
     }
 
     /**
@@ -293,14 +299,14 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        if(!nameField.getText().equals(controller.getLabMember().getName())){
-            controller.getLabMember().setName(nameField.getText());
-            mainFrame.getHomePanel().defaultLabel.setText("Hello, " + controller.getLabMember().getName());
+        if(!nameField.getText().equals(labMember.getName())){
+            labMember.setName(nameField.getText());
+            mainFrame.getHomePanel().defaultLabel.setText("Hello, " + labMember.getName());
         }
-        if(!emailField.getText().equals(controller.getLabMember().getEmail()))
-            controller.getLabMember().setEmail(emailField.getText());
-        if(!phoneField.getText().equals(controller.getLabMember().getPhone()))
-            controller.getLabMember().setPhone(phoneField.getText());
+        if(!emailField.getText().equals(labMember.getEmail()))
+            labMember.setEmail(emailField.getText());
+        if(!phoneField.getText().equals(labMember.getPhone()))
+            labMember.setPhone(phoneField.getText());
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void oldPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldPasswordFieldActionPerformed
@@ -326,8 +332,8 @@ public class SettingPanel extends javax.swing.JPanel {
         
         if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) 
                 && !String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))){
-            controller.getLabMember().setPassword(String.valueOf(newPasswordField.getPassword()));
-            icon = new ImageIcon(this.getClass().getResource("images/icons8-thumbs-up-64.png"));
+            labMember.setPassword(String.valueOf(newPasswordField.getPassword()));
+            ImageIcon icon = new ImageIcon(this.getClass().getResource("images/icons8-thumbs-up-64.png"));
             JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, icon);
             
             oldPasswordField.setText("");
@@ -361,4 +367,5 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JButton updatePasswordBtn;
     private javax.swing.JDialog updatePasswordDialog;
     // End of variables declaration//GEN-END:variables
+
 }
