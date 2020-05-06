@@ -65,27 +65,35 @@ public class SettingPanel extends javax.swing.JPanel {
         phoneField = new javax.swing.JTextField();
         updateBtn = new javax.swing.JButton();
         updatePasswordBtn = new javax.swing.JButton();
+        permissionLabel = new javax.swing.JLabel();
+        permissionField = new javax.swing.JTextField();
 
         updatePasswordDialog.setBackground(new java.awt.Color(204, 204, 204));
 
+        oldPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         oldPasswordLabel.setText("Old Password:");
 
+        confirmPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         confirmPasswordLabel.setText("Confrim New Password:");
 
+        newPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         newPasswordLabel.setText("New Password:");
 
+        oldPasswordField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         oldPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oldPasswordFieldActionPerformed(evt);
             }
         });
 
+        newPasswordField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         newPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPasswordFieldActionPerformed(evt);
             }
         });
 
+        dialogUpdatePasswordBtn.setFont(new java.awt.Font("Lucida Grande", 0, 22)); // NOI18N
         dialogUpdatePasswordBtn.setText("Update Password");
         dialogUpdatePasswordBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,62 +101,64 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
+        confirmPasswordField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         confirmPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmPasswordFieldActionPerformed(evt);
             }
         });
 
-        dialogTitleLabel.setFont(new java.awt.Font("¼Ð·¢Åé", 1, 24)); // NOI18N
+        dialogTitleLabel.setFont(new java.awt.Font("æ¨™æ¥·é«”", 1, 36)); // NOI18N
         dialogTitleLabel.setText("Update Password");
 
         javax.swing.GroupLayout updatePasswordDialogLayout = new javax.swing.GroupLayout(updatePasswordDialog.getContentPane());
         updatePasswordDialog.getContentPane().setLayout(updatePasswordDialogLayout);
         updatePasswordDialogLayout.setHorizontalGroup(
             updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatePasswordDialogLayout.createSequentialGroup()
-                .addContainerGap(113, Short.MAX_VALUE)
-                .addComponent(dialogTitleLabel)
-                .addGap(113, 113, 113))
             .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
                 .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(oldPasswordLabel)
-                    .addComponent(newPasswordLabel)
-                    .addComponent(confirmPasswordLabel))
-                .addGap(1, 1, 1)
-                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addGroup(updatePasswordDialogLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(dialogTitleLabel))
+                    .addGroup(updatePasswordDialogLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oldPasswordLabel)
+                            .addComponent(newPasswordLabel)
+                            .addComponent(confirmPasswordLabel))
+                        .addGap(1, 1, 1)
+                        .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         updatePasswordDialogLayout.setVerticalGroup(
             updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(dialogTitleLabel)
-                .addGap(40, 40, 40)
+                .addGap(45, 45, 45)
                 .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(oldPasswordLabel)
-                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                        .addComponent(newPasswordLabel)
-                        .addGap(23, 23, 23)
-                        .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(confirmPasswordLabel)
-                            .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(newPasswordLabel)
+                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmPasswordLabel)
+                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(51, 51, 51))
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        goToInventoryBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         goToInventoryBtn.setText("Go To Inventory");
         goToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,9 +166,10 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        titleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 40)); // NOI18N
         titleLabel.setText("Lab Inventory System");
 
+        goBackHomeBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         goBackHomeBtn.setText("Go Back Home");
         goBackHomeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +177,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,35 +185,47 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        nameLabel.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        nameLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         nameLabel.setText("Name:");
 
-        nameField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        nameField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         nameField.setText("Name");
 
-        emailLabel.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        emailLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         emailLabel.setText("Email:");
 
-        phoneLabel.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        phoneLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         phoneLabel.setText("Phone:");
 
-        emailField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        emailField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         emailField.setText("Email");
 
-        phoneField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        phoneField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         phoneField.setText("Phone");
 
-        updateBtn.setText("Update");
+        updateBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        updateBtn.setText("Update User Info");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
             }
         });
 
+        updatePasswordBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         updatePasswordBtn.setText("Update Password");
         updatePasswordBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatePasswordBtnActionPerformed(evt);
+            }
+        });
+
+        permissionLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        permissionLabel.setText("Permission:");
+
+        permissionField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        permissionField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                permissionFieldActionPerformed(evt);
             }
         });
 
@@ -210,63 +234,74 @@ public class SettingPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(titleLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(titleLabel))
+                        .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(permissionLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(permissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nameLabel)
                                     .addComponent(emailLabel)
                                     .addComponent(phoneLabel))
                                 .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nameField)
+                                    .addComponent(emailField)
+                                    .addComponent(phoneField, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))))
+                        .addGap(108, 108, 108)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(336, Short.MAX_VALUE))
+                            .addComponent(updatePasswordBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(37, 37, 37)
                 .addComponent(titleLabel)
-                .addGap(40, 40, 40)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailLabel)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailLabel)
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phoneLabel)
-                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(231, Short.MAX_VALUE))
+                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(permissionLabel)
+                            .addComponent(permissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,7 +351,7 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void updatePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePasswordBtnActionPerformed
         // TODO add your handling code here:
-        updatePasswordDialog.setBounds(0, 0, 421, 320);
+        updatePasswordDialog.setBounds(0, 0, 550, 420);
         updatePasswordDialog.setVisible(true);
     }//GEN-LAST:event_updatePasswordBtnActionPerformed
 
@@ -344,6 +379,10 @@ public class SettingPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_dialogUpdatePasswordBtnActionPerformed
 
+    private void permissionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permissionFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_permissionFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField confirmPasswordField;
@@ -361,6 +400,8 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel newPasswordLabel;
     private javax.swing.JPasswordField oldPasswordField;
     private javax.swing.JLabel oldPasswordLabel;
+    protected javax.swing.JTextField permissionField;
+    private javax.swing.JLabel permissionLabel;
     protected javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel titleLabel;
