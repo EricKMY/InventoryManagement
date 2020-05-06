@@ -6,7 +6,9 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.inventory.LabInventory;
 import domain.labMember.LabMember;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
@@ -18,6 +20,7 @@ public class InventoryPanel extends javax.swing.JPanel {
     private Controller controller;
     
     DefaultListModel dm = new DefaultListModel();
+    DefaultListModel dm_inventory_list = new DefaultListModel();
     
     /**
      * Creates new form InventoryPanel
@@ -50,6 +53,8 @@ public class InventoryPanel extends javax.swing.JPanel {
         updateBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         notificationBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        inventoryList = new javax.swing.JList<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,6 +110,8 @@ public class InventoryPanel extends javax.swing.JPanel {
             }
         });
 
+        jScrollPane2.setViewportView(inventoryList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,7 +120,9 @@ public class InventoryPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(titleLabel))
+                        .addComponent(titleLabel)
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -136,12 +145,17 @@ public class InventoryPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titleLabel)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goBackToHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notificationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(goBackToHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(notificationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,6 +188,8 @@ public class InventoryPanel extends javax.swing.JPanel {
         String s = inputField.getText();
         if (s.replace(" ", "").isEmpty()) return;
         controller.createCategory(s, new LabMember("", "", ""));
+        /* here set default value to debug, remove while CRUD for LabInventory button done */
+        controller.createInventory(s, "defualtLabInventory", 1, new LabMember("", "", ""));
         add(s);
         inputField.setText("");
     }//GEN-LAST:event_addBtnActionPerformed
@@ -192,6 +208,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String selected = categoryList.getSelectedValue();
         inputField.setText(selected);
+        popInventoryList(controller.getLabInventoryList().getLabInventoryMap().get(selected));
     }//GEN-LAST:event_categoryListMouseClicked
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
@@ -218,13 +235,22 @@ public class InventoryPanel extends javax.swing.JPanel {
         dm.addElement(name);
     }
     
+    private void popInventoryList(List<LabInventory> listInventory){
+        inventoryList.setModel(dm_inventory_list);
+        for( LabInventory lit : listInventory ){
+            dm_inventory_list.addElement(lit.getName());
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JList<String> categoryList;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton goBackToHomeBtn;
     private javax.swing.JTextField inputField;
+    private javax.swing.JList<String> inventoryList;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton notificationBtn;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateBtn;
