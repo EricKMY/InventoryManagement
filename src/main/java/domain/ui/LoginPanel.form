@@ -29,15 +29,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="userNameLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="userNameField" max="32767" attributes="0"/>
+                          <Component id="userNameField" min="-2" pref="185" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="loginBtn" pref="185" max="32767" attributes="0"/>
-                          <Component id="passwordField" max="32767" attributes="0"/>
+                          <Component id="loginBtn" min="-2" pref="185" max="-2" attributes="0"/>
+                          <Component id="passwordField" min="-2" pref="185" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

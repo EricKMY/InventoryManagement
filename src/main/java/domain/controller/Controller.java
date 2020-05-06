@@ -74,7 +74,7 @@ public class Controller {
         this.labMember = labMember;
         return true;
     }
-    
+
     public LabMember getLabMember() {
         return labMember;
     }

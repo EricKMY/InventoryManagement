@@ -6,6 +6,10 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import java.awt.Dialog.ModalityType;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +19,7 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
     private Controller controller;
+    private ImageIcon icon;
     
     public SettingPanel(MainFrame mainFrame, Controller controller) {
         this.mainFrame = mainFrame;
@@ -33,6 +38,15 @@ public class SettingPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        updatePasswordDialog = new javax.swing.JDialog();
+        oldPasswordLabel = new javax.swing.JLabel();
+        confirmPasswordLabel = new javax.swing.JLabel();
+        newPasswordLabel = new javax.swing.JLabel();
+        oldPasswordField = new javax.swing.JPasswordField();
+        newPasswordField = new javax.swing.JPasswordField();
+        dialogUpdatePasswordBtn = new javax.swing.JButton();
+        confirmPasswordField = new javax.swing.JPasswordField();
+        dialogTitleLabel = new javax.swing.JLabel();
         goToInventoryBtn = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         goBackHomeBtn = new javax.swing.JButton();
@@ -44,6 +58,88 @@ public class SettingPanel extends javax.swing.JPanel {
         emailField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
         updateBtn = new javax.swing.JButton();
+        updatePasswordBtn = new javax.swing.JButton();
+
+        updatePasswordDialog.setBackground(new java.awt.Color(204, 204, 204));
+
+        oldPasswordLabel.setText("Old Password:");
+
+        confirmPasswordLabel.setText("Confrim New Password:");
+
+        newPasswordLabel.setText("New Password:");
+
+        oldPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oldPasswordFieldActionPerformed(evt);
+            }
+        });
+
+        newPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPasswordFieldActionPerformed(evt);
+            }
+        });
+
+        dialogUpdatePasswordBtn.setText("Update Password");
+        dialogUpdatePasswordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dialogUpdatePasswordBtnActionPerformed(evt);
+            }
+        });
+
+        confirmPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmPasswordFieldActionPerformed(evt);
+            }
+        });
+
+        dialogTitleLabel.setFont(new java.awt.Font("º–∑¢≈È", 1, 24)); // NOI18N
+        dialogTitleLabel.setText("Update Password");
+
+        javax.swing.GroupLayout updatePasswordDialogLayout = new javax.swing.GroupLayout(updatePasswordDialog.getContentPane());
+        updatePasswordDialog.getContentPane().setLayout(updatePasswordDialogLayout);
+        updatePasswordDialogLayout.setHorizontalGroup(
+            updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatePasswordDialogLayout.createSequentialGroup()
+                .addContainerGap(113, Short.MAX_VALUE)
+                .addComponent(dialogTitleLabel)
+                .addGap(113, 113, 113))
+            .addGroup(updatePasswordDialogLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(oldPasswordLabel)
+                    .addComponent(newPasswordLabel)
+                    .addComponent(confirmPasswordLabel))
+                .addGap(1, 1, 1)
+                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        updatePasswordDialogLayout.setVerticalGroup(
+            updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updatePasswordDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(dialogTitleLabel)
+                .addGap(40, 40, 40)
+                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(oldPasswordLabel)
+                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updatePasswordDialogLayout.createSequentialGroup()
+                        .addComponent(newPasswordLabel)
+                        .addGap(23, 23, 23)
+                        .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(confirmPasswordLabel)
+                            .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -96,6 +192,13 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
+        updatePasswordBtn.setText("Update Password");
+        updatePasswordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePasswordBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,7 +228,8 @@ public class SettingPanel extends javax.swing.JPanel {
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,19 +251,24 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneLabel)
-                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(phoneLabel)
+                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void goToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToInventoryBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getSettingPanel());
-        mainFrame.getContentPane().add(mainFrame.getHomePanel());
-        mainFrame.getHomePanel().setVisible(true);
+        mainFrame.getContentPane().add(mainFrame.getInventoryPanel());
+        mainFrame.getInventoryPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
     }//GEN-LAST:event_goToInventoryBtnActionPerformed
@@ -184,7 +293,7 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        if(!nameField.getText().equals(controller.getLabMember().getName())){            
+        if(!nameField.getText().equals(controller.getLabMember().getName())){
             controller.getLabMember().setName(nameField.getText());
             mainFrame.getHomePanel().defaultLabel.setText("Hello, " + controller.getLabMember().getName());
         }
@@ -194,8 +303,46 @@ public class SettingPanel extends javax.swing.JPanel {
             controller.getLabMember().setPhone(phoneField.getText());
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void oldPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oldPasswordFieldActionPerformed
+
+    private void updatePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePasswordBtnActionPerformed
+        // TODO add your handling code here:
+        updatePasswordDialog.setBounds(0, 0, 421, 320);
+        updatePasswordDialog.setVisible(true);
+    }//GEN-LAST:event_updatePasswordBtnActionPerformed
+
+    private void newPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newPasswordFieldActionPerformed
+
+    private void confirmPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmPasswordFieldActionPerformed
+
+    private void dialogUpdatePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogUpdatePasswordBtnActionPerformed
+        // TODO add your handling code here:
+        
+        if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) 
+                && !String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))){
+            controller.getLabMember().setPassword(String.valueOf(newPasswordField.getPassword()));
+            icon = new ImageIcon(this.getClass().getResource("images/icons8-thumbs-up-64.png"));
+            JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, icon);
+            
+            oldPasswordField.setText("");
+            newPasswordField.setText("");
+            confirmPasswordField.setText("");
+            updatePasswordDialog.setVisible(false);
+        }
+    }//GEN-LAST:event_dialogUpdatePasswordBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField confirmPasswordField;
+    private javax.swing.JLabel confirmPasswordLabel;
+    private javax.swing.JLabel dialogTitleLabel;
+    private javax.swing.JButton dialogUpdatePasswordBtn;
     protected javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton goBackHomeBtn;
@@ -203,9 +350,15 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JButton logoutBtn;
     protected javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JPasswordField newPasswordField;
+    private javax.swing.JLabel newPasswordLabel;
+    private javax.swing.JPasswordField oldPasswordField;
+    private javax.swing.JLabel oldPasswordLabel;
     protected javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateBtn;
+    private javax.swing.JButton updatePasswordBtn;
+    private javax.swing.JDialog updatePasswordDialog;
     // End of variables declaration//GEN-END:variables
 }

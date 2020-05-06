@@ -10,6 +10,10 @@ public class LabMemberList {
         labMemberMap = new HashMap<String, LabMember>();
     }
 
+    public Map<String, LabMember> getLabMemberMap() {
+        return labMemberMap;
+    }
+
     public void addLabMember(LabMember labMember) {
         labMemberMap.put(labMember.getId(), labMember);
     }
