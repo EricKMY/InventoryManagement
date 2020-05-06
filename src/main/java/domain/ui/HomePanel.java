@@ -23,7 +23,7 @@ public class HomePanel extends javax.swing.JPanel {
     public HomePanel(MainFrame mainFrame, Controller controller) {
         this.mainFrame = mainFrame;
         this.controller = controller;
-        this.setBounds(0, 0, 500, 500);
+        this.setBounds(0, 0, 800, 600);
         initComponents();
         this.setVisible(false);
     }
@@ -95,7 +95,7 @@ public class HomePanel extends javax.swing.JPanel {
                         .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +109,7 @@ public class HomePanel extends javax.swing.JPanel {
                     .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(123, 123, 123)
                 .addComponent(defaultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

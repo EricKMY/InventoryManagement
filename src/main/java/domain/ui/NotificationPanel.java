@@ -22,7 +22,7 @@ public class NotificationPanel extends javax.swing.JPanel {
     public NotificationPanel(MainFrame mainFrame, Controller controller) {
         this.mainFrame = mainFrame;
         this.controller = controller;
-        this.setBounds(0, 0, 500, 500);
+        this.setBounds(0, 0, 800, 600);
         initComponents();
         this.setVisible(false);
     }
@@ -57,7 +57,7 @@ public class NotificationPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(goBackToHomeBtn)
                     .addComponent(notificationLabel))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(536, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,7 +66,7 @@ public class NotificationPanel extends javax.swing.JPanel {
                 .addComponent(notificationLabel)
                 .addGap(44, 44, 44)
                 .addComponent(goBackToHomeBtn)
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addContainerGap(473, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
