@@ -139,7 +139,7 @@ public class InventoryPanel extends javax.swing.JPanel {
                             .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,6 +237,7 @@ public class InventoryPanel extends javax.swing.JPanel {
     
     private void popInventoryList(List<LabInventory> listInventory){
         inventoryList.setModel(dm_inventory_list);
+        dm_inventory_list.clear();
         for( LabInventory lit : listInventory ){
             dm_inventory_list.addElement(lit.getName());
         }
