@@ -24,9 +24,9 @@ public class LabMemberListTest {
         assertEquals(0, labMemberList.getLabMemberMap().size());
         labMemberList.addLabMember(labMember);
         assertEquals(1, labMemberList.getLabMemberMap().size());
-        assertEquals("Jeff", labMemberList.findLabMember(labMember.getId()).getName());
-        assertEquals("Jeff@gmail.com", labMemberList.findLabMember(labMember.getId()).getEmail());
-        assertEquals("jeff123", labMemberList.findLabMember(labMember.getId()).getPassword());
+        assertEquals("Jeff", labMemberList.findLabMemberById(labMember.getId()).getName());
+        assertEquals("Jeff@gmail.com", labMemberList.findLabMemberById(labMember.getId()).getEmail());
+        assertEquals("jeff123", labMemberList.findLabMemberById(labMember.getId()).getPassword());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class LabMemberListTest {
         assertEquals(0, labMemberList.getLabMemberMap().size());
         labMemberList.addLabMember(labMember);
         assertEquals(1, labMemberList.getLabMemberMap().size());
-        labMemberList.removeLabMember(labMember.getId());
+        labMemberList.removeLabMemberById(labMember.getId());
         assertEquals(0, labMemberList.getLabMemberMap().size());
     }
 }

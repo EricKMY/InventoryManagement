@@ -60,11 +60,11 @@ public class LabMemberTest {
 
         labMemberList.addLabMember(labMember);
 
-        assertEquals("Jeff", labMemberList.findLabMember(labMember.getId()).getName());
-        assertEquals("Jeff123@gmail.com", labMemberList.findLabMember(labMember.getId()).getEmail());
-        assertEquals("Jeff111", labMemberList.findLabMember(labMember.getId()).getPassword());
-        assertEquals("091234567", labMemberList.findLabMember(labMember.getId()).getPhone());
-        assertEquals("Manager", labMemberList.findLabMember(labMember.getId()).getPermission());
+        assertEquals("Jeff", labMemberList.findLabMemberById(labMember.getId()).getName());
+        assertEquals("Jeff123@gmail.com", labMemberList.findLabMemberById(labMember.getId()).getEmail());
+        assertEquals("Jeff111", labMemberList.findLabMemberById(labMember.getId()).getPassword());
+        assertEquals("091234567", labMemberList.findLabMemberById(labMember.getId()).getPhone());
+        assertEquals("Manager", labMemberList.findLabMemberById(labMember.getId()).getPermission());
     }
 
     @Test
@@ -72,11 +72,11 @@ public class LabMemberTest {
         labMember = new Manager("Jeff", "Jeff123@gmail.com", "Jeff111");
         labMemberList.addLabMember(labMember);
 
-        assertNotNull(labMemberList.findLabMember(labMember.getId()));
+        assertNotNull(labMemberList.findLabMemberById(labMember.getId()));
 
-        labMemberList.removeLabMember(labMember.getId());
+        labMemberList.removeLabMemberById(labMember.getId());
 
-        assertNull(labMemberList.findLabMember(labMember.getId()));
+        assertNull(labMemberList.findLabMemberById(labMember.getId()));
     }
 
     @Test

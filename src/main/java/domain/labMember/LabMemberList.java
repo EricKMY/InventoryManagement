@@ -14,15 +14,17 @@ public class LabMemberList {
         return labMemberMap;
     }
 
-    public void addLabMember(LabMember labMember) {
+    public boolean addLabMember(LabMember labMember) {
         labMemberMap.put(labMember.getId(), labMember);
+        return true;
     }
 
-    public void removeLabMember(String id) {
+    public boolean removeLabMemberById(String id) {
         labMemberMap.remove(id);
+        return true;
     }
 
-    public LabMember findLabMember(String id) {
+    public LabMember findLabMemberById(String id) {
         return labMemberMap.get(id);
     }
 }
