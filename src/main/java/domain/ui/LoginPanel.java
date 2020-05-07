@@ -8,7 +8,7 @@ package domain.ui;
 import domain.controller.Controller;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
-import domain.labMember.Manager;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -32,6 +32,8 @@ public class LoginPanel extends javax.swing.JPanel {
         this.setBounds(0, 0, 800, 600);
         initComponents();
         this.setVisible(false);
+        Icon loginIcon = new ImageIcon(this.getClass().getResource("images/login.png"));
+        loginBtn.setIcon(loginIcon);
     }
 
     /**
@@ -64,6 +66,11 @@ public class LoginPanel extends javax.swing.JPanel {
                 userNameFieldActionPerformed(evt);
             }
         });
+        userNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameFieldKeyPressed(evt);
+            }
+        });
 
         passwordLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         passwordLabel.setText("Password:  ");
@@ -82,6 +89,11 @@ public class LoginPanel extends javax.swing.JPanel {
         });
 
         passwordField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -117,39 +129,14 @@ public class LoginPanel extends javax.swing.JPanel {
                     .addComponent(passwordLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100)
-                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-        for(Object key: labMemberList.getLabMemberMap().keySet()) {
-            if(labMemberList.getLabMemberMap().get(key).getName().equals(userNameField.getText())
-                    && labMemberList.getLabMemberMap().get(key).getPassword().equals(String.valueOf(passwordField.getPassword()))) {
-                labMember = labMemberList.getLabMemberMap().get(key);
-            }
-        }
-        
-        if(labMember == null){
-            ImageIcon icon = new ImageIcon(this.getClass().getResource("images/icons8-identification-documents-error-100.png"));
-            JOptionPane.showMessageDialog(null, "Login Failed.", "Update ",JOptionPane.ERROR_MESSAGE, icon);
-            userNameField.setText("");
-            passwordField.setText("");
-        } else {
-            mainFrame.getContentPane().remove(mainFrame.getLoginPanel());
-            mainFrame.getContentPane().add(mainFrame.getHomePanel());
-            mainFrame.getHomePanel().setVisible(true);
-            mainFrame.revalidate();
-            mainFrame.repaint();
-
-            mainFrame.getHomePanel().setLabMember(labMember);
-            mainFrame.getInventoryPanel().setLabMember(labMember);
-            mainFrame.getSettingPanel().setLabMember(labMember);
-            userNameField.setText("");
-            passwordField.setText("");
-            mainFrame.getHomePanel().defaultLabel.setText("Welcome, " + labMember.getName());
-        }
+        login();
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void userNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameFieldActionPerformed
@@ -160,7 +147,53 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginBtnKeyPressed
 
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
 
+    private void userNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_userNameFieldKeyPressed
+
+    private void login() {
+        Icon icon = new ImageIcon(this.getClass().getResource("images/loginError.png"));
+        for(Object key: labMemberList.getLabMemberMap().keySet()) {
+            if(labMemberList.getLabMemberMap().get(key).getName().equals(userNameField.getText())
+                    && labMemberList.getLabMemberMap().get(key).getPassword().equals(String.valueOf(passwordField.getPassword()))) {
+                labMember = labMemberList.getLabMemberMap().get(key);
+            }
+        }
+        if(userNameField.getText().equals("") || String.valueOf(passwordField.getPassword()).equals("")){
+            JOptionPane.showMessageDialog(null, "Username or password can not empty.", "Error",JOptionPane.ERROR_MESSAGE, icon);
+            return;
+        }
+        
+        if(labMember == null){
+            JOptionPane.showMessageDialog(null, "Username or password enters error.", "Error",JOptionPane.ERROR_MESSAGE, icon);
+            userNameField.setText("");
+            passwordField.setText("");
+            return;
+        }
+        mainFrame.getContentPane().remove(mainFrame.getLoginPanel());
+        mainFrame.getContentPane().add(mainFrame.getHomePanel());
+        mainFrame.getHomePanel().setVisible(true);
+        mainFrame.revalidate();
+        mainFrame.repaint();
+
+        mainFrame.getHomePanel().setLabMember(labMember);
+        mainFrame.getInventoryPanel().setLabMember(labMember);
+        mainFrame.getSettingPanel().setLabMember(labMember);
+        userNameField.setText("");
+        passwordField.setText("");
+        mainFrame.getHomePanel().defaultLabel.setText("Welcome, " + labMember.getName());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField passwordField;

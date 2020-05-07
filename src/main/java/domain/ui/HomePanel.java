@@ -8,6 +8,8 @@ package domain.ui;
 
 import domain.controller.Controller;
 import domain.labMember.LabMember;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -26,6 +28,12 @@ public class HomePanel extends javax.swing.JPanel {
         this.setBounds(0, 0, 800, 600);
         initComponents();
         this.setVisible(false);
+        Icon inventoryIcon = new ImageIcon(this.getClass().getResource("images/inventory.png"));
+        Icon settingIcon = new ImageIcon(this.getClass().getResource("images/setting.png"));
+        Icon logoutIcon = new ImageIcon(this.getClass().getResource("images/logout.png"));
+        goToInventoryBtn.setIcon(inventoryIcon);
+        settingBtn.setIcon(settingIcon);
+        logoutBtn.setIcon(logoutIcon);
     }
     
     public void setLabMember(LabMember labMember) {
@@ -45,12 +53,11 @@ public class HomePanel extends javax.swing.JPanel {
         titleLabel = new javax.swing.JLabel();
         settingBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
-        defaultLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         goToInventoryBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        goToInventoryBtn.setText("Go to Inventory");
+        goToInventoryBtn.setText("Inventory");
         goToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goToInventoryBtnActionPerformed(evt);
@@ -76,9 +83,6 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
 
-        defaultLabel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
-        defaultLabel.setText("Default Message");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,33 +90,28 @@ public class HomePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addGap(179, 179, 179)
                         .addComponent(titleLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(defaultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(131, 131, 131)
                 .addComponent(titleLabel)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(122, 122, 122)
-                .addComponent(defaultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(152, 152, 152))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -151,7 +150,6 @@ public class HomePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JLabel defaultLabel;
     private javax.swing.JButton goToInventoryBtn;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton settingBtn;

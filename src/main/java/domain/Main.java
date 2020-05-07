@@ -1,5 +1,6 @@
 
 import domain.ui.MainFrame;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -7,8 +7,7 @@ package domain.ui;
 
 import domain.controller.Controller;
 import domain.labMember.LabMember;
-import java.awt.Dialog.ModalityType;
-import java.net.URL;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -29,6 +28,12 @@ public class SettingPanel extends javax.swing.JPanel {
         this.setBounds(0, 0, 800, 600);
         initComponents();
         this.setVisible(false);
+        Icon inventoryIcon = new ImageIcon(this.getClass().getResource("images/inventory.png"));
+        Icon homeIcon = new ImageIcon(this.getClass().getResource("images/home.png"));
+        Icon logoutIcon = new ImageIcon(this.getClass().getResource("images/logout.png"));
+        goBackHomeBtn.setIcon(homeIcon);
+        goToInventoryBtn.setIcon(inventoryIcon);
+        logoutBtn.setIcon(logoutIcon);
     }
     
     public void setLabMember(LabMember labMember) {
@@ -85,11 +90,21 @@ public class SettingPanel extends javax.swing.JPanel {
                 oldPasswordFieldActionPerformed(evt);
             }
         });
+        oldPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                oldPasswordFieldKeyPressed(evt);
+            }
+        });
 
         newPasswordField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         newPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPasswordFieldActionPerformed(evt);
+            }
+        });
+        newPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                newPasswordFieldKeyPressed(evt);
             }
         });
 
@@ -105,6 +120,11 @@ public class SettingPanel extends javax.swing.JPanel {
         confirmPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmPasswordFieldActionPerformed(evt);
+            }
+        });
+        confirmPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                confirmPasswordFieldKeyPressed(evt);
             }
         });
 
@@ -159,7 +179,7 @@ public class SettingPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         goToInventoryBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        goToInventoryBtn.setText("Go To Inventory");
+        goToInventoryBtn.setText("Inventory");
         goToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goToInventoryBtnActionPerformed(evt);
@@ -170,7 +190,7 @@ public class SettingPanel extends javax.swing.JPanel {
         titleLabel.setText("Lab Inventory System");
 
         goBackHomeBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        goBackHomeBtn.setText("Go Back Home");
+        goBackHomeBtn.setText("Home");
         goBackHomeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goBackHomeBtnActionPerformed(evt);
@@ -275,9 +295,9 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addComponent(titleLabel)
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
@@ -301,7 +321,7 @@ public class SettingPanel extends javax.swing.JPanel {
                         .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
                         .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -365,24 +385,67 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void dialogUpdatePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dialogUpdatePasswordBtnActionPerformed
         // TODO add your handling code here:
-        
-        if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) 
-                && !String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))){
-            labMember.setPassword(String.valueOf(newPasswordField.getPassword()));
-            ImageIcon icon = new ImageIcon(this.getClass().getResource("images/icons8-thumbs-up-64.png"));
-            JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, icon);
-            
-            oldPasswordField.setText("");
-            newPasswordField.setText("");
-            confirmPasswordField.setText("");
-            updatePasswordDialog.setVisible(false);
-        }
+        updatePassword();
     }//GEN-LAST:event_dialogUpdatePasswordBtnActionPerformed
 
     private void permissionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permissionFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_permissionFieldActionPerformed
 
+    private void confirmPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_confirmPasswordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updatePassword();
+        }
+    }//GEN-LAST:event_confirmPasswordFieldKeyPressed
+
+    private void newPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newPasswordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updatePassword();
+        }
+    }//GEN-LAST:event_newPasswordFieldKeyPressed
+
+    private void oldPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_oldPasswordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updatePassword();
+        }
+    }//GEN-LAST:event_oldPasswordFieldKeyPressed
+
+    
+    private void updatePassword() {
+        Icon sucessIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
+        Icon errorIcon = new ImageIcon(this.getClass().getResource("images/error.png"));
+        
+        if(String.valueOf(oldPasswordField.getPassword()).equals("") 
+                || String.valueOf(newPasswordField.getPassword()).equals("")
+                || String.valueOf(confirmPasswordField.getPassword()).equals("")) {
+            JOptionPane.showMessageDialog(null, "Each password field can not be empty.", "Error",JOptionPane.ERROR_MESSAGE, errorIcon);
+            return;
+        }
+        
+        if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))) {
+            JOptionPane.showMessageDialog(null, "New password can not be the same as old password.", "Error",JOptionPane.ERROR_MESSAGE, errorIcon);
+            return;
+        }
+        
+        if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword()))) {
+            JOptionPane.showMessageDialog(null, "New password must be the same as password confirmed.", "Error",JOptionPane.ERROR_MESSAGE, errorIcon);
+            return;
+        }
+        
+        if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) 
+                && !String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))){
+            labMember.setPassword(String.valueOf(newPasswordField.getPassword()));
+            JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+            
+            oldPasswordField.setText("");
+            newPasswordField.setText("");
+            confirmPasswordField.setText("");
+            updatePasswordDialog.setVisible(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField confirmPasswordField;
