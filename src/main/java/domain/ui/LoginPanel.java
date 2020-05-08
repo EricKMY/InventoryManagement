@@ -6,6 +6,8 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
+import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
 import javax.swing.Icon;
@@ -18,14 +20,14 @@ import javax.swing.JOptionPane;
  */
 public class LoginPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
-    private Controller controller;
-    private LabMemberList labMemberList;
+    private IController controller;
+    private ILabMemberList labMemberList;
     protected LabMember labMember;
     
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel(MainFrame mainFrame, Controller controller, LabMemberList labMemberList) {
+    public LoginPanel(MainFrame mainFrame, IController controller, ILabMemberList labMemberList) {
         this.mainFrame = mainFrame;
         this.controller = controller;
         this.labMemberList = labMemberList;
@@ -169,17 +171,23 @@ public class LoginPanel extends javax.swing.JPanel {
                 labMember = labMemberList.getLabMemberMap().get(key);
             }
         }
-        if(userNameField.getText().equals("") || String.valueOf(passwordField.getPassword()).equals("")){
+        
+        if(userNameField.getText().equals("") || String.valueOf(passwordField.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Username or password can not empty.", "Error",JOptionPane.ERROR_MESSAGE, icon);
             return;
         }
         
-        if(labMember == null){
+        if(labMember == null) {
             JOptionPane.showMessageDialog(null, "Username or password enters error.", "Error",JOptionPane.ERROR_MESSAGE, icon);
             userNameField.setText("");
             passwordField.setText("");
             return;
         }
+        
+        if(labMember.getPermission().equals("Admin")) {
+            mainFrame.getSettingPanel().setLabMemberList(labMemberList);
+        }
+        
         mainFrame.getContentPane().remove(mainFrame.getLoginPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
         mainFrame.getHomePanel().setVisible(true);
@@ -191,7 +199,6 @@ public class LoginPanel extends javax.swing.JPanel {
         mainFrame.getSettingPanel().setLabMember(labMember);
         userNameField.setText("");
         passwordField.setText("");
-        mainFrame.getHomePanel().defaultLabel.setText("Welcome, " + labMember.getName());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

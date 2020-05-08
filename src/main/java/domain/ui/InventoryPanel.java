@@ -6,7 +6,9 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
 import domain.inventory.LabInventory;
+import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
 import java.awt.Color;
@@ -19,9 +21,9 @@ import javax.swing.DefaultListModel;
  */
 public class InventoryPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
-    private Controller controller;
+    private IController controller;
     private LabMember labMember;
-    private LabMemberList labMemberList;
+    private ILabMemberList labMemberList;
     
     DefaultListModel dm = new DefaultListModel();
     DefaultListModel dm_inventory_list = new DefaultListModel();
@@ -32,7 +34,7 @@ public class InventoryPanel extends javax.swing.JPanel {
      * @param controller
      * @param labMemberList
      */
-    public InventoryPanel(MainFrame mainFrame, Controller controller, LabMemberList labMemberList) {
+    public InventoryPanel(MainFrame mainFrame, IController controller, ILabMemberList labMemberList) {
         this.mainFrame = mainFrame;
         this.controller = controller;
         this.labMemberList = labMemberList;
@@ -161,13 +163,13 @@ public class InventoryPanel extends javax.swing.JPanel {
         });
 
         categoryTitle.setBackground(new java.awt.Color(255, 255, 0));
-        categoryTitle.setFont(new java.awt.Font("¼Ð·¢Åé", 3, 14)); // NOI18N
+        categoryTitle.setFont(new java.awt.Font("ï¿½Ð·ï¿½ï¿½ï¿½", 3, 14)); // NOI18N
         categoryTitle.setForeground(new java.awt.Color(9, 9, 228));
         categoryTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         categoryTitle.setText("CATEGORY");
 
         inventoryTitle.setBackground(new java.awt.Color(255, 255, 0));
-        inventoryTitle.setFont(new java.awt.Font("¼Ð·¢Åé", 3, 14)); // NOI18N
+        inventoryTitle.setFont(new java.awt.Font("ï¿½Ð·ï¿½ï¿½ï¿½", 3, 14)); // NOI18N
         inventoryTitle.setForeground(new java.awt.Color(9, 9, 228));
         inventoryTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inventoryTitle.setText("Inventory");

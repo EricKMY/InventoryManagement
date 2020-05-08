@@ -3,7 +3,7 @@ package domain.labMember;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LabMemberList {
+public class LabMemberList implements ILabMemberList {
     private Map<String, LabMember> labMemberMap;
 
     public LabMemberList() {

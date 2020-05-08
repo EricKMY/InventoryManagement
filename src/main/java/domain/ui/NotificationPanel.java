@@ -6,6 +6,7 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
 
 /**
  *
@@ -13,13 +14,13 @@ import domain.controller.Controller;
  */
 public class NotificationPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
-    private Controller controller;
+    private IController controller;
     
 
     /**
      * Creates new form NotificationPanel
      */
-    public NotificationPanel(MainFrame mainFrame, Controller controller) {
+    public NotificationPanel(MainFrame mainFrame, IController controller) {
         this.mainFrame = mainFrame;
         this.controller = controller;
         this.setBounds(0, 0, 800, 600);

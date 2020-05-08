@@ -45,7 +45,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
               <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="199" max="32767" attributes="0"/>
+              <EmptySpace pref="190" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="goToInventoryBtn" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="settingBtn" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>

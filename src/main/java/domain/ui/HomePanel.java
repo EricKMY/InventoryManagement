@@ -7,6 +7,7 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
 import domain.labMember.LabMember;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,11 +19,11 @@ import javax.swing.ImageIcon;
  */
 public class HomePanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
-    private Controller controller;
+    private IController controller;
     private LabMember labMember;
     
     /** Creates new form HomePanel */
-    public HomePanel(MainFrame mainFrame, Controller controller) {
+    public HomePanel(MainFrame mainFrame, IController controller) {
         this.mainFrame = mainFrame;
         this.controller = controller;
         this.setBounds(0, 0, 800, 600);
@@ -106,7 +107,7 @@ public class HomePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addComponent(titleLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(settingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,6 +127,9 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void settingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingBtnActionPerformed
         // TODO add your handling code here:
+        mainFrame.getSettingPanel().addLabMemberBtn.setVisible(false);
+        if(labMember.getPermission().equals("Admin"))
+            mainFrame.getSettingPanel().addLabMemberBtn.setVisible(true);
         mainFrame.getContentPane().remove(mainFrame.getHomePanel());
         mainFrame.getContentPane().add(mainFrame.getSettingPanel());
         mainFrame.getSettingPanel().setVisible(true);
