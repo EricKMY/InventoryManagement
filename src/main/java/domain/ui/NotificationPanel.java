@@ -7,6 +7,7 @@ package domain.ui;
 
 import domain.controller.Controller;
 import domain.notificationInfo.NotificationInfo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +18,6 @@ public class NotificationPanel extends javax.swing.JPanel {
     private Controller controller;
     private NotificationInfo notificationInfo;
     
-
     /**
      * Creates new form NotificationPanel
      */
@@ -29,9 +29,9 @@ public class NotificationPanel extends javax.swing.JPanel {
         this.setVisible(false);
     }
     
-//    pulbic void setNotificationInfo(NotificationInfo notificationInfo) {
-//        this.notificationInfo = notificationInfo;
-//    }
+    public void setNotificationInfo(NotificationInfo notificationInfo) {
+        this.notificationInfo = notificationInfo;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,9 +210,26 @@ public class NotificationPanel extends javax.swing.JPanel {
 
     private void okBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn1ActionPerformed
         // TODO add your handling code here:
-        notificationInfo.setTaxID(taxIdField.getText());
-        notificationInfo.setReplenishmentAmount(replensimentAmountField.getText());
-        notificationInfo.setLabMemberInfo(personnChargeField.getText());
+        
+        if(limitAmountField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Limit Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        }else
+            notificationInfo.setLimitAmount(limitAmountField.getText());
+        
+        if(taxIdField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tax ID should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        } else
+            notificationInfo.setTaxID(taxIdField.getText());
+            
+        if(replensimentAmountField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Replensiment Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        } else
+            notificationInfo.setReplenishmentAmount(replensimentAmountField.getText());
+            
+        if(personnChargeField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Person In Charge should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        } else 
+            notificationInfo.setLabMemberInfo(personnChargeField.getText());
         
         mainFrame.getContentPane().remove(mainFrame.getNotificationPanel());
         mainFrame.getContentPane().add(mainFrame.getInventoryPanel());

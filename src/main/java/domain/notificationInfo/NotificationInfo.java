@@ -5,33 +5,44 @@ import java.util.List;
 
 public class NotificationInfo {
 
+    private String limitAmount;
     private String inventoryName;
     private String labMemberInfo;
     private String inventoryPrice;
     private String taxID;
     private String currentAmount;
     private String replenishmentAmount;
-    private List<String> notificationList;
+//    private List<String> notificationList;
 
-    public NotificationInfo() {
-        notificationList = new ArrayList<String>();
+    public NotificationInfo(String inventoryName) {
+        this.inventoryName = inventoryName;
+//        notificationList = new ArrayList<String>();
     }
 
-    public Boolean setInventoryNotificationInfo(String name, List<String> info) {
-        inventoryName = name;
-        labMemberInfo = info.get(0);
-        inventoryPrice = info.get(1);
-        taxID = info.get(2);
-        currentAmount = info.get(3);
-        replenishmentAmount = info.get(4);
+//    public Boolean setInventoryNotificationInfo(String name, List<String> info) {
+//        inventoryName = name;
+//        labMemberInfo = info.get(0);
+//        inventoryPrice = info.get(1);
+//        taxID = info.get(2);
+//        currentAmount = info.get(3);
+//        replenishmentAmount = info.get(4);
+//
+//        String str = info.get(5);
+//        String[] tokens = str.split(",");
+//        for(String token:tokens) {
+//            notificationList.add(token);
+//        }
+//
+//        return  true;
+//    }
 
-        String str = info.get(5);
-        String[] tokens = str.split(",");
-        for(String token:tokens) {
-            notificationList.add(token);
-        }
 
-        return  true;
+    public String getLimitAmount() {
+        return limitAmount;
+    }
+
+    public void setLimitAmount(String limitAmount) {
+        this.limitAmount = limitAmount;
     }
 
     public String getInventoryName() {
@@ -82,11 +93,11 @@ public class NotificationInfo {
         this.replenishmentAmount = replenishmentAmount;
     }
 
-    public List<String> getNotificationList() {
-        return notificationList;
-    }
-
-    public void setNotificationList(List<String> notification) {
-        this.notificationList = notification;
-    }
+//    public List<String> getNotificationList() {
+//        return notificationList;
+//    }
+//
+//    public void setNotificationList(List<String> notification) {
+//        this.notificationList = notification;
+//    }
 }
