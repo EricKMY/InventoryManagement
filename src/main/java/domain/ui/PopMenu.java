@@ -43,8 +43,10 @@ public class PopMenu extends javax.swing.JPanel {
         int result = JOptionPane.showConfirmDialog(null, panel, "Inventory Detail",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
-            sName = name.getText();
-            sAmount = amount.getText();
+            if( !name.getText().replace(" ", "").isEmpty() ) sName = name.getText();
+            else sName = "NaN";
+            if ( !amount.getText().replace(" ", "").isEmpty() ) sAmount = amount.getText();
+            else sAmount = "-1";
             sLevel = combo.getSelectedItem().toString();
         } else {
             
