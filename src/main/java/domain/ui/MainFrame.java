@@ -6,7 +6,9 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
 import domain.labMember.Admin;
+import domain.labMember.ILabMemberList;
 import domain.labMember.LabMemberList;
 import domain.labMember.Manager;
 
@@ -18,10 +20,10 @@ public class MainFrame extends javax.swing.JFrame {
     private HomePanel homePanel;
     private InventoryPanel inventoryPanel;
     private LoginPanel loginPanel;
-    private Controller controller;
+    private IController controller;
     private SettingPanel settingPanel;
     private NotificationPanel notificationPanel;
-    private LabMemberList labMemberList;
+    private ILabMemberList labMemberList;
     
     /**
      * Creates new form MainFrame
@@ -29,19 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         controller = new Controller();
         labMemberList = new LabMemberList();
-        labMemberList.addLabMember(new Admin("Admin", "admin@gmail.com", "admin"));
-        labMemberList.addLabMember(new Manager("Manager", "manager@gmail.com", "manager"));
-        homePanel = new HomePanel(this, controller);
-        inventoryPanel = new InventoryPanel(this, controller, labMemberList);
-        loginPanel = new LoginPanel(this, controller, labMemberList);
-        settingPanel = new SettingPanel(this, controller);
-        notificationPanel = new NotificationPanel(this, controller);
-        
-        this.add(loginPanel);
-        this.add(homePanel);
-        this.add(inventoryPanel);
-        this.add(settingPanel);
-        this.add(notificationPanel);
+        init(controller, labMemberList);
         loginPanel.setVisible(true);
         initComponents();
     }
@@ -65,7 +55,27 @@ public class MainFrame extends javax.swing.JFrame {
     public NotificationPanel getNotificationPanel() {
         return notificationPanel;
     }
-
+    
+    private void init(IController controller, ILabMemberList labMemberList) {
+        Admin admin = new Admin("Admin", "admin@gmail.com", "admin");
+        admin.setPhone("0909123456");
+        Manager manager = new Manager("Manager", "manager@gmail.com", "manager");
+        manager.setPhone("0909123456");
+        labMemberList.addLabMember(admin);
+        labMemberList.addLabMember(manager);
+        
+        homePanel = new HomePanel(this, controller);
+        inventoryPanel = new InventoryPanel(this, controller, labMemberList);
+        loginPanel = new LoginPanel(this, controller, labMemberList);
+        settingPanel = new SettingPanel(this, controller);
+        notificationPanel = new NotificationPanel(this, controller);
+        
+        this.add(loginPanel);
+        this.add(homePanel);
+        this.add(inventoryPanel);
+        this.add(settingPanel);
+        this.add(notificationPanel);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,41 +101,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new MainFrame();
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

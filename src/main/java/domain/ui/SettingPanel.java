@@ -6,7 +6,12 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
+import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
+import domain.labMember.LabMemberList;
+import domain.labMember.Viewer;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -18,11 +23,15 @@ import javax.swing.JOptionPane;
 public class SettingPanel extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
-    private Controller controller;
+    private IController controller;
     private ImageIcon icon;
     private LabMember labMember;
+    private ILabMemberList labMemberList;
+    Icon sucessIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
+    Icon errorIcon = new ImageIcon(this.getClass().getResource("images/error.png"));
+    DefaultComboBoxModel  defaultComboBoxModel = new DefaultComboBoxModel();
     
-    public SettingPanel(MainFrame mainFrame, Controller controller) {
+    public SettingPanel(MainFrame mainFrame, IController controller) {
         this.mainFrame = mainFrame;
         this.controller = controller;
         this.setBounds(0, 0, 800, 600);
@@ -31,13 +40,17 @@ public class SettingPanel extends javax.swing.JPanel {
         Icon inventoryIcon = new ImageIcon(this.getClass().getResource("images/inventory.png"));
         Icon homeIcon = new ImageIcon(this.getClass().getResource("images/home.png"));
         Icon logoutIcon = new ImageIcon(this.getClass().getResource("images/logout.png"));
-        goBackHomeBtn.setIcon(homeIcon);
-        goToInventoryBtn.setIcon(inventoryIcon);
+        homeBtn.setIcon(homeIcon);
+        inventoryBtn.setIcon(inventoryIcon);
         logoutBtn.setIcon(logoutIcon);
     }
     
     public void setLabMember(LabMember labMember) {
         this.labMember = labMember;
+    }
+    
+    public void setLabMemberList(ILabMemberList labMemberList){
+        this.labMemberList = labMemberList;
     }
 
     /**
@@ -50,6 +63,7 @@ public class SettingPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         updatePasswordDialog = new javax.swing.JDialog();
+        updatePasswordPanel = new javax.swing.JPanel();
         oldPasswordLabel = new javax.swing.JLabel();
         confirmPasswordLabel = new javax.swing.JLabel();
         newPasswordLabel = new javax.swing.JLabel();
@@ -57,10 +71,28 @@ public class SettingPanel extends javax.swing.JPanel {
         newPasswordField = new javax.swing.JPasswordField();
         dialogUpdatePasswordBtn = new javax.swing.JButton();
         confirmPasswordField = new javax.swing.JPasswordField();
-        dialogTitleLabel = new javax.swing.JLabel();
-        goToInventoryBtn = new javax.swing.JButton();
+        updatePasswordTitleLabel = new javax.swing.JLabel();
+        addLabMemberDialog = new javax.swing.JDialog();
+        labSettingPanel = new javax.swing.JPanel();
+        labMemberNameLabel = new javax.swing.JLabel();
+        labMemberEmailLabel = new javax.swing.JLabel();
+        labMemberPasswordLabel = new javax.swing.JLabel();
+        addLabMemberTitleLabel = new javax.swing.JLabel();
+        labMemberEmailField = new javax.swing.JTextField();
+        labMemberNameField = new javax.swing.JTextField();
+        labMemberPasswordField = new javax.swing.JTextField();
+        addLabMemberButton = new javax.swing.JButton();
+        changePermissionDialog = new javax.swing.JDialog();
+        changePermissionPanel = new javax.swing.JPanel();
+        changePermissionTitleLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        changeBtn = new javax.swing.JButton();
+        inventoryBtn = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
-        goBackHomeBtn = new javax.swing.JButton();
+        homeBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
@@ -72,8 +104,12 @@ public class SettingPanel extends javax.swing.JPanel {
         updatePasswordBtn = new javax.swing.JButton();
         permissionLabel = new javax.swing.JLabel();
         permissionField = new javax.swing.JTextField();
+        addLabMemberBtn = new javax.swing.JButton();
+        changePermissionBtn = new javax.swing.JButton();
 
         updatePasswordDialog.setBackground(new java.awt.Color(204, 204, 204));
+
+        updatePasswordPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         oldPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         oldPasswordLabel.setText("Old Password:");
@@ -128,72 +164,260 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        dialogTitleLabel.setFont(new java.awt.Font("標楷體", 1, 36)); // NOI18N
-        dialogTitleLabel.setText("Update Password");
+        updatePasswordTitleLabel.setFont(new java.awt.Font("�з���", 1, 36)); // NOI18N
+        updatePasswordTitleLabel.setText("Update Password");
+
+        javax.swing.GroupLayout updatePasswordPanelLayout = new javax.swing.GroupLayout(updatePasswordPanel);
+        updatePasswordPanel.setLayout(updatePasswordPanelLayout);
+        updatePasswordPanelLayout.setHorizontalGroup(
+            updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updatePasswordPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updatePasswordPanelLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(updatePasswordTitleLabel))
+                    .addGroup(updatePasswordPanelLayout.createSequentialGroup()
+                        .addGroup(updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oldPasswordLabel)
+                            .addComponent(newPasswordLabel)
+                            .addComponent(confirmPasswordLabel))
+                        .addGap(1, 1, 1)
+                        .addGroup(updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        updatePasswordPanelLayout.setVerticalGroup(
+            updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updatePasswordPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(updatePasswordTitleLabel)
+                .addGap(45, 45, 45)
+                .addGroup(updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(oldPasswordLabel)
+                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newPasswordLabel)
+                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(updatePasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmPasswordLabel)
+                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout updatePasswordDialogLayout = new javax.swing.GroupLayout(updatePasswordDialog.getContentPane());
         updatePasswordDialog.getContentPane().setLayout(updatePasswordDialogLayout);
         updatePasswordDialogLayout.setHorizontalGroup(
             updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(dialogTitleLabel))
-                    .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oldPasswordLabel)
-                            .addComponent(newPasswordLabel)
-                            .addComponent(confirmPasswordLabel))
-                        .addGap(1, 1, 1)
-                        .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(updatePasswordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         updatePasswordDialogLayout.setVerticalGroup(
             updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updatePasswordDialogLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(dialogTitleLabel)
-                .addGap(45, 45, 45)
-                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldPasswordLabel)
-                    .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newPasswordLabel)
-                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(updatePasswordDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmPasswordLabel)
-                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(dialogUpdatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addContainerGap()
+                .addComponent(updatePasswordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        labSettingPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        labMemberNameLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
+        labMemberNameLabel.setText("Add Lab Member");
+
+        labMemberEmailLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberEmailLabel.setText("Name:");
+
+        labMemberPasswordLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberPasswordLabel.setText("Email: ");
+
+        addLabMemberTitleLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        addLabMemberTitleLabel.setText("Password: ");
+
+        labMemberEmailField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberEmailField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                labMemberEmailFieldKeyPressed(evt);
+            }
+        });
+
+        labMemberNameField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                labMemberNameFieldKeyPressed(evt);
+            }
+        });
+
+        labMemberPasswordField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                labMemberPasswordFieldKeyPressed(evt);
+            }
+        });
+
+        addLabMemberButton.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        addLabMemberButton.setText("Add");
+        addLabMemberButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addLabMemberButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout labSettingPanelLayout = new javax.swing.GroupLayout(labSettingPanel);
+        labSettingPanel.setLayout(labSettingPanelLayout);
+        labSettingPanelLayout.setHorizontalGroup(
+            labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(labSettingPanelLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addLabMemberTitleLabel)
+                    .addComponent(labMemberPasswordLabel)
+                    .addComponent(labMemberEmailLabel))
+                .addGap(148, 148, 148)
+                .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labSettingPanelLayout.createSequentialGroup()
+                        .addComponent(addLabMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(labMemberPasswordField)
+                    .addComponent(labMemberEmailField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labMemberNameField, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(228, 228, 228))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labSettingPanelLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(labMemberNameLabel)
+                .addGap(150, 150, 150))
+        );
+        labSettingPanelLayout.setVerticalGroup(
+            labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labSettingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labMemberNameLabel)
+                .addGap(18, 18, 18)
+                .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labMemberEmailLabel)
+                    .addComponent(labMemberNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labMemberPasswordLabel)
+                    .addComponent(labMemberEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addLabMemberTitleLabel)
+                    .addComponent(labMemberPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(addLabMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout addLabMemberDialogLayout = new javax.swing.GroupLayout(addLabMemberDialog.getContentPane());
+        addLabMemberDialog.getContentPane().setLayout(addLabMemberDialogLayout);
+        addLabMemberDialogLayout.setHorizontalGroup(
+            addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        addLabMemberDialogLayout.setVerticalGroup(
+            addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        changePermissionPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        changePermissionTitleLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
+        changePermissionTitleLabel.setText("Change Permission");
+
+        jLabel1.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        jLabel1.setText("Permission:");
+
+        jLabel2.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        jLabel2.setText("Name:");
+
+        jComboBox1.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+
+        jComboBox2.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+
+        changeBtn.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        changeBtn.setText("Change");
+
+        javax.swing.GroupLayout changePermissionPanelLayout = new javax.swing.GroupLayout(changePermissionPanel);
+        changePermissionPanel.setLayout(changePermissionPanelLayout);
+        changePermissionPanelLayout.setHorizontalGroup(
+            changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changePermissionPanelLayout.createSequentialGroup()
+                .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(changePermissionPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(changePermissionPanelLayout.createSequentialGroup()
+                            .addGap(129, 129, 129)
+                            .addComponent(changePermissionTitleLabel))
+                        .addGroup(changePermissionPanelLayout.createSequentialGroup()
+                            .addGap(68, 68, 68)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+        changePermissionPanelLayout.setVerticalGroup(
+            changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changePermissionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(changePermissionTitleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+        );
+
+        javax.swing.GroupLayout changePermissionDialogLayout = new javax.swing.GroupLayout(changePermissionDialog.getContentPane());
+        changePermissionDialog.getContentPane().setLayout(changePermissionDialogLayout);
+        changePermissionDialogLayout.setHorizontalGroup(
+            changePermissionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(changePermissionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        changePermissionDialogLayout.setVerticalGroup(
+            changePermissionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(changePermissionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        goToInventoryBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        goToInventoryBtn.setText("Inventory");
-        goToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+        inventoryBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        inventoryBtn.setText("Inventory");
+        inventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goToInventoryBtnActionPerformed(evt);
+                inventoryBtnActionPerformed(evt);
             }
         });
 
         titleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 40)); // NOI18N
         titleLabel.setText("Lab Inventory System");
 
-        goBackHomeBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        goBackHomeBtn.setText("Home");
-        goBackHomeBtn.addActionListener(new java.awt.event.ActionListener() {
+        homeBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        homeBtn.setText("Home");
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackHomeBtnActionPerformed(evt);
+                homeBtnActionPerformed(evt);
             }
         });
 
@@ -249,6 +473,22 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
+        addLabMemberBtn.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        addLabMemberBtn.setText("Add Lab Member");
+        addLabMemberBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addLabMemberBtnActionPerformed(evt);
+            }
+        });
+
+        changePermissionBtn.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        changePermissionBtn.setText("Change Permission");
+        changePermissionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePermissionBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -261,9 +501,9 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -282,11 +522,13 @@ public class SettingPanel extends javax.swing.JPanel {
                                     .addComponent(nameField)
                                     .addComponent(emailField)
                                     .addComponent(phoneField, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))))
-                        .addGap(108, 108, 108)
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updatePasswordBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addComponent(updatePasswordBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(changePermissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addLabMemberBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,53 +537,50 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addComponent(titleLabel)
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goToInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goBackHomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(emailLabel)
-                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(phoneLabel)
-                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(permissionLabel)
-                            .addComponent(permissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLabel)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneLabel)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addLabMemberBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(permissionLabel)
+                    .addComponent(permissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(changePermissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void goToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToInventoryBtnActionPerformed
+    private void inventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getSettingPanel());
         mainFrame.getContentPane().add(mainFrame.getInventoryPanel());
         mainFrame.getInventoryPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-    }//GEN-LAST:event_goToInventoryBtnActionPerformed
+    }//GEN-LAST:event_inventoryBtnActionPerformed
 
-    private void goBackHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackHomeBtnActionPerformed
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getContentPane().remove(mainFrame.getSettingPanel());
         mainFrame.getContentPane().add(mainFrame.getHomePanel());
         mainFrame.getHomePanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
-    }//GEN-LAST:event_goBackHomeBtnActionPerformed
+    }//GEN-LAST:event_homeBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
@@ -355,9 +594,8 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        if(!nameField.getText().equals(labMember.getName())){
+        if(!nameField.getText().equals(labMember.getName()))
             labMember.setName(nameField.getText());
-        }
         if(!emailField.getText().equals(labMember.getEmail()))
             labMember.setEmail(emailField.getText());
         if(!phoneField.getText().equals(labMember.getPhone()))
@@ -407,16 +645,46 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void oldPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_oldPasswordFieldKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             updatePassword();
-        }
     }//GEN-LAST:event_oldPasswordFieldKeyPressed
 
-    
-    private void updatePassword() {
-        Icon sucessIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
-        Icon errorIcon = new ImageIcon(this.getClass().getResource("images/error.png"));
-        
+    private void addLabMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLabMemberButtonActionPerformed
+        // TODO add your handling code here:
+        addLabMember();
+    }//GEN-LAST:event_addLabMemberButtonActionPerformed
+
+    private void addLabMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLabMemberBtnActionPerformed
+        // TODO add your handling code here:
+        addLabMemberDialog.setBounds(0, 0, 527, 370);
+        addLabMemberDialog.setVisible(true);
+    }//GEN-LAST:event_addLabMemberBtnActionPerformed
+
+    private void labMemberNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_labMemberNameFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            addLabMember();
+    }//GEN-LAST:event_labMemberNameFieldKeyPressed
+
+    private void labMemberEmailFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_labMemberEmailFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            addLabMember();
+    }//GEN-LAST:event_labMemberEmailFieldKeyPressed
+
+    private void labMemberPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_labMemberPasswordFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            addLabMember();
+    }//GEN-LAST:event_labMemberPasswordFieldKeyPressed
+
+    private void changePermissionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePermissionBtnActionPerformed
+        // TODO add your handling code here:
+        changePermissionDialog.setBounds(0, 0, 527, 370);
+        changePermissionDialog.setVisible(true);
+    }//GEN-LAST:event_changePermissionBtnActionPerformed
+
+    private void updatePassword() {        
         if(String.valueOf(oldPasswordField.getPassword()).equals("") 
                 || String.valueOf(newPasswordField.getPassword()).equals("")
                 || String.valueOf(confirmPasswordField.getPassword()).equals("")) {
@@ -445,16 +713,50 @@ public class SettingPanel extends javax.swing.JPanel {
             updatePasswordDialog.setVisible(false);
         }
     }
-
+    
+    private void addLabMember() {
+        if(labMemberNameField.getText().equals("") || labMemberEmailField.getText().equals("")|| labMemberPasswordField.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Each field can not be empty.", "Error",JOptionPane.ERROR_MESSAGE, errorIcon);
+            return;
+        }
+        
+        LabMember newLabMember = new Viewer(labMemberNameField.getText(), labMemberEmailField.getText(), labMemberPasswordField.getText());
+        labMemberList.addLabMember(newLabMember);
+        
+        JOptionPane.showMessageDialog(null, "Add Lab Member Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+        labMemberNameField.setText("");
+        labMemberEmailField.setText("");
+        labMemberPasswordField.setText("");
+        addLabMemberDialog.setVisible(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    protected javax.swing.JButton addLabMemberBtn;
+    private javax.swing.JButton addLabMemberButton;
+    private javax.swing.JDialog addLabMemberDialog;
+    private javax.swing.JLabel addLabMemberTitleLabel;
+    private javax.swing.JButton changeBtn;
+    private javax.swing.JButton changePermissionBtn;
+    private javax.swing.JDialog changePermissionDialog;
+    private javax.swing.JPanel changePermissionPanel;
+    private javax.swing.JLabel changePermissionTitleLabel;
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JLabel confirmPasswordLabel;
-    private javax.swing.JLabel dialogTitleLabel;
     private javax.swing.JButton dialogUpdatePasswordBtn;
     protected javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JButton goBackHomeBtn;
-    private javax.swing.JButton goToInventoryBtn;
+    private javax.swing.JButton homeBtn;
+    private javax.swing.JButton inventoryBtn;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField labMemberEmailField;
+    private javax.swing.JLabel labMemberEmailLabel;
+    private javax.swing.JTextField labMemberNameField;
+    private javax.swing.JLabel labMemberNameLabel;
+    private javax.swing.JTextField labMemberPasswordField;
+    private javax.swing.JLabel labMemberPasswordLabel;
+    private javax.swing.JPanel labSettingPanel;
     private javax.swing.JButton logoutBtn;
     protected javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
@@ -470,6 +772,8 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton updatePasswordBtn;
     private javax.swing.JDialog updatePasswordDialog;
+    private javax.swing.JPanel updatePasswordPanel;
+    private javax.swing.JLabel updatePasswordTitleLabel;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -6,7 +6,9 @@
 package domain.ui;
 
 import domain.controller.Controller;
+import domain.controller.IController;
 import domain.inventory.LabInventory;
+import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
 import domain.notificationInfo.NotificationInfo;
@@ -21,9 +23,9 @@ import javax.swing.DefaultListModel;
  */
 public class InventoryPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
-    private Controller controller;
+    private IController controller;
     private LabMember labMember;
-    private LabMemberList labMemberList;
+    private ILabMemberList labMemberList;
     
     DefaultListModel dm = new DefaultListModel();
     DefaultListModel dm_inventory_list = new DefaultListModel();
@@ -34,7 +36,7 @@ public class InventoryPanel extends javax.swing.JPanel {
      * @param controller
      * @param labMemberList
      */
-    public InventoryPanel(MainFrame mainFrame, Controller controller, LabMemberList labMemberList) {
+    public InventoryPanel(MainFrame mainFrame, IController controller, ILabMemberList labMemberList) {
         this.mainFrame = mainFrame;
         this.controller = controller;
         this.labMemberList = labMemberList;

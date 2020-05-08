@@ -1,6 +1,7 @@
 package test.java.domain.controller;
 
 import domain.controller.Controller;
+import domain.controller.IController;
 import domain.inventory.LabInventory;
 import domain.labMember.Admin;
 import domain.labMember.LabMember;
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class ControllerTest {
     private LabMember labMember;
-    private Controller controller;
+    private IController controller;
 
     @Before
     public void setup(){

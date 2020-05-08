@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class LabMemberTest {
     private LabMember labMember;
-    private LabMemberList labMemberList;
+    private ILabMemberList labMemberList;
 
     @Before
     public void setup() {
