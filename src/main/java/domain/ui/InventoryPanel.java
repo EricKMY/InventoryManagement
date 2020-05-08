@@ -336,7 +336,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         mainFrame.getNotificationPanel().setNotificationInfo(notificationInfo);
         mainFrame.getNotificationPanel().personnChargeField.setText(notificationInfo.getLabMemberInfo());
         mainFrame.getNotificationPanel().limitAmountField.setText(notificationInfo.getLimitAmount());
-        mainFrame.getNotificationPanel().replensimentAmountField.setText(notificationInfo.getReplenishmentAmount());
+        mainFrame.getNotificationPanel().replenishmentAmountField.setText(notificationInfo.getReplenishmentAmount());
         mainFrame.getNotificationPanel().priceField.setText(notificationInfo.getInventoryPrice());
         mainFrame.getNotificationPanel().taxIdField.setText(notificationInfo.getTaxID());
 

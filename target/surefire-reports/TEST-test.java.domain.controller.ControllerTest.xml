@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="test.java.domain.controller.ControllerTest" time="0.003" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="test.java.domain.controller.ControllerTest" time="0.005" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -64,9 +64,9 @@
   <testcase classname="test.java.domain.controller.ControllerTest" name="isInventoryUnderLimitTest" time="0.001"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="deleteCategoryTest" time="0"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="readInventoryTest" time="0.001"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="createInventoryTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="createInventoryTest" time="0.001"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="setUserPermissionTest" time="0"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryAmountTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryAmountTest" time="0.001"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="createAndReadCategoryTest" time="0"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryNameTest" time="0"/>
 </testsuite>

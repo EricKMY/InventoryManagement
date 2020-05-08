@@ -56,7 +56,7 @@ public class NotificationPanel extends javax.swing.JPanel {
         cancelBtn = new javax.swing.JButton();
         okBtn1 = new javax.swing.JButton();
         pricePanel = new javax.swing.JLabel();
-        replensimentAmountField = new javax.swing.JTextField();
+        replenishmentAmountField = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -126,10 +126,10 @@ public class NotificationPanel extends javax.swing.JPanel {
         pricePanel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         pricePanel.setText("Price");
 
-        replensimentAmountField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        replensimentAmountField.addActionListener(new java.awt.event.ActionListener() {
+        replenishmentAmountField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        replenishmentAmountField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                replensimentAmountFieldActionPerformed(evt);
+                replenishmentAmountFieldActionPerformed(evt);
             }
         });
 
@@ -160,7 +160,7 @@ public class NotificationPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(limitAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                             .addComponent(personnChargeField)
-                            .addComponent(replensimentAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                            .addComponent(replenishmentAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                             .addComponent(priceField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                             .addComponent(taxIdField)))))
             .addGroup(layout.createSequentialGroup()
@@ -183,7 +183,7 @@ public class NotificationPanel extends javax.swing.JPanel {
                     .addComponent(limitAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(replensimentAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(replenishmentAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(replenishmentAmountPanel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -229,8 +229,18 @@ public class NotificationPanel extends javax.swing.JPanel {
     private void okBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn1ActionPerformed
         // TODO add your handling code here:
         
+        if(personnChargeField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Person In Charge should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if(limitAmountField.getText().replace(" ", "").isEmpty()) {
             JOptionPane.showMessageDialog(null, "Limit Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(replenishmentAmountField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Replenishment Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -240,18 +250,14 @@ public class NotificationPanel extends javax.swing.JPanel {
         }
             
         if(priceField.getText().replace(" ", "").isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Replensiment Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Price should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
             
-        if(personnChargeField.getText().replace(" ", "").isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Person In Charge should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
         
         notificationInfo.setLabMemberInfo(personnChargeField.getText());
         notificationInfo.setLimitAmount(limitAmountField.getText());
-        notificationInfo.setReplenishmentAmount(replensimentAmountField.getText());
+        notificationInfo.setReplenishmentAmount(replenishmentAmountField.getText());
         notificationInfo.setInventoryPrice(priceField.getText());
         notificationInfo.setTaxID(taxIdField.getText());
 
@@ -262,9 +268,9 @@ public class NotificationPanel extends javax.swing.JPanel {
         mainFrame.repaint();
     }//GEN-LAST:event_okBtn1ActionPerformed
 
-    private void replensimentAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replensimentAmountFieldActionPerformed
+    private void replenishmentAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replenishmentAmountFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_replensimentAmountFieldActionPerformed
+    }//GEN-LAST:event_replenishmentAmountFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -277,8 +283,8 @@ public class NotificationPanel extends javax.swing.JPanel {
     protected javax.swing.JTextField personnChargeField;
     protected javax.swing.JTextField priceField;
     private javax.swing.JLabel pricePanel;
+    protected javax.swing.JTextField replenishmentAmountField;
     private javax.swing.JLabel replenishmentAmountPanel;
-    protected javax.swing.JTextField replensimentAmountField;
     protected javax.swing.JTextField taxIdField;
     private javax.swing.JLabel taxIdPanel;
     private javax.swing.JLabel titleLabel;
