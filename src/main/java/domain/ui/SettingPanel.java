@@ -357,7 +357,6 @@ public class SettingPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!nameField.getText().equals(labMember.getName())){
             labMember.setName(nameField.getText());
-            mainFrame.getHomePanel().defaultLabel.setText("Hello, " + labMember.getName());
         }
         if(!emailField.getText().equals(labMember.getEmail()))
             labMember.setEmail(emailField.getText());

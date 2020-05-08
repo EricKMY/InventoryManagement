@@ -191,7 +191,6 @@ public class LoginPanel extends javax.swing.JPanel {
         mainFrame.getSettingPanel().setLabMember(labMember);
         userNameField.setText("");
         passwordField.setText("");
-        mainFrame.getHomePanel().defaultLabel.setText("Welcome, " + labMember.getName());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
