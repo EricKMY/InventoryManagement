@@ -1,0 +1,8 @@
+test/java/domain/notificationInfo/NotificationTest.class
+test/java/domain/labMember/LabMemberListTest.class
+test/java/domain/controller/ControllerTest.class
+test/java/domain/LabInventory/LabInventoryTest.class
+test/java/domain/LabInventory/LabInventoryListTest.class
+test/java/domain/notificationInfo/StoreTest.class
+test/java/domain/notificationInfo/NotificationInfoTest.class
+test/java/domain/labMember/LabMemberTest.class
