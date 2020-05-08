@@ -14,8 +14,10 @@
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/inventory/LabInventory.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/labMember/Viewer.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/ui/PopMenu.java
+/Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/ui/InventoryRenderer.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/controller/Controller.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/ui/SettingPanel.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/labMember/LabMemberList.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/ui/HomePanel.java
 /Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/labMember/ILabMemberList.java
+/Users/angularjs/Desktop/OOAD/InventoryManagement/src/main/java/domain/notificationInfo/INotificationInfo.java

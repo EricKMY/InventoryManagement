@@ -1,8 +1,10 @@
 domain/ui/SettingPanel$10.class
 domain/ui/InventoryPanel$5.class
+domain/ui/SettingPanel$17.class
 domain/labMember/Manager.class
 domain/ui/LoginPanel$1.class
 domain/ui/NotificationPanel$1.class
+domain/ui/InventoryRenderer.class
 domain/ui/InventoryPanel$2.class
 domain/ui/HomePanel$1.class
 domain/controller/Controller.class
@@ -20,9 +22,11 @@ domain/ui/SettingPanel$11.class
 domain/ui/NotificationPanel$5.class
 domain/ui/HomePanel$2.class
 domain/ui/InventoryPanel$10.class
+domain/ui/SettingPanel$18.class
 domain/ui/SettingPanel$1.class
 domain/ui/HomePanel.class
 domain/ui/NotificationPanel$2.class
+domain/ui/SettingPanel$14.class
 domain/ui/SettingPanel$7.class
 domain/labMember/LabMemberList.class
 domain/labMember/LabMember.class
@@ -32,6 +36,7 @@ domain/ui/LoginPanel$4.class
 domain/ui/SettingPanel$4.class
 domain/ui/SettingPanel$9.class
 domain/ui/PopMenu$1.class
+domain/ui/SettingPanel$15.class
 domain/ui/PopMenu.class
 domain/ui/InventoryPanel$7.class
 domain/ui/SettingPanel$2.class
@@ -49,10 +54,12 @@ domain/ui/NotificationPanel.class
 domain/ui/SettingPanel$12.class
 domain/ui/HomePanel$3.class
 domain/ui/SettingPanel$3.class
+domain/ui/SettingPanel$16.class
 domain/ui/LoginPanel$2.class
 domain/notificationInfo/Store.class
 domain/ui/MainFrame.class
 domain/ui/SettingPanel$13.class
+domain/ui/SettingPanel$19.class
 domain/ui/InventoryPanel$11.class
 domain/ui/InventoryPanel$1.class
 domain/ui/InventoryPanel$4.class

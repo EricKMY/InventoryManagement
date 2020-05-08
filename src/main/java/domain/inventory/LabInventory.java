@@ -1,6 +1,9 @@
 package domain.inventory;
 
 import domain.labMember.LabMember;
+import domain.notificationInfo.INotificationInfo;
+import domain.notificationInfo.Notification;
+import domain.notificationInfo.NotificationInfo;
 
 import java.util.UUID;
 
@@ -11,6 +14,7 @@ public class LabInventory {
     private int amount;
     private int limitNum;
     private LabMember personInCharge;
+    private INotificationInfo notificationInfo;
 
     public LabInventory(String category, String name, int amount, LabMember personInCharge){
         this.name = name;
@@ -19,6 +23,9 @@ public class LabInventory {
         this.personInCharge = personInCharge;
         this.id = UUID.randomUUID().toString();
         this.limitNum = -1;
+
+        //diff
+        notificationInfo = new NotificationInfo(name);
     }
 
     public boolean isUnderLimit(){
@@ -80,5 +87,10 @@ public class LabInventory {
 
     public void setPersonInCharge(LabMember personInCharge) {
         this.personInCharge = personInCharge;
+    }
+
+    //diff
+    public INotificationInfo getNotificationInfo() {
+        return notificationInfo;
     }
 }

@@ -3,21 +3,31 @@ package domain.notificationInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationInfo {
 
-    private String limitAmount;
-    private String inventoryName;
-    private String labMemberInfo;
-    private String inventoryPrice;
-    private String taxID;
-    private String currentAmount;
-    private String replenishmentAmount;
+public class NotificationInfo implements INotificationInfo {
+
+    private String limitAmount = "";
+    private String inventoryName = "";
+    private String labMemberInfo = "";
+    private String inventoryPrice = "";
+    private String taxID = "";
+    private String currentAmount = "";
+    private String replenishmentAmount = "";
 //    private List<String> notificationList;
 
     public NotificationInfo(String inventoryName) {
         this.inventoryName = inventoryName;
 //        notificationList = new ArrayList<String>();
     }
+
+//    public boolean setNotificationInfo(String limitAmount, String taxId, String replenishmentAmount, String personInCharge) {
+//        this.limitAmount = limitAmount;
+//        this.replenishmentAmount = replenishmentAmount;
+//        this.labMemberInfo = personInCharge;
+//        this.taxID = taxId;
+//        return true;
+//    }
+
 
 //    public Boolean setInventoryNotificationInfo(String name, List<String> info) {
 //        inventoryName = name;
