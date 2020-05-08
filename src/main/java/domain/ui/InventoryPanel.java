@@ -301,6 +301,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         if ( -1 == categoryList.getSelectedIndex() ) return;
         inputCategoryField.setText(categoryList.getSelectedValue());
         setInventoryList(categoryList.getSelectedValue());
+        presentLabel.setText("");
     }//GEN-LAST:event_categoryListMouseClicked
 
     private void deleteCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCategoryBtnActionPerformed
