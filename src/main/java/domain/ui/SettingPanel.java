@@ -11,6 +11,8 @@ import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
 import domain.labMember.Viewer;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -30,6 +32,7 @@ public class SettingPanel extends javax.swing.JPanel {
     Icon sucessIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
     Icon errorIcon = new ImageIcon(this.getClass().getResource("images/error.png"));
     DefaultComboBoxModel  defaultComboBoxModel = new DefaultComboBoxModel();
+    private Map<String, LabMember> searchMap;
     
     public SettingPanel(MainFrame mainFrame, IController controller) {
         this.mainFrame = mainFrame;
@@ -85,10 +88,10 @@ public class SettingPanel extends javax.swing.JPanel {
         changePermissionDialog = new javax.swing.JDialog();
         changePermissionPanel = new javax.swing.JPanel();
         changePermissionTitleLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        memberPermissionLabel = new javax.swing.JLabel();
+        memberNameLabel = new javax.swing.JLabel();
+        nameComboBox = new javax.swing.JComboBox<>();
+        permissionComboBox = new javax.swing.JComboBox<>();
         changeBtn = new javax.swing.JButton();
         inventoryBtn = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
@@ -164,7 +167,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        updatePasswordTitleLabel.setFont(new java.awt.Font("�з���", 1, 36)); // NOI18N
+        updatePasswordTitleLabel.setFont(new java.awt.Font("標楷體", 1, 36)); // NOI18N
         updatePasswordTitleLabel.setText("Update Password");
 
         javax.swing.GroupLayout updatePasswordPanelLayout = new javax.swing.GroupLayout(updatePasswordPanel);
@@ -231,40 +234,40 @@ public class SettingPanel extends javax.swing.JPanel {
 
         labSettingPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        labMemberNameLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
+        labMemberNameLabel.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
         labMemberNameLabel.setText("Add Lab Member");
 
-        labMemberEmailLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberEmailLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         labMemberEmailLabel.setText("Name:");
 
-        labMemberPasswordLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberPasswordLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         labMemberPasswordLabel.setText("Email: ");
 
-        addLabMemberTitleLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        addLabMemberTitleLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         addLabMemberTitleLabel.setText("Password: ");
 
-        labMemberEmailField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberEmailField.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         labMemberEmailField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberEmailFieldKeyPressed(evt);
             }
         });
 
-        labMemberNameField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberNameField.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         labMemberNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberNameFieldKeyPressed(evt);
             }
         });
 
-        labMemberPasswordField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberPasswordField.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         labMemberPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberPasswordFieldKeyPressed(evt);
             }
         });
 
-        addLabMemberButton.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        addLabMemberButton.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         addLabMemberButton.setText("Add");
         addLabMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,37 +318,42 @@ public class SettingPanel extends javax.swing.JPanel {
                     .addComponent(labMemberPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(addLabMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addLabMemberDialogLayout = new javax.swing.GroupLayout(addLabMemberDialog.getContentPane());
         addLabMemberDialog.getContentPane().setLayout(addLabMemberDialogLayout);
         addLabMemberDialogLayout.setHorizontalGroup(
             addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 574, Short.MAX_VALUE)
         );
         addLabMemberDialogLayout.setVerticalGroup(
             addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         changePermissionPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        changePermissionTitleLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
+        changePermissionTitleLabel.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
         changePermissionTitleLabel.setText("Change Permission");
 
-        jLabel1.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
-        jLabel1.setText("Permission:");
+        memberPermissionLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        memberPermissionLabel.setText("Permission:");
 
-        jLabel2.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
-        jLabel2.setText("Name:");
+        memberNameLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        memberNameLabel.setText("Name:");
 
-        jComboBox1.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        nameComboBox.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
 
-        jComboBox2.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        permissionComboBox.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
 
-        changeBtn.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        changeBtn.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         changeBtn.setText("Change");
+        changeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout changePermissionPanelLayout = new javax.swing.GroupLayout(changePermissionPanel);
         changePermissionPanel.setLayout(changePermissionPanelLayout);
@@ -353,22 +361,21 @@ public class SettingPanel extends javax.swing.JPanel {
             changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(changePermissionPanelLayout.createSequentialGroup()
                 .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(changePermissionPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(changePermissionPanelLayout.createSequentialGroup()
                             .addGap(129, 129, 129)
                             .addComponent(changePermissionTitleLabel))
                         .addGroup(changePermissionPanelLayout.createSequentialGroup()
+                            .addGap(260, 260, 260)
+                            .addComponent(permissionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(changePermissionPanelLayout.createSequentialGroup()
                             .addGap(68, 68, 68)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(memberNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(memberPermissionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                            .addGap(26, 26, 26)
+                            .addComponent(nameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
         changePermissionPanelLayout.setVerticalGroup(
@@ -378,12 +385,12 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addComponent(changePermissionTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(memberNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(changePermissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(memberPermissionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(permissionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
@@ -473,7 +480,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        addLabMemberBtn.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        addLabMemberBtn.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         addLabMemberBtn.setText("Add Lab Member");
         addLabMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -481,7 +488,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        changePermissionBtn.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        changePermissionBtn.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
         changePermissionBtn.setText("Change Permission");
         changePermissionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -656,7 +663,7 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void addLabMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLabMemberBtnActionPerformed
         // TODO add your handling code here:
-        addLabMemberDialog.setBounds(0, 0, 527, 370);
+        addLabMemberDialog.setBounds(0, 0, 574, 370);
         addLabMemberDialog.setVisible(true);
     }//GEN-LAST:event_addLabMemberBtnActionPerformed
 
@@ -682,7 +689,28 @@ public class SettingPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         changePermissionDialog.setBounds(0, 0, 527, 370);
         changePermissionDialog.setVisible(true);
+        DefaultComboBoxModel nameDefaultComboBoxModel = new DefaultComboBoxModel();
+        String[] permissions = {"Admin", "Manager", "Viewer"};
+        permissionComboBox.setModel(new DefaultComboBoxModel(permissions));
+        searchMap = new HashMap<String, LabMember>();
+        
+        for(Object key: labMemberList.getLabMemberMap().keySet()) {
+            if(!labMemberList.getLabMemberMap().get(key).getName().equals(labMember.getName())){
+                searchMap.put(labMemberList.getLabMemberMap().get(key).getName(), labMemberList.getLabMemberMap().get(key));
+                nameDefaultComboBoxModel.addElement(labMemberList.getLabMemberMap().get(key).getName());
+            
+            }
+        }
+        nameComboBox.setModel(nameDefaultComboBoxModel);
     }//GEN-LAST:event_changePermissionBtnActionPerformed
+
+    private void changeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeBtnActionPerformed
+        // TODO add your handling code here:
+        controller.setUserPermission(labMember,permissionComboBox.getSelectedItem().toString(), 
+                searchMap.get(nameComboBox.getSelectedItem().toString()));
+        JOptionPane.showMessageDialog(null, "Change Permission Sucessfully.", "Chnage Permission ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+        changePermissionDialog.setVisible(false);
+    }//GEN-LAST:event_changeBtnActionPerformed
 
     private void updatePassword() {        
         if(String.valueOf(oldPasswordField.getPassword()).equals("") 
@@ -723,7 +751,7 @@ public class SettingPanel extends javax.swing.JPanel {
         LabMember newLabMember = new Viewer(labMemberNameField.getText(), labMemberEmailField.getText(), labMemberPasswordField.getText());
         labMemberList.addLabMember(newLabMember);
         
-        JOptionPane.showMessageDialog(null, "Add Lab Member Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+        JOptionPane.showMessageDialog(null, "Add Lab Member Sucessfully.", "Add Lab Member ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
         labMemberNameField.setText("");
         labMemberEmailField.setText("");
         labMemberPasswordField.setText("");
@@ -746,10 +774,6 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton inventoryBtn;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField labMemberEmailField;
     private javax.swing.JLabel labMemberEmailLabel;
     private javax.swing.JTextField labMemberNameField;
@@ -758,12 +782,16 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labMemberPasswordLabel;
     private javax.swing.JPanel labSettingPanel;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JLabel memberNameLabel;
+    private javax.swing.JLabel memberPermissionLabel;
+    private javax.swing.JComboBox<String> nameComboBox;
     protected javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JPasswordField newPasswordField;
     private javax.swing.JLabel newPasswordLabel;
     private javax.swing.JPasswordField oldPasswordField;
     private javax.swing.JLabel oldPasswordLabel;
+    private javax.swing.JComboBox<String> permissionComboBox;
     protected javax.swing.JTextField permissionField;
     private javax.swing.JLabel permissionLabel;
     protected javax.swing.JTextField phoneField;
