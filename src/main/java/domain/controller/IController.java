@@ -3,6 +3,8 @@ package domain.controller;
 import domain.inventory.LabInventory;
 import domain.inventory.LabInventoryList;
 import domain.labMember.LabMember;
+import domain.notificationInfo.INotificationInfo;
+import domain.notificationInfo.NotificationInfo;
 
 import java.util.List;
 
@@ -19,4 +21,7 @@ public interface IController {
     public boolean deleteInventory(String category, String inventoryName, LabMember labMember);
     public boolean isInventoryUnderLimit(String category, String inventoryName);
     public boolean setUserPermission(LabMember labMember, String permission, LabMember targetLabMember);
+//    public boolean setNotificationInfo(INotificationInfo notificationInfo, String limitAmount, String taxId, String replenishmentAmount, String personInCharge);
+//    public boolean createNotificationInfo(LabInventory labInventory);
+//    public NotificationInfo readNotificationInfo(String category, String inventoryName);
 }

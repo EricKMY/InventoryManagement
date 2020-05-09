@@ -3,10 +3,9 @@ package domain.controller;
 import domain.inventory.LabInventory;
 import domain.inventory.LabInventoryList;
 import domain.labMember.LabMember;
+import domain.notificationInfo.INotificationInfo;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Controller implements IController {
 
@@ -68,4 +67,19 @@ public class Controller implements IController {
     public boolean setUserPermission(LabMember labMember, String permission, LabMember targetLabMember){
         return labMember.setUserPermission(targetLabMember, permission);
     }
+//
+//    public boolean setNotificationInfo(INotificationInfo notificationInfo, String limitAmount, String taxId, String replenishmentAmount, String personInCharge) {
+//        return notificationInfo.setNotificationInfo(limitAmount, taxId, replenishmentAmount, personInCharge);
+//    }
+
+
+//    // diff
+//    public boolean createNotificationInfo(LabInventory labInventory) {
+//        return  labInventory.createNotificationInfo();
+//    }
+//
+//    // diff
+//    public NotificationInfo readNotificationInfo(String category, String inventoryName){
+//        return labInventoryList.readInventory(category, inventoryName).readNotificationInfo();
+//    }
 }

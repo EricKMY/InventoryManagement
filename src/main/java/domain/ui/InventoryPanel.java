@@ -9,8 +9,12 @@ import domain.controller.IController;
 import domain.inventory.LabInventory;
 import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
+import domain.labMember.LabMemberList;
+import domain.notificationInfo.INotificationInfo;
+import domain.notificationInfo.NotificationInfo;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
+
 
 /**
  *
@@ -317,11 +321,25 @@ public class InventoryPanel extends javax.swing.JPanel {
 
     private void notificationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationBtnActionPerformed
         // TODO add your handling code here:
+        if( -1 == inventoryList.getSelectedIndex() ) return;
+
         mainFrame.getContentPane().remove(mainFrame.getInventoryPanel());
         mainFrame.getContentPane().add(mainFrame.getNotificationPanel());
         mainFrame.getNotificationPanel().setVisible(true);
+        
         mainFrame.revalidate();
         mainFrame.repaint();
+        
+        INotificationInfo notificationInfo = 
+                controller.readInventory(categoryList.getSelectedValue(), inventoryList.getSelectedValue()).getNotificationInfo();
+//        NotificationInfo notificationInfo  = new NotificationInfo(inventoryList.getSelectedValue());
+        mainFrame.getNotificationPanel().setNotificationInfo(notificationInfo);
+        mainFrame.getNotificationPanel().personnChargeField.setText(notificationInfo.getLabMemberInfo());
+        mainFrame.getNotificationPanel().limitAmountField.setText(notificationInfo.getLimitAmount());
+        mainFrame.getNotificationPanel().replenishmentAmountField.setText(notificationInfo.getReplenishmentAmount());
+        mainFrame.getNotificationPanel().priceField.setText(notificationInfo.getInventoryPrice());
+        mainFrame.getNotificationPanel().taxIdField.setText(notificationInfo.getTaxID());
+
     }//GEN-LAST:event_notificationBtnActionPerformed
 
     private void deleteInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteInventoryBtnActionPerformed

@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.java.domain.labMember.LabMemberListTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+=======
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec
+>>>>>>> 263fb1f40ed63f057caf6523b9d858d2f062156f

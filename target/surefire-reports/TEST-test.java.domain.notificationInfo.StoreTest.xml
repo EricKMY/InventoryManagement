@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<<<<<<< HEAD
 <testsuite tests="1" failures="0" name="test.java.domain.notificationInfo.StoreTest" time="0" errors="0" skipped="0">
+=======
+<testsuite tests="1" failures="0" name="test.java.domain.notificationInfo.StoreTest" time="0.003" errors="0" skipped="0">
+>>>>>>> 263fb1f40ed63f057caf6523b9d858d2f062156f
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.1+9"/>
@@ -57,5 +61,9 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
+<<<<<<< HEAD
   <testcase classname="test.java.domain.notificationInfo.StoreTest" name="storeTest" time="0"/>
+=======
+  <testcase classname="test.java.domain.notificationInfo.StoreTest" name="storeTest" time="0.003"/>
+>>>>>>> 263fb1f40ed63f057caf6523b9d858d2f062156f
 </testsuite>

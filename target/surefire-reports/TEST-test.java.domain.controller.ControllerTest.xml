@@ -59,9 +59,15 @@
   </properties>
   <testcase classname="test.java.domain.controller.ControllerTest" name="updateCategoryNameTest" time="0.002"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="deleteInventoryNameTest" time="0"/>
+<<<<<<< HEAD
   <testcase classname="test.java.domain.controller.ControllerTest" name="isInventoryUnderLimitTest" time="0"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="deleteCategoryTest" time="0"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="readInventoryTest" time="0"/>
+=======
+  <testcase classname="test.java.domain.controller.ControllerTest" name="isInventoryUnderLimitTest" time="0.001"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="deleteCategoryTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="readInventoryTest" time="0.001"/>
+>>>>>>> 263fb1f40ed63f057caf6523b9d858d2f062156f
   <testcase classname="test.java.domain.controller.ControllerTest" name="createInventoryTest" time="0.001"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="setUserPermissionTest" time="0"/>
   <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryAmountTest" time="0.001"/>

@@ -7,7 +7,8 @@ package domain.ui;
 
 import domain.controller.Controller;
 import domain.controller.IController;
-import domain.notificationInfo.NotificationInfo;
+import domain.notificationInfo.INotificationInfo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,9 +17,8 @@ import domain.notificationInfo.NotificationInfo;
 public class NotificationPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private IController controller;
-    private NotificationInfo notificationInfo;
+    private INotificationInfo notificationInfo;
     
-
     /**
      * Creates new form NotificationPanel
      */
@@ -30,9 +30,9 @@ public class NotificationPanel extends javax.swing.JPanel {
         this.setVisible(false);
     }
     
-//    pulbic void setNotificationInfo(NotificationInfo notificationInfo) {
-//        this.notificationInfo = notificationInfo;
-//    }
+    public void setNotificationInfo(INotificationInfo notificationInfo) {
+        this.notificationInfo = notificationInfo;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,12 +49,14 @@ public class NotificationPanel extends javax.swing.JPanel {
         personnChargeField = new javax.swing.JTextField();
         personInChargeLabel = new javax.swing.JLabel();
         limitAmountField = new javax.swing.JTextField();
-        taxIdPanel = new javax.swing.JLabel();
+        replenishmentAmountPanel = new javax.swing.JLabel();
         taxIdField = new javax.swing.JTextField();
-        taxIdPanel1 = new javax.swing.JLabel();
-        replensimentAmountField = new javax.swing.JTextField();
+        taxIdPanel = new javax.swing.JLabel();
+        priceField = new javax.swing.JTextField();
         cancelBtn = new javax.swing.JButton();
         okBtn1 = new javax.swing.JButton();
+        pricePanel = new javax.swing.JLabel();
+        replenishmentAmountField = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -85,8 +87,8 @@ public class NotificationPanel extends javax.swing.JPanel {
             }
         });
 
-        taxIdPanel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        taxIdPanel.setText("Replensiment Amount");
+        replenishmentAmountPanel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        replenishmentAmountPanel.setText("Replenishment Amount");
 
         taxIdField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         taxIdField.addActionListener(new java.awt.event.ActionListener() {
@@ -95,13 +97,13 @@ public class NotificationPanel extends javax.swing.JPanel {
             }
         });
 
-        taxIdPanel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        taxIdPanel1.setText("Tax ID");
+        taxIdPanel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        taxIdPanel.setText("Tax ID");
 
-        replensimentAmountField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        replensimentAmountField.addActionListener(new java.awt.event.ActionListener() {
+        priceField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        priceField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                replensimentAmountFieldActionPerformed(evt);
+                priceFieldActionPerformed(evt);
             }
         });
 
@@ -121,66 +123,81 @@ public class NotificationPanel extends javax.swing.JPanel {
             }
         });
 
+        pricePanel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        pricePanel.setText("Price");
+
+        replenishmentAmountField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        replenishmentAmountField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                replenishmentAmountFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(replenishmentAmountPanel)
+                            .addComponent(personInChargeLabel)
+                            .addComponent(pricePanel)
+                            .addComponent(limitAmountLabel)
+                            .addComponent(taxIdPanel))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(okBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(limitAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                            .addComponent(personnChargeField)
+                            .addComponent(replenishmentAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                            .addComponent(priceField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                            .addComponent(taxIdField)))))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(taxIdPanel1)
-                        .addComponent(limitAmountLabel)
-                        .addComponent(personInChargeLabel)
-                        .addComponent(taxIdPanel)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(limitAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                            .addComponent(replensimentAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                            .addComponent(personnChargeField)
-                            .addComponent(taxIdField))
-                        .addGap(57, 57, 57))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(okBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(personInChargeLabel)
+                    .addComponent(personnChargeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(limitAmountLabel)
+                    .addComponent(limitAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(replenishmentAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(replenishmentAmountPanel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pricePanel)
+                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(limitAmountLabel)
-                            .addComponent(limitAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(personInChargeLabel)
-                            .addComponent(personnChargeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(taxIdPanel1)
-                    .addComponent(taxIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taxIdPanel)
-                    .addComponent(replensimentAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(taxIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(okBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                    .addComponent(okBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,9 +209,9 @@ public class NotificationPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_taxIdFieldActionPerformed
 
-    private void replensimentAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replensimentAmountFieldActionPerformed
+    private void priceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_replensimentAmountFieldActionPerformed
+    }//GEN-LAST:event_priceFieldActionPerformed
 
     private void limitAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limitAmountFieldActionPerformed
         // TODO add your handling code here:
@@ -211,16 +228,49 @@ public class NotificationPanel extends javax.swing.JPanel {
 
     private void okBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtn1ActionPerformed
         // TODO add your handling code here:
-        notificationInfo.setTaxID(taxIdField.getText());
-        notificationInfo.setReplenishmentAmount(replensimentAmountField.getText());
-        notificationInfo.setLabMemberInfo(personnChargeField.getText());
         
+        if(personnChargeField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Person In Charge should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(limitAmountField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Limit Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(replenishmentAmountField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Replenishment Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(taxIdField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tax ID should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
+        if(priceField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Price should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
+        
+        notificationInfo.setLabMemberInfo(personnChargeField.getText());
+        notificationInfo.setLimitAmount(limitAmountField.getText());
+        notificationInfo.setReplenishmentAmount(replenishmentAmountField.getText());
+        notificationInfo.setInventoryPrice(priceField.getText());
+        notificationInfo.setTaxID(taxIdField.getText());
+
         mainFrame.getContentPane().remove(mainFrame.getNotificationPanel());
         mainFrame.getContentPane().add(mainFrame.getInventoryPanel());
         mainFrame.getInventoryPanel().setVisible(true);
         mainFrame.revalidate();
         mainFrame.repaint();
     }//GEN-LAST:event_okBtn1ActionPerformed
+
+    private void replenishmentAmountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replenishmentAmountFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_replenishmentAmountFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -231,10 +281,12 @@ public class NotificationPanel extends javax.swing.JPanel {
     private javax.swing.JButton okBtn1;
     private javax.swing.JLabel personInChargeLabel;
     protected javax.swing.JTextField personnChargeField;
-    protected javax.swing.JTextField replensimentAmountField;
+    protected javax.swing.JTextField priceField;
+    private javax.swing.JLabel pricePanel;
+    protected javax.swing.JTextField replenishmentAmountField;
+    private javax.swing.JLabel replenishmentAmountPanel;
     protected javax.swing.JTextField taxIdField;
     private javax.swing.JLabel taxIdPanel;
-    private javax.swing.JLabel taxIdPanel1;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.java.domain.controller.ControllerTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec
+=======
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 sec
+>>>>>>> 263fb1f40ed63f057caf6523b9d858d2f062156f

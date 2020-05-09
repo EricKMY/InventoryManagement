@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="test.java.domain.labMember.LabMemberTest" time="0.004" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="test.java.domain.labMember.LabMemberTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.1+9"/>
@@ -58,9 +58,17 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
   <testcase classname="test.java.domain.labMember.LabMemberTest" name="changeLabMemberByAdmin" time="0.001"/>
+<<<<<<< HEAD
   <testcase classname="test.java.domain.labMember.LabMemberTest" name="createMemberAsAdmin" time="0.001"/>
   <testcase classname="test.java.domain.labMember.LabMemberTest" name="addMemberToMemory" time="0"/>
   <testcase classname="test.java.domain.labMember.LabMemberTest" name="removeMemberFromMemory" time="0.001"/>
   <testcase classname="test.java.domain.labMember.LabMemberTest" name="createMemberAsManager" time="0"/>
   <testcase classname="test.java.domain.labMember.LabMemberTest" name="createMemberAsViewer" time="0.001"/>
+=======
+  <testcase classname="test.java.domain.labMember.LabMemberTest" name="createMemberAsAdmin" time="0"/>
+  <testcase classname="test.java.domain.labMember.LabMemberTest" name="addMemberToMemory" time="0.001"/>
+  <testcase classname="test.java.domain.labMember.LabMemberTest" name="removeMemberFromMemory" time="0"/>
+  <testcase classname="test.java.domain.labMember.LabMemberTest" name="createMemberAsManager" time="0"/>
+  <testcase classname="test.java.domain.labMember.LabMemberTest" name="createMemberAsViewer" time="0"/>
+>>>>>>> 263fb1f40ed63f057caf6523b9d858d2f062156f
 </testsuite>
