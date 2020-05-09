@@ -325,7 +325,7 @@ public class SettingPanel extends javax.swing.JPanel {
         addLabMemberDialog.getContentPane().setLayout(addLabMemberDialogLayout);
         addLabMemberDialogLayout.setHorizontalGroup(
             addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 574, Short.MAX_VALUE)
+            .addComponent(labSettingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
         );
         addLabMemberDialogLayout.setVerticalGroup(
             addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,20 +334,20 @@ public class SettingPanel extends javax.swing.JPanel {
 
         changePermissionPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        changePermissionTitleLabel.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
+        changePermissionTitleLabel.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         changePermissionTitleLabel.setText("Change Permission");
 
-        memberPermissionLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        memberPermissionLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         memberPermissionLabel.setText("Permission:");
 
-        memberNameLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        memberNameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         memberNameLabel.setText("Name:");
 
-        nameComboBox.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        nameComboBox.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
-        permissionComboBox.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        permissionComboBox.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
-        changeBtn.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        changeBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         changeBtn.setText("Change");
         changeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,7 +480,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        addLabMemberBtn.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        addLabMemberBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         addLabMemberBtn.setText("Add Lab Member");
         addLabMemberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -488,7 +488,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        changePermissionBtn.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        changePermissionBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         changePermissionBtn.setText("Change Permission");
         changePermissionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
