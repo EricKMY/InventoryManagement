@@ -6,12 +6,10 @@
 
 package domain.ui;
 
-import domain.controller.Controller;
 import domain.controller.IController;
 import domain.labMember.LabMember;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
 
 /**
  *

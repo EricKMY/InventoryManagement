@@ -6,12 +6,10 @@
 package domain.ui;
 
 import domain.controller.IController;
-import domain.inventory.LabInventory;
+import domain.inventory.ILabInventory;
 import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
-import domain.labMember.LabMemberList;
 import domain.notificationInfo.INotificationInfo;
-import domain.notificationInfo.NotificationInfo;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 
@@ -321,7 +319,7 @@ public class InventoryPanel extends javax.swing.JPanel {
 
     private void notificationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationBtnActionPerformed
         // TODO add your handling code here:
-        if( -1 == inventoryList.getSelectedIndex() ) return;
+        if( -1 == categoryList.getSelectedIndex() || -1 == inventoryList.getSelectedIndex()) return;
 
         mainFrame.getContentPane().remove(mainFrame.getInventoryPanel());
         mainFrame.getContentPane().add(mainFrame.getNotificationPanel());
@@ -369,7 +367,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         presentLabel.setText(detail);
     }//GEN-LAST:event_inventoryListMouseClicked
 
-    private String getInventoryDetail(LabInventory labInventory){
+    private String getInventoryDetail(ILabInventory labInventory){
         return  "<html><body>" + "Category: " + labInventory.getCategory() + "<br/>" + "Inventory: "
                 + labInventory.getName() + "<br/>" + "Amount: " + labInventory.getAmount() + "<br/>"
                 + "Person In Charge: " + labInventory.getPersonInCharge().getName() + "</body></html>";
@@ -386,7 +384,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         if( -1 == categoryList.getSelectedIndex() ) return;
         inventoryList.setModel(dm_inventory_list);
         dm_inventory_list.clear();
-        for (LabInventory lit : controller.getLabInventoryList().getLabInventoryMap().get(categoryName)){
+        for (ILabInventory lit : controller.getLabInventoryList().getLabInventoryMap().get(categoryName)){
             dm_inventory_list.addElement(lit.getName());
         }
         // TODO : cellRenderer

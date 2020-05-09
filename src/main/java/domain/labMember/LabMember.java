@@ -1,7 +1,7 @@
 package domain.labMember;
 
-import domain.inventory.LabInventory;
-import domain.inventory.LabInventoryList;
+import domain.inventory.ILabInventory;
+import domain.inventory.ILabInventoryList;
 
 import java.util.UUID;
 
@@ -68,11 +68,11 @@ public class LabMember {
         return true;
     }
 
-    public LabInventoryList readInventoryList() {
+    public ILabInventoryList readInventoryList() {
         return null;
     }
 
-    public LabInventory readInventory(String id) {
+    public ILabInventory readInventory(String id) {
         return null;
     }
 }

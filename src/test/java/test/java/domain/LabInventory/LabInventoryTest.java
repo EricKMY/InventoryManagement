@@ -1,18 +1,17 @@
 package test.java.domain.LabInventory;
 
+import domain.inventory.ILabInventory;
 import domain.inventory.LabInventory;
 import domain.labMember.LabMember;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.concurrent.LinkedBlockingQueue;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LabInventoryTest {
 
-    private LabInventory labInventory;
+    private ILabInventory labInventory;
 
     @Before
     public void setup(){

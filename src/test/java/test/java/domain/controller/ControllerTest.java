@@ -2,7 +2,7 @@ package test.java.domain.controller;
 
 import domain.controller.Controller;
 import domain.controller.IController;
-import domain.inventory.LabInventory;
+import domain.inventory.ILabInventory;
 import domain.labMember.Admin;
 import domain.labMember.LabMember;
 import domain.labMember.Manager;
@@ -31,7 +31,7 @@ public class ControllerTest {
     @Test
     public void readInventoryTest(){
         controller.createInventory("groceries", "tissue", 1, labMember);
-        LabInventory reader = controller.readInventory("groceries", "tissue");
+        ILabInventory reader = controller.readInventory("groceries", "tissue");
         assertEquals("tissue", reader.getName());
     }
 

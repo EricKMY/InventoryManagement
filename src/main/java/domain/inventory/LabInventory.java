@@ -2,12 +2,11 @@ package domain.inventory;
 
 import domain.labMember.LabMember;
 import domain.notificationInfo.INotificationInfo;
-import domain.notificationInfo.Notification;
 import domain.notificationInfo.NotificationInfo;
 
 import java.util.UUID;
 
-public class LabInventory {
+public class LabInventory implements ILabInventory{
     private String id;
     private String name;
     private String category;

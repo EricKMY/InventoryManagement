@@ -1,21 +1,21 @@
 package domain.controller;
 
-import domain.inventory.LabInventory;
+import domain.inventory.ILabInventory;
+import domain.inventory.ILabInventoryList;
 import domain.inventory.LabInventoryList;
 import domain.labMember.LabMember;
-import domain.notificationInfo.INotificationInfo;
 
 import java.util.List;
 
 public class Controller implements IController {
 
-    private LabInventoryList labInventoryList;
+    private ILabInventoryList labInventoryList;
 
     public Controller(){
         labInventoryList = new LabInventoryList();
     }
 
-    public LabInventoryList getLabInventoryList(){
+    public ILabInventoryList getLabInventoryList(){
         return labInventoryList;
     }
 
@@ -24,7 +24,7 @@ public class Controller implements IController {
     }
 
     //diff
-    public List<LabInventory> readCategory(String category){
+    public List<ILabInventory> readCategory(String category){
         return labInventoryList.selectCategory(category);
     }
 
@@ -42,7 +42,7 @@ public class Controller implements IController {
     }
 
     // diff
-    public LabInventory readInventory(String category, String inventoryName){
+    public ILabInventory readInventory(String category, String inventoryName){
         return labInventoryList.readInventory(category, inventoryName);
     }
 
@@ -67,19 +67,4 @@ public class Controller implements IController {
     public boolean setUserPermission(LabMember labMember, String permission, LabMember targetLabMember){
         return labMember.setUserPermission(targetLabMember, permission);
     }
-//
-//    public boolean setNotificationInfo(INotificationInfo notificationInfo, String limitAmount, String taxId, String replenishmentAmount, String personInCharge) {
-//        return notificationInfo.setNotificationInfo(limitAmount, taxId, replenishmentAmount, personInCharge);
-//    }
-
-
-//    // diff
-//    public boolean createNotificationInfo(LabInventory labInventory) {
-//        return  labInventory.createNotificationInfo();
-//    }
-//
-//    // diff
-//    public NotificationInfo readNotificationInfo(String category, String inventoryName){
-//        return labInventoryList.readInventory(category, inventoryName).readNotificationInfo();
-//    }
 }

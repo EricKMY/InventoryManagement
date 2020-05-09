@@ -1,6 +1,6 @@
 package test.java.domain.LabInventory;
 
-import domain.inventory.LabInventory;
+import domain.inventory.ILabInventoryList;
 import domain.inventory.LabInventoryList;
 import domain.labMember.LabMember;
 import domain.labMember.Manager;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class LabInventoryListTest {
 
     public LabMember labMember;
-    public LabInventoryList labInventoryList;
+    public ILabInventoryList labInventoryList;
 
     @Before
     public void setup(){

@@ -244,17 +244,16 @@ public class NotificationPanel extends javax.swing.JPanel {
             return;
         }
         
+        if(priceField.getText().replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Price should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if(taxIdField.getText().replace(" ", "").isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tax ID should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
             
-        if(priceField.getText().replace(" ", "").isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Price should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-            
-        
         notificationInfo.setLabMemberInfo(personnChargeField.getText());
         notificationInfo.setLimitAmount(limitAmountField.getText());
         notificationInfo.setReplenishmentAmount(replenishmentAmountField.getText());
