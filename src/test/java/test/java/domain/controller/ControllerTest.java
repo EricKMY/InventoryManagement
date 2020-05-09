@@ -3,17 +3,14 @@ package test.java.domain.controller;
 import domain.controller.Controller;
 import domain.controller.IController;
 import domain.inventory.ILabInventory;
-import domain.labMember.Admin;
-import domain.labMember.LabMember;
-import domain.labMember.Manager;
-import domain.labMember.Viewer;
+import domain.labMember.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class ControllerTest {
-    private LabMember labMember;
+    private ILabMember labMember;
     private IController controller;
 
     @Before
@@ -93,8 +90,8 @@ public class ControllerTest {
 
     @Test
     public void setUserPermissionTest() {
-        LabMember labMember = new Admin("Jeff", "jeff@gmail.com", "123");
-        LabMember newLabMember = new Viewer("newJeff", "newJeff@gmail.com", "456");
+        ILabMember labMember = new Admin("Jeff", "jeff@gmail.com", "123");
+        ILabMember newLabMember = new Viewer("newJeff", "newJeff@gmail.com", "456");
         assertEquals("Viewer", newLabMember.getPermission());
         controller.setUserPermission(labMember, "Manager", newLabMember);
         assertEquals("Manager", newLabMember.getPermission());

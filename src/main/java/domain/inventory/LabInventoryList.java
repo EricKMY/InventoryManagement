@@ -1,6 +1,6 @@
 package domain.inventory;
 
-import domain.labMember.LabMember;
+import domain.labMember.ILabMember;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,13 +22,13 @@ public class LabInventoryList implements ILabInventoryList{
         return labInventoryMap.get(category);
     }
 
-    public boolean createCategory(String category, LabMember labMember){
+    public boolean createCategory(String category, ILabMember labMember){
         labInventoryMap.put(category, new ArrayList<ILabInventory>());
         return true;
     }
 
     //diff
-    public boolean updateCategoryName(String oCategory, String nCategory, LabMember labMember){
+    public boolean updateCategoryName(String oCategory, String nCategory, ILabMember labMember){
         if( !labInventoryMap.containsKey(oCategory) ) return false;
         List<ILabInventory> l = labInventoryMap.get(oCategory);
         labInventoryMap.put(nCategory, l);
@@ -36,13 +36,13 @@ public class LabInventoryList implements ILabInventoryList{
         return true;
     }
 
-    public boolean deleteCategory(String category, LabMember labMember){
+    public boolean deleteCategory(String category, ILabMember labMember){
         if( !labInventoryMap.containsKey(category) ) return false;
         labInventoryMap.remove(category);
         return true;
     }
 
-    public boolean createInventory(String category, String inventoryName, int amount, LabMember labMember) {
+    public boolean createInventory(String category, String inventoryName, int amount, ILabMember labMember) {
         ILabInventory labInventory = new LabInventory(category, inventoryName, amount, labMember);
 
         if (labInventoryMap.containsKey(category)) {
@@ -63,7 +63,7 @@ public class LabInventoryList implements ILabInventoryList{
         return null;
     }
 
-    public boolean updateInventoryAmount(String category, String inventoryName, int amount, LabMember labMember) {
+    public boolean updateInventoryAmount(String category, String inventoryName, int amount, ILabMember labMember) {
         List<ILabInventory> reader = labInventoryMap.get(category);
         for (ILabInventory l : reader) {
             if (l.getName() == inventoryName) {
@@ -74,7 +74,7 @@ public class LabInventoryList implements ILabInventoryList{
         return false;
     }
 
-    public boolean updateInventoryName(String category, String oInventoryName, String nInventoryName, LabMember labMember) {
+    public boolean updateInventoryName(String category, String oInventoryName, String nInventoryName, ILabMember labMember) {
         List<ILabInventory> reader = labInventoryMap.get(category);
         for (ILabInventory l : reader) {
             if (l.getName() == oInventoryName) {
@@ -85,7 +85,7 @@ public class LabInventoryList implements ILabInventoryList{
         return false;
     }
 
-    public boolean deleteInventory(String category, String inventoryName, LabMember labMember){
+    public boolean deleteInventory(String category, String inventoryName, ILabMember labMember){
         List<ILabInventory> reader = labInventoryMap.get(category);
         for (ILabInventory l : reader) {
             if (l.getName() == inventoryName) {

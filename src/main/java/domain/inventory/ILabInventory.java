@@ -1,5 +1,6 @@
 package domain.inventory;
 
+import domain.labMember.ILabMember;
 import domain.labMember.LabMember;
 import domain.notificationInfo.INotificationInfo;
 
@@ -31,9 +32,9 @@ public interface ILabInventory {
 
     public void setLimitNum(int limitNum);
 
-    public LabMember getPersonInCharge();
+    public ILabMember getPersonInCharge();
 
-    public void setPersonInCharge(LabMember personInCharge);
+    public void setPersonInCharge(ILabMember personInCharge);
 
     //diff
     public INotificationInfo getNotificationInfo();

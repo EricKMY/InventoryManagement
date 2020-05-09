@@ -5,12 +5,9 @@
  */
 package domain.ui;
 
-import domain.controller.Controller;
 import domain.controller.IController;
-import domain.labMember.ILabMemberList;
-import domain.labMember.LabMember;
-import domain.labMember.LabMemberList;
-import domain.labMember.Viewer;
+import domain.labMember.*;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
@@ -27,12 +24,12 @@ public class SettingPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private IController controller;
     private ImageIcon icon;
-    private LabMember labMember;
+    private ILabMember labMember;
     private ILabMemberList labMemberList;
     Icon sucessIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
     Icon errorIcon = new ImageIcon(this.getClass().getResource("images/error.png"));
     DefaultComboBoxModel  defaultComboBoxModel = new DefaultComboBoxModel();
-    private Map<String, LabMember> searchMap;
+    private Map<String, ILabMember> searchMap;
     
     public SettingPanel(MainFrame mainFrame, IController controller) {
         this.mainFrame = mainFrame;
@@ -48,7 +45,7 @@ public class SettingPanel extends javax.swing.JPanel {
         logoutBtn.setIcon(logoutIcon);
     }
     
-    public void setLabMember(LabMember labMember) {
+    public void setLabMember(ILabMember labMember) {
         this.labMember = labMember;
     }
     
@@ -692,7 +689,7 @@ public class SettingPanel extends javax.swing.JPanel {
         DefaultComboBoxModel nameDefaultComboBoxModel = new DefaultComboBoxModel();
         String[] permissions = {"Admin", "Manager", "Viewer"};
         permissionComboBox.setModel(new DefaultComboBoxModel(permissions));
-        searchMap = new HashMap<String, LabMember>();
+        searchMap = new HashMap<String, ILabMember>();
         
         for(Object key: labMemberList.getLabMemberMap().keySet()) {
             if(!labMemberList.getLabMemberMap().get(key).getName().equals(labMember.getName())){

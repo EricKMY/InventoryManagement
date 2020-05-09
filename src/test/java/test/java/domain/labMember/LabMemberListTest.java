@@ -1,9 +1,6 @@
 package test.java.domain.labMember;
 
-import domain.labMember.ILabMemberList;
-import domain.labMember.LabMember;
-import domain.labMember.LabMemberList;
-import domain.labMember.Manager;
+import domain.labMember.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +9,7 @@ import static org.junit.Assert.assertNull;
 
 public class LabMemberListTest {
     private ILabMemberList labMemberList;
-    private LabMember labMember;
+    private ILabMember labMember;
 
     @Before
     public void setup() {

@@ -3,6 +3,7 @@ package domain.controller;
 import domain.inventory.ILabInventory;
 import domain.inventory.ILabInventoryList;
 import domain.inventory.LabInventoryList;
+import domain.labMember.ILabMember;
 import domain.labMember.LabMember;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class Controller implements IController {
         return labInventoryList;
     }
 
-    public boolean createCategory(String category, LabMember labMember){
+    public boolean createCategory(String category, ILabMember labMember){
         return labInventoryList.createCategory(category, labMember);
     }
 
@@ -29,15 +30,15 @@ public class Controller implements IController {
     }
 
     //diff
-    public boolean updateCategoryName(String oCategory, String nCategory, LabMember labMember){
+    public boolean updateCategoryName(String oCategory, String nCategory, ILabMember labMember){
         return labInventoryList.updateCategoryName(oCategory, nCategory, labMember);
     }
 
-    public boolean deleteCategory(String category, LabMember labMember){
+    public boolean deleteCategory(String category, ILabMember labMember){
         return labInventoryList.deleteCategory(category, labMember);
     }
 
-    public boolean createInventory(String category, String inventoryName, int amount, LabMember labMember){
+    public boolean createInventory(String category, String inventoryName, int amount, ILabMember labMember){
         return labInventoryList.createInventory(category, inventoryName, amount, labMember);
     }
 
@@ -47,16 +48,16 @@ public class Controller implements IController {
     }
 
     // diff
-    public boolean updateInventoryAmount(String category, String inventoryName, int amount, LabMember labMember){
+    public boolean updateInventoryAmount(String category, String inventoryName, int amount, ILabMember labMember){
         return labInventoryList.updateInventoryAmount(category, inventoryName, amount, labMember);
     }
 
     // diff
-    public boolean updateInventoryName(String category, String oInventoryName, String nInventoryName, LabMember labMember){
+    public boolean updateInventoryName(String category, String oInventoryName, String nInventoryName, ILabMember labMember){
         return labInventoryList.updateInventoryName(category, oInventoryName, nInventoryName, labMember);
     }
 
-    public boolean deleteInventory(String category, String inventoryName, LabMember labMember){
+    public boolean deleteInventory(String category, String inventoryName, ILabMember labMember){
         return labInventoryList.deleteInventory(category, inventoryName, labMember);
     }
 
@@ -64,7 +65,7 @@ public class Controller implements IController {
         return labInventoryList.readInventory(category, inventoryName).isUnderLimit();
     }
 
-    public boolean setUserPermission(LabMember labMember, String permission, LabMember targetLabMember){
+    public boolean setUserPermission(ILabMember labMember, String permission, ILabMember targetLabMember){
         return labMember.setUserPermission(targetLabMember, permission);
     }
 }

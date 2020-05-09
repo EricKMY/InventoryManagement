@@ -1,5 +1,6 @@
 package domain.notificationInfo;
 
+import domain.labMember.ILabMember;
 import domain.labMember.LabMember;
 
 public class Notification {
@@ -7,7 +8,7 @@ public class Notification {
 
     }
 
-    public void sendAlert(String notificationInfo, LabMember personInCharge) {
+    public void sendAlert(String notificationInfo, ILabMember personInCharge) {
         // connect with gmail api;
     };
 

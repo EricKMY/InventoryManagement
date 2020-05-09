@@ -6,9 +6,9 @@ public class Admin extends LabMember {
         this.permission = "Admin";
     }
 
-    public boolean setUserPermission(LabMember labMember, String permission) {
+    public boolean setUserPermission(ILabMember labMember, String permission) {
 
-        labMember.permission = permission;
+        labMember.setPermission(permission);
         return true;
     }
 }

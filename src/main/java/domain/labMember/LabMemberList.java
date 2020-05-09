@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LabMemberList implements ILabMemberList {
-    private Map<String, LabMember> labMemberMap;
+    private Map<String, ILabMember> labMemberMap;
 
     public LabMemberList() {
-        labMemberMap = new HashMap<String, LabMember>();
+        labMemberMap = new HashMap<String, ILabMember>();
     }
 
-    public Map<String, LabMember> getLabMemberMap() {
+    public Map<String, ILabMember> getLabMemberMap() {
         return labMemberMap;
     }
 
-    public boolean addLabMember(LabMember labMember) {
+    public boolean addLabMember(ILabMember labMember) {
         labMemberMap.put(labMember.getId(), labMember);
         return true;
     }
@@ -24,7 +24,7 @@ public class LabMemberList implements ILabMemberList {
         return true;
     }
 
-    public LabMember findLabMemberById(String id) {
+    public ILabMember findLabMemberById(String id) {
         return labMemberMap.get(id);
     }
 }

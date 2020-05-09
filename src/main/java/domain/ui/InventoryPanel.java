@@ -7,6 +7,7 @@ package domain.ui;
 
 import domain.controller.IController;
 import domain.inventory.ILabInventory;
+import domain.labMember.ILabMember;
 import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
 import domain.notificationInfo.INotificationInfo;
@@ -21,7 +22,7 @@ import javax.swing.DefaultListModel;
 public class InventoryPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private IController controller;
-    private LabMember labMember;
+    private ILabMember labMember;
     private ILabMemberList labMemberList;
     
     DefaultListModel dm = new DefaultListModel();
@@ -48,7 +49,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         setCategoryList();
     }
     
-    public void setLabMember(LabMember labMember) {
+    public void setLabMember(ILabMember labMember) {
         this.labMember = labMember;
     }
 

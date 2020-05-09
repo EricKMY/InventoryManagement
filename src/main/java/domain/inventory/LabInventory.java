@@ -1,5 +1,6 @@
 package domain.inventory;
 
+import domain.labMember.ILabMember;
 import domain.labMember.LabMember;
 import domain.notificationInfo.INotificationInfo;
 import domain.notificationInfo.NotificationInfo;
@@ -12,10 +13,10 @@ public class LabInventory implements ILabInventory{
     private String category;
     private int amount;
     private int limitNum;
-    private LabMember personInCharge;
+    private ILabMember personInCharge;
     private INotificationInfo notificationInfo;
 
-    public LabInventory(String category, String name, int amount, LabMember personInCharge){
+    public LabInventory(String category, String name, int amount, ILabMember personInCharge){
         this.name = name;
         this.category = category;
         this.amount = amount;
@@ -80,11 +81,11 @@ public class LabInventory implements ILabInventory{
         this.limitNum = limitNum;
     }
 
-    public LabMember getPersonInCharge() {
+    public ILabMember getPersonInCharge() {
         return personInCharge;
     }
 
-    public void setPersonInCharge(LabMember personInCharge) {
+    public void setPersonInCharge(ILabMember personInCharge) {
         this.personInCharge = personInCharge;
     }
 

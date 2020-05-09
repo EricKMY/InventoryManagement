@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 
 public class LabMemberTest {
-    private LabMember labMember;
+    private ILabMember labMember;
     private ILabMemberList labMemberList;
 
     @Before
@@ -82,7 +82,7 @@ public class LabMemberTest {
     @Test
     public void changeLabMemberByAdmin() {
         labMember = new Viewer("Jeff", "Jeff123@gmail.com", "Jeff111");
-        LabMember admin = new Admin("Admin", "admin@gmail.com", "admin");
+        ILabMember admin = new Admin("Admin", "admin@gmail.com", "admin");
         assertEquals("Viewer", labMember.getPermission());
 
         admin.setUserPermission(labMember, "Manager");

@@ -7,6 +7,7 @@ package domain.ui;
 
 import domain.controller.Controller;
 import domain.controller.IController;
+import domain.labMember.ILabMember;
 import domain.labMember.ILabMemberList;
 import domain.labMember.LabMember;
 import domain.labMember.LabMemberList;
@@ -22,7 +23,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private IController controller;
     private ILabMemberList labMemberList;
-    protected LabMember labMember;
+    protected ILabMember labMember;
     
     /**
      * Creates new form LoginPanel

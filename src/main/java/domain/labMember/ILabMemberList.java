@@ -3,8 +3,8 @@ package domain.labMember;
 import java.util.Map;
 
 public interface ILabMemberList {
-    public Map<String, LabMember> getLabMemberMap();
-    public boolean addLabMember(LabMember labMember);
+    public Map<String, ILabMember> getLabMemberMap();
+    public boolean addLabMember(ILabMember labMember);
     public boolean removeLabMemberById(String id);
-    public LabMember findLabMemberById(String id);
+    public ILabMember findLabMemberById(String id);
 }

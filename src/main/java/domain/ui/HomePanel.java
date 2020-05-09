@@ -7,7 +7,8 @@
 package domain.ui;
 
 import domain.controller.IController;
-import domain.labMember.LabMember;
+import domain.labMember.ILabMember;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -18,7 +19,7 @@ import javax.swing.ImageIcon;
 public class HomePanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private IController controller;
-    private LabMember labMember;
+    private ILabMember labMember;
     
     /** Creates new form HomePanel */
     public HomePanel(MainFrame mainFrame, IController controller) {
@@ -35,7 +36,7 @@ public class HomePanel extends javax.swing.JPanel {
         logoutBtn.setIcon(logoutIcon);
     }
     
-    public void setLabMember(LabMember labMember) {
+    public void setLabMember(ILabMember labMember) {
         this.labMember = labMember;
     }
 
