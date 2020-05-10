@@ -722,7 +722,7 @@ public class SettingPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword()))) {
+        if(!String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword()))) {
             JOptionPane.showMessageDialog(null, "New password must be the same as password confirmed.", "Error",JOptionPane.ERROR_MESSAGE, errorIcon);
             return;
         }
