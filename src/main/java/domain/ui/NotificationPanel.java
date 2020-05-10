@@ -239,13 +239,28 @@ public class NotificationPanel extends javax.swing.JPanel {
             return;
         }
         
+        if(!limitAmountField.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Invalid input for Limit Amount", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if(replenishmentAmountField.getText().replace(" ", "").isEmpty()) {
             JOptionPane.showMessageDialog(null, "Replenishment Amount should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
+        if(!replenishmentAmountField.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Invalid input for Replenishment Amount", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if(priceField.getText().replace(" ", "").isEmpty()) {
             JOptionPane.showMessageDialog(null, "Price should not be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!priceField.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Invalid input for Price", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         

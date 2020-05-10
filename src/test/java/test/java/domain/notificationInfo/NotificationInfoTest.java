@@ -1,28 +1,26 @@
 package test.java.domain.notificationInfo;
 
+import domain.notificationInfo.INotificationInfo;
 import domain.notificationInfo.NotificationInfo;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class NotificationInfoTest {
 
     @Test
-    public void notificationInfoTest() {
-//        List<String> info = Arrays.asList("Eric", "100", "123", "3", "10", "Eric,Bill,Jeff");
-//        NotificationInfo notificationInfo = new NotificationInfo();
-//        notificationInfo.setInventoryNotificationInfo("Wire", info);
-//        assertEquals("Wire", notificationInfo.getInventoryName());
-//        assertEquals("Eric", notificationInfo.getLabMemberInfo());
-//        assertEquals("100", notificationInfo.getInventoryPrice());
-//        assertEquals("123", notificationInfo.getTaxID());
-//        assertEquals("3", notificationInfo.getCurrentAmount());
-//        assertEquals("10", notificationInfo.getReplenishmentAmount());
-//        assertEquals("Eric", notificationInfo.getNotificationList().get(0));
-//        assertEquals("Bill", notificationInfo.getNotificationList().get(1));
-//        assertEquals("Jeff", notificationInfo.getNotificationList().get(2));
+    public void createNotificatinInfo() {
+        INotificationInfo notificationInfo = new NotificationInfo("Wire");
+        notificationInfo.setCurrentAmount("10");
+        notificationInfo.setLimitAmount("5");
+        notificationInfo.setLabMemberInfo("Eric");
+        notificationInfo.setReplenishmentAmount("20");
+        notificationInfo.setTaxID("12345");
+
+        assertEquals("10", notificationInfo.getCurrentAmount());
+        assertEquals("5", notificationInfo.getLimitAmount());
+        assertEquals("Eric", notificationInfo.getLabMemberInfo());
+        assertEquals("20", notificationInfo.getReplenishmentAmount());
+        assertEquals("12345", notificationInfo.getTaxID());
     }
 }
