@@ -45,7 +45,7 @@ public class PopMenu extends javax.swing.JPanel {
         if (result == JOptionPane.OK_OPTION) {
             if( !name.getText().replace(" ", "").isEmpty() ) sName = name.getText();
             else sName = "NaN";
-            if ( !amount.getText().replace(" ", "").isEmpty() && amount.getText().matches("[0-9+]") ) sAmount = amount.getText();
+            if ( !amount.getText().replace(" ", "").isEmpty() && amount.getText().matches("\\d+") ) sAmount = amount.getText();
             else sAmount = "0";
             sLevel = combo.getSelectedItem().toString();
         } else {
