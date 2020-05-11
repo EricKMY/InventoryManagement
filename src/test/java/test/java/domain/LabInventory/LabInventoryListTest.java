@@ -8,8 +8,7 @@ import domain.labMember.Manager;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LabInventoryListTest {
 
@@ -53,5 +52,22 @@ public class LabInventoryListTest {
         assertTrue(labInventoryList.getLabInventoryMap().containsKey("electronics"));
     }
 
-    /* update , delete not done */
+    @Test
+    public void updateCategoryName(){
+        labInventoryList.createInventory("groceries", "tissue", 1, labMember);
+        labInventoryList.updateCategoryName("groceries", "new groceries", labMember);
+
+        assertNull(labInventoryList.selectCategory("groceries"));
+        assertNotNull(labInventoryList.selectCategory("new groceries"));
+        assertEquals("new groceries", labInventoryList.readInventory("new groceries", "tissue").getCategory());
+    }
+
+    @Test
+    public void deleteCategory(){
+        labInventoryList.createInventory("groceries", "tissue", 1, labMember);
+        labInventoryList.deleteCategory("groceries", labMember);
+
+        assertNull(labInventoryList.getLabInventoryMap().get("groceries"));
+        assertNull(labInventoryList.readInventory("groceries", "tissue"));
+    }
 }

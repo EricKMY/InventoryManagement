@@ -31,6 +31,8 @@ public class LabInventoryList implements ILabInventoryList{
     public boolean updateCategoryName(String oCategory, String nCategory, ILabMember labMember){
         if( !labInventoryMap.containsKey(oCategory) ) return false;
         List<ILabInventory> l = labInventoryMap.get(oCategory);
+        for(int i=0; i<l.size(); i++) l.get(i).setCategory(nCategory);
+
         labInventoryMap.put(nCategory, l);
         labInventoryMap.remove(oCategory);
         return true;
@@ -59,7 +61,8 @@ public class LabInventoryList implements ILabInventoryList{
 
     public ILabInventory readInventory(String category, String inventoryName) {
         List<ILabInventory> reader = labInventoryMap.get(category);
-        for (ILabInventory l : reader) if (l.getName() == inventoryName) return l;
+        if(reader == null) return null;
+        else for (ILabInventory l : reader) if (l.getName() == inventoryName) return l;
         return null;
     }
 
