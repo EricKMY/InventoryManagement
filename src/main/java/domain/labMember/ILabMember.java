@@ -4,18 +4,19 @@ import domain.inventory.ILabInventory;
 import domain.inventory.ILabInventoryList;
 
 public interface ILabMember {
-    public String getName();
-    public String getEmail();
-    public String getPhone();
-    public String getPassword();
-    public String getPermission();
-    public String getId();
-    public void setName(String name);
-    public void setPhone(String phone);
-    public void setEmail(String email);
-    public void setPassword(String password);
-    public void setPermission(String permission);
-    public boolean setUserPermission(ILabMember labMember, String permission);
-    public ILabInventoryList readInventoryList();
-    public ILabInventory readInventory(String id);
+    String getName();
+    String getEmail();
+    String getPhone();
+    String getPassword();
+    String getPermission();
+    String getId();
+    void setName(String name);
+    void setId(String id);
+    void setPhone(String phone);
+    void setEmail(String email);
+    void setPassword(String password);
+    void setPermission(String permission);
+    boolean setUserPermission(ILabMember labMember, String permission);
+    ILabInventoryList readInventoryList();
+    ILabInventory readInventory(String id);
 }

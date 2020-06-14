@@ -13,6 +13,11 @@ public class LabMember implements ILabMember {
     private String password;
     protected String permission;
 
+    //new
+    public LabMember() {
+
+    }
+
     public LabMember(String name, String email, String password) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
@@ -63,6 +68,11 @@ public class LabMember implements ILabMember {
     public void setPermission(String permission){
       this.permission = permission;
     };
+
+    //new
+    public void setId(String id) {
+      this.id = id;
+    }
 
     public boolean setUserPermission(ILabMember labMember, String permission) {
         return true;
