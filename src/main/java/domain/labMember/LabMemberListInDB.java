@@ -29,8 +29,14 @@ public class LabMemberListInDB implements ILabMemberList {
       try {
           statement = connection.createStatement();
           resultSet = statement.executeQuery(sql);
+
           while(resultSet.next()) {
-              labMember = new LabMember();
+              if(resultSet.getString("permission") == "Admin")
+                  labMember = new Admin();
+              else if(resultSet.getString("permission") == "Manager")
+                  labMember = new Manager();
+              else labMember = new Viewer();
+
               labMember.setName(resultSet.getString("name"));
               labMember.setId(resultSet.getString("id"));
               labMember.setEmail(resultSet.getString("email"));
@@ -96,7 +102,13 @@ public class LabMemberListInDB implements ILabMemberList {
     try {
       statement = connection.createStatement();
       resultSet = statement.executeQuery(sql);
-      labMember = new LabMember();
+
+      if(resultSet.getString("permission") == "Admin")
+        labMember = new Admin();
+      else if(resultSet.getString("permission") == "Manager")
+        labMember = new Manager();
+      else labMember = new Viewer();
+
       labMember.setName(resultSet.getString("name"));
       labMember.setId(resultSet.getString("id"));
       labMember.setEmail(resultSet.getString("email"));
