@@ -7,10 +7,7 @@ package domain.ui;
 
 import domain.controller.Controller;
 import domain.controller.IController;
-import domain.labMember.Admin;
-import domain.labMember.ILabMemberList;
-import domain.labMember.LabMemberList;
-import domain.labMember.Manager;
+import domain.labMember.*;
 
 /**
  *
@@ -30,8 +27,10 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         controller = new Controller();
-        labMemberList = new LabMemberList();
-        init(controller, labMemberList);
+//        labMemberList = new LabMemberList();
+        labMemberList = new LabMemberListInDB();
+        dbInit(controller, labMemberList);
+//        init(controller, labMemberList);
         loginPanel.setVisible(true);
         initComponents();
     }
@@ -54,6 +53,20 @@ public class MainFrame extends javax.swing.JFrame {
         
     public NotificationPanel getNotificationPanel() {
         return notificationPanel;
+    }
+
+    private void dbInit(IController controller, ILabMemberList labMemberList) {
+        homePanel = new HomePanel(this, controller);
+        inventoryPanel = new InventoryPanel(this, controller, labMemberList);
+        loginPanel = new LoginPanel(this, controller, labMemberList);
+        settingPanel = new SettingPanel(this, controller);
+        notificationPanel = new NotificationPanel(this, controller);
+
+        this.add(loginPanel);
+        this.add(homePanel);
+        this.add(inventoryPanel);
+        this.add(settingPanel);
+        this.add(notificationPanel);
     }
     
     private void init(IController controller, ILabMemberList labMemberList) {

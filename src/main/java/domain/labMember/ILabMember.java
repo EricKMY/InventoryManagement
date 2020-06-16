@@ -16,7 +16,7 @@ public interface ILabMember {
     void setEmail(String email);
     void setPassword(String password);
     void setPermission(String permission);
-    boolean setUserPermission(ILabMember labMember, String permission);
+//    boolean setUserPermission(ILabMember labMember, String permission);
     ILabInventoryList readInventoryList();
     ILabInventory readInventory(String id);
 }

@@ -20,5 +20,5 @@ public interface IController {
     public boolean updateInventoryName(String category, String oInventoryName, String nInventoryName, ILabMember labMember);
     public boolean deleteInventory(String category, String inventoryName, ILabMember labMember);
     public boolean isInventoryUnderLimit(String category, String inventoryName);
-    public boolean setUserPermission(ILabMember labMember, String permission, ILabMember targetLabMember);
+    public boolean setUserPermission(String permission, ILabMember targetLabMember);
 }

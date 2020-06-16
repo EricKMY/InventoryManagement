@@ -3,17 +3,19 @@ package domain.controller;
 import domain.inventory.ILabInventory;
 import domain.inventory.ILabInventoryList;
 import domain.inventory.LabInventoryList;
-import domain.labMember.ILabMember;
-import domain.labMember.LabMember;
+import domain.labMember.*;
 
 import java.util.List;
 
 public class Controller implements IController {
 
     private ILabInventoryList labInventoryList;
+    private ILabMemberList labMemberList;
 
     public Controller(){
         labInventoryList = new LabInventoryList();
+        labMemberList = new LabMemberList();
+//        labMemberList = new LabMemberListInDB();
     }
 
     public ILabInventoryList getLabInventoryList(){
@@ -65,7 +67,8 @@ public class Controller implements IController {
         return labInventoryList.readInventory(category, inventoryName).isUnderLimit();
     }
 
-    public boolean setUserPermission(ILabMember labMember, String permission, ILabMember targetLabMember){
-        return labMember.setUserPermission(targetLabMember, permission);
+    //Change
+    public boolean setUserPermission(String permission, ILabMember targetLabMember){
+        return labMemberList.changeUserPermission(targetLabMember, permission);
     }
 }

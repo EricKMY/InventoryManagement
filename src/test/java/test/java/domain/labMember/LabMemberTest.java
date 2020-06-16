@@ -79,14 +79,14 @@ public class LabMemberTest {
         assertNull(labMemberList.findLabMemberById(labMember.getId()));
     }
 
-    @Test
-    public void changeLabMemberByAdmin() {
-        labMember = new Viewer("Jeff", "Jeff123@gmail.com", "Jeff111");
-        ILabMember admin = new Admin("Admin", "admin@gmail.com", "admin");
-        assertEquals("Viewer", labMember.getPermission());
-
-        admin.setUserPermission(labMember, "Manager");
-
-        assertEquals("Manager", labMember.getPermission());
-    }
+//    @Test
+//    public void changeLabMemberByAdmin() {
+//        labMember = new Viewer("Jeff", "Jeff123@gmail.com", "Jeff111");
+//        ILabMember admin = new Admin("Admin", "admin@gmail.com", "admin");
+//        assertEquals("Viewer", labMember.getPermission());
+//
+//        admin.setUserPermission(labMember, "Manager");
+//
+//        assertEquals("Manager", labMember.getPermission());
+//    }
 }

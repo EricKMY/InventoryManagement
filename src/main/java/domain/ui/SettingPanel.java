@@ -26,7 +26,7 @@ public class SettingPanel extends javax.swing.JPanel {
     private ImageIcon icon;
     private ILabMember labMember;
     private ILabMemberList labMemberList;
-    Icon sucessIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
+    Icon successIcon = new ImageIcon(this.getClass().getResource("images/sucess.png"));
     Icon errorIcon = new ImageIcon(this.getClass().getResource("images/error.png"));
     DefaultComboBoxModel  defaultComboBoxModel = new DefaultComboBoxModel();
     private Map<String, ILabMember> searchMap;
@@ -164,7 +164,7 @@ public class SettingPanel extends javax.swing.JPanel {
             }
         });
 
-        updatePasswordTitleLabel.setFont(new java.awt.Font("標楷體", 1, 36)); // NOI18N
+        updatePasswordTitleLabel.setFont(new java.awt.Font("�з���", 1, 36)); // NOI18N
         updatePasswordTitleLabel.setText("Update Password");
 
         javax.swing.GroupLayout updatePasswordPanelLayout = new javax.swing.GroupLayout(updatePasswordPanel);
@@ -231,40 +231,40 @@ public class SettingPanel extends javax.swing.JPanel {
 
         labSettingPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        labMemberNameLabel.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
+        labMemberNameLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
         labMemberNameLabel.setText("Add Lab Member");
 
-        labMemberEmailLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        labMemberEmailLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         labMemberEmailLabel.setText("Name:");
 
-        labMemberPasswordLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        labMemberPasswordLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         labMemberPasswordLabel.setText("Email: ");
 
-        addLabMemberTitleLabel.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        addLabMemberTitleLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         addLabMemberTitleLabel.setText("Password: ");
 
-        labMemberEmailField.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        labMemberEmailField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         labMemberEmailField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberEmailFieldKeyPressed(evt);
             }
         });
 
-        labMemberNameField.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        labMemberNameField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         labMemberNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberNameFieldKeyPressed(evt);
             }
         });
 
-        labMemberPasswordField.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        labMemberPasswordField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         labMemberPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberPasswordFieldKeyPressed(evt);
             }
         });
 
-        addLabMemberButton.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        addLabMemberButton.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         addLabMemberButton.setText("Add");
         addLabMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -690,7 +690,8 @@ public class SettingPanel extends javax.swing.JPanel {
         String[] permissions = {"Admin", "Manager", "Viewer"};
         permissionComboBox.setModel(new DefaultComboBoxModel(permissions));
         searchMap = new HashMap<String, ILabMember>();
-        
+
+
         for(Object key: labMemberList.getLabMemberMap().keySet()) {
             if(!labMemberList.getLabMemberMap().get(key).getName().equals(labMember.getName())){
                 searchMap.put(labMemberList.getLabMemberMap().get(key).getName(), labMemberList.getLabMemberMap().get(key));
@@ -703,9 +704,9 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void changeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeBtnActionPerformed
         // TODO add your handling code here:
-        controller.setUserPermission(labMember,permissionComboBox.getSelectedItem().toString(), 
+        controller.setUserPermission(permissionComboBox.getSelectedItem().toString(),
                 searchMap.get(nameComboBox.getSelectedItem().toString()));
-        JOptionPane.showMessageDialog(null, "Change Permission Sucessfully.", "Chnage Permission ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+        JOptionPane.showMessageDialog(null, "Change Permission Sucessfully.", "Chnage Permission ",JOptionPane.INFORMATION_MESSAGE, successIcon);
         changePermissionDialog.setVisible(false);
     }//GEN-LAST:event_changeBtnActionPerformed
 
@@ -729,8 +730,8 @@ public class SettingPanel extends javax.swing.JPanel {
         
         if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) 
                 && !String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))){
-            labMember.setPassword(String.valueOf(newPasswordField.getPassword()));
-            JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+            labMemberList.changePassword(labMember, String.valueOf(newPasswordField.getPassword()));
+            JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, successIcon);
             
             oldPasswordField.setText("");
             newPasswordField.setText("");
@@ -748,7 +749,7 @@ public class SettingPanel extends javax.swing.JPanel {
         LabMember newLabMember = new Viewer(labMemberNameField.getText(), labMemberEmailField.getText(), labMemberPasswordField.getText());
         labMemberList.addLabMember(newLabMember);
         
-        JOptionPane.showMessageDialog(null, "Add Lab Member Sucessfully.", "Add Lab Member ",JOptionPane.INFORMATION_MESSAGE, sucessIcon);
+        JOptionPane.showMessageDialog(null, "Add Lab Member Sucessfully.", "Add Lab Member ",JOptionPane.INFORMATION_MESSAGE, successIcon);
         labMemberNameField.setText("");
         labMemberEmailField.setText("");
         labMemberPasswordField.setText("");
@@ -760,7 +761,7 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JDialog addLabMemberDialog;
     private javax.swing.JLabel addLabMemberTitleLabel;
     private javax.swing.JButton changeBtn;
-    private javax.swing.JButton changePermissionBtn;
+    protected javax.swing.JButton changePermissionBtn;
     private javax.swing.JDialog changePermissionDialog;
     private javax.swing.JPanel changePermissionPanel;
     private javax.swing.JLabel changePermissionTitleLabel;

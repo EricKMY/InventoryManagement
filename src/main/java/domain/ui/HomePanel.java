@@ -127,8 +127,11 @@ public class HomePanel extends javax.swing.JPanel {
     private void settingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getSettingPanel().addLabMemberBtn.setVisible(false);
-        if(labMember.getPermission().equals("Admin"))
+        mainFrame.getSettingPanel().changePermissionBtn.setVisible(false);
+        if(labMember.getPermission().equals("Admin")) {
             mainFrame.getSettingPanel().addLabMemberBtn.setVisible(true);
+            mainFrame.getSettingPanel().changePermissionBtn.setVisible(true);
+        }
         mainFrame.getContentPane().remove(mainFrame.getHomePanel());
         mainFrame.getContentPane().add(mainFrame.getSettingPanel());
         mainFrame.getSettingPanel().setVisible(true);
@@ -136,7 +139,8 @@ public class HomePanel extends javax.swing.JPanel {
         mainFrame.repaint();
         mainFrame.getSettingPanel().nameField.setText(labMember.getName());
         mainFrame.getSettingPanel().emailField.setText(labMember.getEmail());
-        mainFrame.getSettingPanel().phoneField.setText(labMember.getPhone());
+        if(labMember.getPhone() == null) mainFrame.getSettingPanel().phoneField.setText("");
+        else mainFrame.getSettingPanel().phoneField.setText(labMember.getPhone());
         mainFrame.getSettingPanel().permissionField.setText(labMember.getPermission());
         mainFrame.getSettingPanel().permissionField.setEditable(false);
     }//GEN-LAST:event_settingBtnActionPerformed
