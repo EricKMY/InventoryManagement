@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ControllerTest {
     private ILabMember labMember;
@@ -88,17 +89,38 @@ public class ControllerTest {
         assertNull(controller.readCategory("groceries"));
     }
 
-//    @Test
-//    public void setUserPermissionTest() {
-//        ILabMember labMember = new Admin("Jeff", "jeff@gmail.com", "123");
-//        ILabMember newLabMember = new Viewer("newJeff", "newJeff@gmail.com", "456");
-//        assertEquals("Viewer", newLabMember.getPermission());
-//        controller.setUserPermission("Manager", newLabMember);
-//        assertEquals("Manager", newLabMember.getPermission());
-//
-//        assertEquals("Admin", labMember.getPermission());
-//        controller.setUserPermission("Manager", labMember);
-//        assertEquals("Admin", labMember.getPermission());
-//    }
+    @Test
+    public void addLabMemberToLabMemberList() {
+        assertEquals(0, controller.getLabMemberList().getLabMemberMap().size());
+        controller.addLabMember(labMember);
+        assertEquals(1, controller.getLabMemberList().getLabMemberMap().size());
+    }
 
+    @Test
+    public void changeManagerPermission() {
+        controller.addLabMember(labMember);
+        assertEquals("Manager", controller.getLabMemberList().findLabMemberById(labMember.getId()).getPermission());
+        controller.changePassword("Admin", controller.getLabMemberList().findLabMemberById(labMember.getId()));
+        assertEquals("Admin", controller.getLabMemberList().findLabMemberById(labMember.getId()).getPassword());
+    }
+
+    @Test
+    public void changeManagerPassword() {
+        controller.addLabMember(labMember);
+        assertEquals("123", controller.getLabMemberList().findLabMemberById(labMember.getId()).getPassword());
+        controller.changePassword("456", controller.getLabMemberList().findLabMemberById(labMember.getId()));
+        assertEquals("456", controller.getLabMemberList().findLabMemberById(labMember.getId()).getPassword());
+    }
+
+    @Test
+    public void updateManagerUserInfo() {
+        controller.addLabMember(labMember);
+        assertEquals("Bill", controller.getLabMemberList().findLabMemberById(labMember.getId()).getName());
+        assertEquals("xxx@gmail.com", controller.getLabMemberList().findLabMemberById(labMember.getId()).getEmail());
+        assertEquals(null, controller.getLabMemberList().findLabMemberById(labMember.getId()).getPhone());
+        controller.updateUserInfo("Jeff", "Jeff2@gmail.com", "0909090909", controller.getLabMemberList().findLabMemberById(labMember.getId()));
+        assertEquals("Jeff", controller.getLabMemberList().findLabMemberById(labMember.getId()).getName());
+        assertEquals("Jeff2@gmail.com", controller.getLabMemberList().findLabMemberById(labMember.getId()).getEmail());
+        assertEquals("0909090909", controller.getLabMemberList().findLabMemberById(labMember.getId()).getPhone());
+    }
 }

@@ -9,6 +9,7 @@ public interface ILabMemberList {
     ILabMember findLabMemberById(String id);
 
     //new
-    boolean changeUserPermission(ILabMember targetLabMember, String permission);
-    boolean changePassword(ILabMember targetLabMember, String password);
+    boolean changeUserPermission(String permission, ILabMember labMember);
+    boolean changePassword(String password, ILabMember labMember);
+    boolean updateUserInfo(String name, String email, String phone, ILabMember labMember);
 }

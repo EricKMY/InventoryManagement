@@ -1,10 +1,7 @@
 package domain.labMember;
 
-import domain.database.DataBaseConnector;
-
-import java.sql.Connection;
-
 public class Admin extends LabMember {
+    //Using DB need;
     public Admin() {
         super();
     }
@@ -15,10 +12,10 @@ public class Admin extends LabMember {
     }
 
     //remove
-    public boolean setUserPermission(ILabMember labMember, String permission) {
-        DataBaseConnector dataBaseConnector = new DataBaseConnector();
-        Connection connection = dataBaseConnector.connect();
-        labMember.setPermission(permission);
-        return true;
-    }
+//    public boolean setUserPermission(ILabMember labMember, String permission) {
+//        DataBaseConnector dataBaseConnector = new DataBaseConnector();
+//        Connection connection = dataBaseConnector.connect();
+//        labMember.setPermission(permission);
+//        return true;
+//    }
 }

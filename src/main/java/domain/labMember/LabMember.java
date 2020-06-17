@@ -69,19 +69,19 @@ public class LabMember implements ILabMember {
       this.permission = permission;
     };
 
-    //new
+    //While using DB to get LabMember need use.
     public void setId(String id) {
       this.id = id;
     }
 
     //remove
-    public boolean setUserPermission(ILabMember labMember, String permission) {
-        return true;
-    }
-    public ILabInventoryList readInventoryList() {
-        return null;
-    }
-    public ILabInventory readInventory(String id) {
-        return null;
-    }
+//    public boolean setUserPermission(ILabMember labMember, String permission) {
+//        return true;
+//    }
+//    public ILabInventoryList readInventoryList() {
+//        return null;
+//    }
+//    public ILabInventory readInventory(String id) {
+//        return null;
+//    }
 }

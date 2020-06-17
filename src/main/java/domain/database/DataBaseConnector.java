@@ -10,7 +10,7 @@ public class DataBaseConnector {
   public DataBaseConnector() {
       createDatabase();
       createUserTable();
-      InsertAdminAndManager(); //just use once.
+//      InsertAdminAndManager(); // just call once.
   }
 
   public Connection connect() {
@@ -86,7 +86,7 @@ public class DataBaseConnector {
   private void createUserTable() {
     Connection connection = this.connect();
     Statement statement = null;
-    String sql = "CREATE TABLE IF NOT EXISTS User (id VARCHAR(50) not NULL, name VARCHAR(50), email VARCHAR(50), phone VARCHAR(50), password VARCHAR(50), permission VARCHAR(50) not NULL)";
+    String sql = "CREATE TABLE IF NOT EXISTS User (id VARCHAR(50) PRIMARY KEY not NULL, name VARCHAR(50), email VARCHAR(50), phone VARCHAR(50), password VARCHAR(50), permission VARCHAR(50) not NULL)";
     try {
       statement = connection.createStatement();
       statement.executeUpdate(sql);
@@ -102,17 +102,21 @@ public class DataBaseConnector {
     Connection connection = this.connect();
     Statement statement = null;
     String id = UUID.randomUUID().toString();
-    String sql = "INSERT INTO User (id, name, email, phone, password, permission) SELECT '"+ id
-            + "','Admin','admin@gmail.com','0912345678','admin','Admin' FROM User WHERE NOT EXISTS "
-            + " (SELECT email FROM User WHERE email='admin@gmail.com')";
+
+    String sql = "INSERT INTO User (id, name, email, phone, password, permission) VALUES('" + id +"','Admin','admin@gmail.com','0912345678','admin','Admin')";
+//    String sql = "INSERT INTO User (id, name, email, phone, password, permission) SELECT '"+ id
+//            + "','Admin','admin@gmail.com','0912345678','admin','Admin' FROM User WHERE NOT EXISTS "
+//            + " (SELECT email FROM User WHERE email='admin@gmail.com')";
     id = UUID.randomUUID().toString();
-    String sql2 = "INSERT INTO User (id, name, email, phone, password, permission) SELECT '"+ id
-            + "','Manager','manager@gmail.com','0987654321','manager','Manager' FROM User WHERE NOT EXISTS "
-            + "(SELECT email FROM User WHERE email='manager@gmail.com')";
+    String sql2 = "INSERT INTO User (id, name, email, phone, password, permission) VALUES('" + id +"','Manager','manager@gmail.com','0987654321','manager','Manager')";
+//    String sql2 = "INSERT INTO User (id, name, email, phone, password, permission) SELECT '"+ id
+//            + "','Manager','manager@gmail.com','0987654321','manager','Manager' FROM User WHERE NOT EXISTS "
+//            + "(SELECT email FROM User WHERE email='manager@gmail.com')";
     try {
       statement = connection.createStatement();
       statement.executeUpdate(sql);
       statement.executeUpdate(sql2);
+      System.out.println(sql);
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
@@ -126,7 +130,8 @@ public class DataBaseConnector {
     Connection connection = dataBaseConnector.connect();
     Statement statement = null;
     ResultSet resultSet = null;
-    String sql = "SELECT * FROM User WHERE name = 'Admin'";
+    String user  = "User ";
+    String sql = "SELECT * FROM "+ user +"WHERE name = 'Admin'";
 
     LabMember labMember = null;
 
@@ -155,6 +160,6 @@ public class DataBaseConnector {
       dataBaseConnector.closeStatement(statement);
       dataBaseConnector.closeConnect(connection);
     }
-
+//
   }
 }

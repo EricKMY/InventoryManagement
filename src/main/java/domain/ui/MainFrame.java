@@ -20,17 +20,27 @@ public class MainFrame extends javax.swing.JFrame {
     private IController controller;
     private SettingPanel settingPanel;
     private NotificationPanel notificationPanel;
-    private ILabMemberList labMemberList;
     
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
+//        dbInit(controller, labMemberList);
         controller = new Controller();
-//        labMemberList = new LabMemberList();
-        labMemberList = new LabMemberListInDB();
-        dbInit(controller, labMemberList);
-//        init(controller, labMemberList);
+        init();
+        
+        homePanel = new HomePanel(this, controller);
+        inventoryPanel = new InventoryPanel(this, controller, controller.getLabMemberList());
+        loginPanel = new LoginPanel(this, controller, controller.getLabMemberList());
+        settingPanel = new SettingPanel(this, controller);
+        notificationPanel = new NotificationPanel(this, controller);
+        
+        this.add(loginPanel);
+        this.add(homePanel);
+        this.add(inventoryPanel);
+        this.add(settingPanel);
+        this.add(notificationPanel);
+        
         loginPanel.setVisible(true);
         initComponents();
     }
@@ -69,25 +79,13 @@ public class MainFrame extends javax.swing.JFrame {
         this.add(notificationPanel);
     }
     
-    private void init(IController controller, ILabMemberList labMemberList) {
+    private void init() {
         Admin admin = new Admin("Admin", "admin@gmail.com", "admin");
         admin.setPhone("0909123456");
         Manager manager = new Manager("Manager", "manager@gmail.com", "manager");
         manager.setPhone("0909123456");
-        labMemberList.addLabMember(admin);
-        labMemberList.addLabMember(manager);
-        
-        homePanel = new HomePanel(this, controller);
-        inventoryPanel = new InventoryPanel(this, controller, labMemberList);
-        loginPanel = new LoginPanel(this, controller, labMemberList);
-        settingPanel = new SettingPanel(this, controller);
-        notificationPanel = new NotificationPanel(this, controller);
-        
-        this.add(loginPanel);
-        this.add(homePanel);
-        this.add(inventoryPanel);
-        this.add(settingPanel);
-        this.add(notificationPanel);
+        controller.addLabMember(admin);
+        controller.addLabMember(manager);
     }
     /**
      * This method is called from within the constructor to initialize the form.

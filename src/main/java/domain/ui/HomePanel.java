@@ -139,8 +139,7 @@ public class HomePanel extends javax.swing.JPanel {
         mainFrame.repaint();
         mainFrame.getSettingPanel().nameField.setText(labMember.getName());
         mainFrame.getSettingPanel().emailField.setText(labMember.getEmail());
-        if(labMember.getPhone() == null) mainFrame.getSettingPanel().phoneField.setText("");
-        else mainFrame.getSettingPanel().phoneField.setText(labMember.getPhone());
+        mainFrame.getSettingPanel().phoneField.setText(labMember.getPhone());
         mainFrame.getSettingPanel().permissionField.setText(labMember.getPermission());
         mainFrame.getSettingPanel().permissionField.setEditable(false);
     }//GEN-LAST:event_settingBtnActionPerformed

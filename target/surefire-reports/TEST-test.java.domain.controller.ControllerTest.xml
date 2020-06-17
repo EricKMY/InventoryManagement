@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="test.java.domain.controller.ControllerTest" time="0.992" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="test.java.domain.controller.ControllerTest" time="0.287" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Development\JDK\jre\bin"/>
@@ -62,13 +62,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="updateCategoryNameTest" time="0.828"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="deleteInventoryNameTest" time="0.023"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="isInventoryUnderLimitTest" time="0.022"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="deleteCategoryTest" time="0.019"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="readInventoryTest" time="0.02"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="createInventoryTest" time="0.027"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryAmountTest" time="0.02"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="createAndReadCategoryTest" time="0.016"/>
-  <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryNameTest" time="0.017"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="updateCategoryNameTest" time="0.287"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="deleteInventoryNameTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="isInventoryUnderLimitTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="deleteCategoryTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="readInventoryTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="createInventoryTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryAmountTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="createAndReadCategoryTest" time="0"/>
+  <testcase classname="test.java.domain.controller.ControllerTest" name="updateInventoryNameTest" time="0"/>
 </testsuite>

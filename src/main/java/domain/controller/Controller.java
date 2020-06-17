@@ -15,11 +15,14 @@ public class Controller implements IController {
     public Controller(){
         labInventoryList = new LabInventoryList();
         labMemberList = new LabMemberList();
-//        labMemberList = new LabMemberListInDB();
     }
 
     public ILabInventoryList getLabInventoryList(){
         return labInventoryList;
+    }
+
+    public ILabMemberList getLabMemberList() {
+        return labMemberList;
     }
 
     public boolean createCategory(String category, ILabMember labMember){
@@ -68,7 +71,23 @@ public class Controller implements IController {
     }
 
     //Change
-    public boolean setUserPermission(String permission, ILabMember targetLabMember){
-        return labMemberList.changeUserPermission(targetLabMember, permission);
+    public boolean changeUserPermission(String permission, ILabMember labMember) {
+        return labMemberList.changeUserPermission(permission, labMember);
     }
+
+    public boolean changePassword(String password, ILabMember labMember) {
+        return labMemberList.changePassword(password, labMember);
+    }
+
+    @Override
+    public boolean updateUserInfo(String name, String email, String phone, ILabMember labMember) {
+        return labMemberList.updateUserInfo(name, email, phone, labMember);
+    }
+
+    @Override
+    public boolean addLabMember(ILabMember labMember) {
+        return labMemberList.addLabMember(labMember);
+    }
+
+
 }

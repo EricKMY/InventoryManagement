@@ -59,7 +59,7 @@ public class LabMemberListInDB implements ILabMemberList {
       Connection connection = dataBaseConnector.connect();
       Statement statement = null;
       String sql = "INSERT INTO User VALUES ('"+ labMember.getId() + "','" + labMember.getName() +
-        "','" + labMember.getEmail() + "','" + labMember.getPhone() + "','"+
+        "','" + labMember.getEmail() + "','" + "" + "','"+
         labMember.getPassword() + "','"+ labMember.getPermission() + "')";
       try {
           statement = connection.createStatement();
@@ -124,11 +124,11 @@ public class LabMemberListInDB implements ILabMemberList {
     }
 
     @Override
-    public boolean changeUserPermission(ILabMember targetLabMember, String permission) {
+    public boolean changeUserPermission(String permission, ILabMember labMember) {
         Connection connection = dataBaseConnector.connect();
         Statement statement = null;
         int result = 0;
-        String sql = "Update User set permission = '" + permission + "' WHERE id = '" + targetLabMember.getId() + "'";
+        String sql = "Update User set permission = '" + permission + "' WHERE id = '" + labMember.getId() + "'";
         System.out.println(sql);
         try {
             statement = connection.createStatement();
@@ -145,17 +145,32 @@ public class LabMemberListInDB implements ILabMemberList {
     }
 
     @Override
-    public boolean changePassword(ILabMember targetLabMember, String password) {
+    public boolean changePassword(String password, ILabMember labMember) {
         Connection connection = dataBaseConnector.connect();
         Statement statement = null;
         int result = 0;
-        String sql = "Update User set password = '" + password + "' WHERE id = '" + targetLabMember.getId() + "'";
-        System.out.println(sql);
+        String sql = "Update User set password = '" + password + "' WHERE id = '" + labMember.getId() + "'";
         try {
             statement = connection.createStatement();
-            System.out.println(sql);
             result = statement.executeUpdate(sql);
-            System.out.println(result);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            dataBaseConnector.closeStatement(statement);
+            dataBaseConnector.closeConnect(connection);
+            return result == 1 ? true: false;
+        }
+    }
+
+    @Override
+    public boolean updateUserInfo(String name, String email, String phone, ILabMember labMember) {
+        Connection connection = dataBaseConnector.connect();
+        Statement statement = null;
+        int result = 0;
+        String sql = "Update User set name = '" + name + "', email = '" + email + "', phone = '" + phone + "' WHERE id = '" + labMember.getId() + "'";
+        try {
+            statement = connection.createStatement();
+            result = statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -175,7 +190,7 @@ public class LabMemberListInDB implements ILabMemberList {
       labMemberList.addLabMember(labMember);
 
 //      labMemberList.removeLabMemberById("f7f9da66-026b-4234-bf8f-e5375e606aa2");
-      labMemberList.changeUserPermission(labMember, "Admin");
+      labMemberList.updateUserInfo("xyz", "wxz", "qwewe", labMember);
 
   }
 }

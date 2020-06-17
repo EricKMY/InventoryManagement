@@ -74,10 +74,10 @@ public class SettingPanel extends javax.swing.JPanel {
         updatePasswordTitleLabel = new javax.swing.JLabel();
         addLabMemberDialog = new javax.swing.JDialog();
         labSettingPanel = new javax.swing.JPanel();
-        labMemberNameLabel = new javax.swing.JLabel();
-        labMemberEmailLabel = new javax.swing.JLabel();
-        labMemberPasswordLabel = new javax.swing.JLabel();
-        addLabMemberTitleLabel = new javax.swing.JLabel();
+        addLabMeberLabel = new javax.swing.JLabel();
+        nameAddLabMeberLabel = new javax.swing.JLabel();
+        emailAddLabMeberLabel = new javax.swing.JLabel();
+        passwordAddLabMeberLabel = new javax.swing.JLabel();
         labMemberEmailField = new javax.swing.JTextField();
         labMemberNameField = new javax.swing.JTextField();
         labMemberPasswordField = new javax.swing.JTextField();
@@ -90,6 +90,16 @@ public class SettingPanel extends javax.swing.JPanel {
         nameComboBox = new javax.swing.JComboBox<>();
         permissionComboBox = new javax.swing.JComboBox<>();
         changeBtn = new javax.swing.JButton();
+        userInfoDialog = new javax.swing.JDialog();
+        userInfoPanel = new javax.swing.JPanel();
+        UpdateUserInfoLabel = new javax.swing.JLabel();
+        nameUpdatelLabel = new javax.swing.JLabel();
+        emailUpdateLabel = new javax.swing.JLabel();
+        phoneUpdateLabel = new javax.swing.JLabel();
+        userInfoEmailField = new javax.swing.JTextField();
+        userInfoNameField = new javax.swing.JTextField();
+        userInfoPhoneField = new javax.swing.JTextField();
+        updateBtn = new javax.swing.JButton();
         inventoryBtn = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         homeBtn = new javax.swing.JButton();
@@ -100,7 +110,7 @@ public class SettingPanel extends javax.swing.JPanel {
         phoneLabel = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
-        updateBtn = new javax.swing.JButton();
+        updateUserInfoBtn = new javax.swing.JButton();
         updatePasswordBtn = new javax.swing.JButton();
         permissionLabel = new javax.swing.JLabel();
         permissionField = new javax.swing.JTextField();
@@ -231,17 +241,17 @@ public class SettingPanel extends javax.swing.JPanel {
 
         labSettingPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        labMemberNameLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
-        labMemberNameLabel.setText("Add Lab Member");
+        addLabMeberLabel.setFont(new java.awt.Font("�s�ө���", 0, 36)); // NOI18N
+        addLabMeberLabel.setText("Add Lab Member");
 
-        labMemberEmailLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
-        labMemberEmailLabel.setText("Name:");
+        nameAddLabMeberLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        nameAddLabMeberLabel.setText("Name:");
 
-        labMemberPasswordLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
-        labMemberPasswordLabel.setText("Email: ");
+        emailAddLabMeberLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        emailAddLabMeberLabel.setText("Email: ");
 
-        addLabMemberTitleLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
-        addLabMemberTitleLabel.setText("Password: ");
+        passwordAddLabMeberLabel.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        passwordAddLabMeberLabel.setText("Password: ");
 
         labMemberEmailField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
         labMemberEmailField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -251,6 +261,11 @@ public class SettingPanel extends javax.swing.JPanel {
         });
 
         labMemberNameField.setFont(new java.awt.Font("�s�ө���", 0, 24)); // NOI18N
+        labMemberNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                labMemberNameFieldActionPerformed(evt);
+            }
+        });
         labMemberNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 labMemberNameFieldKeyPressed(evt);
@@ -279,9 +294,9 @@ public class SettingPanel extends javax.swing.JPanel {
             .addGroup(labSettingPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addLabMemberTitleLabel)
-                    .addComponent(labMemberPasswordLabel)
-                    .addComponent(labMemberEmailLabel))
+                    .addComponent(passwordAddLabMeberLabel)
+                    .addComponent(emailAddLabMeberLabel)
+                    .addComponent(nameAddLabMeberLabel))
                 .addGap(148, 148, 148)
                 .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labSettingPanelLayout.createSequentialGroup()
@@ -293,25 +308,25 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addGap(228, 228, 228))
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labSettingPanelLayout.createSequentialGroup()
                 .addGap(150, 150, 150)
-                .addComponent(labMemberNameLabel)
+                .addComponent(addLabMeberLabel)
                 .addGap(150, 150, 150))
         );
         labSettingPanelLayout.setVerticalGroup(
             labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(labSettingPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labMemberNameLabel)
+                .addComponent(addLabMeberLabel)
                 .addGap(18, 18, 18)
                 .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labMemberEmailLabel)
+                    .addComponent(nameAddLabMeberLabel)
                     .addComponent(labMemberNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labMemberPasswordLabel)
+                    .addComponent(emailAddLabMeberLabel)
                     .addComponent(labMemberEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(labSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addLabMemberTitleLabel)
+                    .addComponent(passwordAddLabMeberLabel)
                     .addComponent(labMemberPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(addLabMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,7 +337,7 @@ public class SettingPanel extends javax.swing.JPanel {
         addLabMemberDialog.getContentPane().setLayout(addLabMemberDialogLayout);
         addLabMemberDialogLayout.setHorizontalGroup(
             addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labSettingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+            .addComponent(labSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 574, Short.MAX_VALUE)
         );
         addLabMemberDialogLayout.setVerticalGroup(
             addLabMemberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,6 +419,111 @@ public class SettingPanel extends javax.swing.JPanel {
             .addComponent(changePermissionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        userInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        UpdateUserInfoLabel.setFont(new java.awt.Font("Lucida Bright", 0, 36)); // NOI18N
+        UpdateUserInfoLabel.setText("Update User Info");
+
+        nameUpdatelLabel.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        nameUpdatelLabel.setText("Name:");
+
+        emailUpdateLabel.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        emailUpdateLabel.setText("Email: ");
+
+        phoneUpdateLabel.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        phoneUpdateLabel.setText("Phone: ");
+
+        userInfoEmailField.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        userInfoEmailField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userInfoEmailFieldKeyPressed(evt);
+            }
+        });
+
+        userInfoNameField.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        userInfoNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userInfoNameFieldActionPerformed(evt);
+            }
+        });
+        userInfoNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userInfoNameFieldKeyPressed(evt);
+            }
+        });
+
+        userInfoPhoneField.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        userInfoPhoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userInfoPhoneFieldKeyPressed(evt);
+            }
+        });
+
+        updateBtn.setFont(new java.awt.Font("Lucida Bright", 0, 24)); // NOI18N
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout userInfoPanelLayout = new javax.swing.GroupLayout(userInfoPanel);
+        userInfoPanel.setLayout(userInfoPanelLayout);
+        userInfoPanelLayout.setHorizontalGroup(
+            userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userInfoPanelLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phoneUpdateLabel)
+                    .addComponent(emailUpdateLabel)
+                    .addComponent(nameUpdatelLabel))
+                .addGap(148, 148, 148)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userInfoPanelLayout.createSequentialGroup()
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(userInfoPhoneField)
+                    .addComponent(userInfoEmailField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(userInfoNameField, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(228, 228, 228))
+            .addGroup(userInfoPanelLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(UpdateUserInfoLabel)
+                .addGap(150, 150, 150))
+        );
+        userInfoPanelLayout.setVerticalGroup(
+            userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UpdateUserInfoLabel)
+                .addGap(18, 18, 18)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameUpdatelLabel)
+                    .addComponent(userInfoNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailUpdateLabel)
+                    .addComponent(userInfoEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phoneUpdateLabel)
+                    .addComponent(userInfoPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout userInfoDialogLayout = new javax.swing.GroupLayout(userInfoDialog.getContentPane());
+        userInfoDialog.getContentPane().setLayout(userInfoDialogLayout);
+        userInfoDialogLayout.setHorizontalGroup(
+            userInfoDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+        );
+        userInfoDialogLayout.setVerticalGroup(
+            userInfoDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setBackground(new java.awt.Color(255, 255, 255));
 
         inventoryBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -451,11 +571,11 @@ public class SettingPanel extends javax.swing.JPanel {
         phoneField.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         phoneField.setText("Phone");
 
-        updateBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        updateBtn.setText("Update User Info");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+        updateUserInfoBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        updateUserInfoBtn.setText("Update User Info");
+        updateUserInfoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
+                updateUserInfoBtnActionPerformed(evt);
             }
         });
 
@@ -529,7 +649,7 @@ public class SettingPanel extends javax.swing.JPanel {
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(updatePasswordBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateUserInfoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(changePermissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addLabMemberBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(55, 55, 55))
@@ -548,7 +668,7 @@ public class SettingPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updateUserInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
@@ -596,15 +716,14 @@ public class SettingPanel extends javax.swing.JPanel {
         mainFrame.getLoginPanel().labMember = null;
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+    private void updateUserInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserInfoBtnActionPerformed
         // TODO add your handling code here:
-        if(!nameField.getText().equals(labMember.getName()))
-            labMember.setName(nameField.getText());
-        if(!emailField.getText().equals(labMember.getEmail()))
-            labMember.setEmail(emailField.getText());
-        if(!phoneField.getText().equals(labMember.getPhone()))
-            labMember.setPhone(phoneField.getText());
-    }//GEN-LAST:event_updateBtnActionPerformed
+        userInfoNameField.setText(nameField.getText());
+        userInfoEmailField.setText(emailField.getText());
+        userInfoPhoneField.setText(phoneField.getText());
+        userInfoDialog.setBounds(0, 0, 574, 370);
+        userInfoDialog.setVisible(true);
+    }//GEN-LAST:event_updateUserInfoBtnActionPerformed
 
     private void oldPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldPasswordFieldActionPerformed
         // TODO add your handling code here:
@@ -704,12 +823,48 @@ public class SettingPanel extends javax.swing.JPanel {
 
     private void changeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeBtnActionPerformed
         // TODO add your handling code here:
-        controller.setUserPermission(permissionComboBox.getSelectedItem().toString(),
+        controller.changeUserPermission(permissionComboBox.getSelectedItem().toString(),
                 searchMap.get(nameComboBox.getSelectedItem().toString()));
         JOptionPane.showMessageDialog(null, "Change Permission Sucessfully.", "Chnage Permission ",JOptionPane.INFORMATION_MESSAGE, successIcon);
         changePermissionDialog.setVisible(false);
     }//GEN-LAST:event_changeBtnActionPerformed
 
+    private void userInfoEmailFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userInfoEmailFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userInfoEmailFieldKeyPressed
+
+    private void userInfoNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userInfoNameFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userInfoNameFieldKeyPressed
+
+    private void userInfoPhoneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userInfoPhoneFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userInfoPhoneFieldKeyPressed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        updateUserInfo();
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void userInfoNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userInfoNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userInfoNameFieldActionPerformed
+
+    private void labMemberNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labMemberNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_labMemberNameFieldActionPerformed
+
+    private void updateUserInfo() {
+        boolean isSuccess = false;
+        isSuccess = controller.updateUserInfo(userInfoNameField.getText(), userInfoEmailField.getText(), userInfoPhoneField.getText(), labMember);
+        if(isSuccess) {
+            nameField.setText(userInfoNameField.getText());
+            emailField.setText(userInfoEmailField.getText());
+            phoneField.setText(userInfoPhoneField.getText());
+        }
+        userInfoDialog.setVisible(false);
+    }
+    
     private void updatePassword() {        
         if(String.valueOf(oldPasswordField.getPassword()).equals("") 
                 || String.valueOf(newPasswordField.getPassword()).equals("")
@@ -730,7 +885,7 @@ public class SettingPanel extends javax.swing.JPanel {
         
         if(String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) 
                 && !String.valueOf(newPasswordField.getPassword()).equals(String.valueOf(oldPasswordField.getPassword()))){
-            labMemberList.changePassword(labMember, String.valueOf(newPasswordField.getPassword()));
+            labMemberList.changePassword(String.valueOf(newPasswordField.getPassword()), labMember);
             JOptionPane.showMessageDialog(null, "Update Password Sucessfully.", "Update ",JOptionPane.INFORMATION_MESSAGE, successIcon);
             
             oldPasswordField.setText("");
@@ -747,7 +902,7 @@ public class SettingPanel extends javax.swing.JPanel {
         }
         
         LabMember newLabMember = new Viewer(labMemberNameField.getText(), labMemberEmailField.getText(), labMemberPasswordField.getText());
-        labMemberList.addLabMember(newLabMember);
+        controller.addLabMember(newLabMember);
         
         JOptionPane.showMessageDialog(null, "Add Lab Member Sucessfully.", "Add Lab Member ",JOptionPane.INFORMATION_MESSAGE, successIcon);
         labMemberNameField.setText("");
@@ -756,10 +911,11 @@ public class SettingPanel extends javax.swing.JPanel {
         addLabMemberDialog.setVisible(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel UpdateUserInfoLabel;
+    private javax.swing.JLabel addLabMeberLabel;
     protected javax.swing.JButton addLabMemberBtn;
     private javax.swing.JButton addLabMemberButton;
     private javax.swing.JDialog addLabMemberDialog;
-    private javax.swing.JLabel addLabMemberTitleLabel;
     private javax.swing.JButton changeBtn;
     protected javax.swing.JButton changePermissionBtn;
     private javax.swing.JDialog changePermissionDialog;
@@ -768,38 +924,47 @@ public class SettingPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JLabel confirmPasswordLabel;
     private javax.swing.JButton dialogUpdatePasswordBtn;
+    private javax.swing.JLabel emailAddLabMeberLabel;
     protected javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel emailUpdateLabel;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton inventoryBtn;
     private javax.swing.JTextField labMemberEmailField;
-    private javax.swing.JLabel labMemberEmailLabel;
     private javax.swing.JTextField labMemberNameField;
-    private javax.swing.JLabel labMemberNameLabel;
     private javax.swing.JTextField labMemberPasswordField;
-    private javax.swing.JLabel labMemberPasswordLabel;
     private javax.swing.JPanel labSettingPanel;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JLabel memberNameLabel;
     private javax.swing.JLabel memberPermissionLabel;
+    private javax.swing.JLabel nameAddLabMeberLabel;
     private javax.swing.JComboBox<String> nameComboBox;
     protected javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel nameUpdatelLabel;
     private javax.swing.JPasswordField newPasswordField;
     private javax.swing.JLabel newPasswordLabel;
     private javax.swing.JPasswordField oldPasswordField;
     private javax.swing.JLabel oldPasswordLabel;
+    private javax.swing.JLabel passwordAddLabMeberLabel;
     private javax.swing.JComboBox<String> permissionComboBox;
     protected javax.swing.JTextField permissionField;
     private javax.swing.JLabel permissionLabel;
     protected javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel phoneUpdateLabel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton updatePasswordBtn;
     private javax.swing.JDialog updatePasswordDialog;
     private javax.swing.JPanel updatePasswordPanel;
     private javax.swing.JLabel updatePasswordTitleLabel;
+    private javax.swing.JButton updateUserInfoBtn;
+    private javax.swing.JDialog userInfoDialog;
+    private javax.swing.JTextField userInfoEmailField;
+    private javax.swing.JTextField userInfoNameField;
+    private javax.swing.JPanel userInfoPanel;
+    private javax.swing.JTextField userInfoPhoneField;
     // End of variables declaration//GEN-END:variables
 
 }
