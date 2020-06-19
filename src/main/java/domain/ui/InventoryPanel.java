@@ -400,6 +400,17 @@ public class InventoryPanel extends javax.swing.JPanel {
         PopMenu popMenu = new PopMenu();
         controller.updateInventoryName(cName, iName, popMenu.getIName(), labMember);
         controller.updateInventoryAmount(cName, popMenu.getIName(), popMenu.getIAmount(), labMember);
+
+        if(controller.isInventoryUnderLimit(cName, iName)) {
+            INotificationInfo notificationInfo =
+                    controller.readInventory(cName, iName).getNotificationInfo();
+            notificationInfo.sendAlert("erickuan970810edu@gmail.com"
+                    , "Js95816973edu"
+                    , "ntutlab1321mmc@gmail.com"
+                    , "Inventory less"
+                    , iName);
+        }
+
         String detail = getInventoryDetail(controller.readInventory(cName, popMenu.getIName()));
         presentLabel.setText(detail);
         setInventoryList(cName);
