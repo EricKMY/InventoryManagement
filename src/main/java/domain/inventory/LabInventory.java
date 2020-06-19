@@ -30,8 +30,10 @@ public class LabInventory implements ILabInventory{
 
     public boolean isUnderLimit(){
         //diff from design class model
-        if(notificationInfo.getLimitAmount() != "")
+        if(notificationInfo.getLimitAmount() != "") {
             limitNum = Integer.parseInt(notificationInfo.getLimitAmount());
+            System.out.println(notificationInfo.getLimitAmount());
+        }
         return amount < limitNum ? true:false;
     }
 

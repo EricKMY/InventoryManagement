@@ -401,14 +401,14 @@ public class InventoryPanel extends javax.swing.JPanel {
         controller.updateInventoryName(cName, iName, popMenu.getIName(), labMember);
         controller.updateInventoryAmount(cName, popMenu.getIName(), popMenu.getIAmount(), labMember);
 
-        if(controller.isInventoryUnderLimit(cName, iName)) {
+        if(controller.isInventoryUnderLimit(cName, popMenu.getIName())) {
             INotificationInfo notificationInfo =
-                    controller.readInventory(cName, iName).getNotificationInfo();
+                    controller.readInventory(cName, popMenu.getIName()).getNotificationInfo();
             notificationInfo.sendAlert("erickuan970810edu@gmail.com"
                     , "Js95816973edu"
                     , "ntutlab1321mmc@gmail.com"
                     , "Inventory less"
-                    , iName);
+                    , popMenu.getIName());
         }
 
         String detail = getInventoryDetail(controller.readInventory(cName, popMenu.getIName()));
