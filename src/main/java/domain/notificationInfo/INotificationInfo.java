@@ -30,5 +30,7 @@ public interface INotificationInfo {
 
     public void setReplenishmentAmount(String replenishmentAmount);
 
+    public void sendAlert(final String from, final String password, String to, String sub, String msg);
+
 //    public boolean setNotificationInfo(String limitAmount, String taxId, String replenishmentAmount, String personInCharge);
 }
