@@ -300,11 +300,11 @@ public class NotificationPanel extends javax.swing.JPanel {
 
     private void sendMailBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMailBtnActionPerformed
         // TODO add your handling code here:
-        notificationInfo.sendAlert("erickuan970810edu@gmail.com"
-                , "Js95816973edu"
-                , "ntutlab1321mmc@gmail.com"
-                , "Inventory less"
-                , "need more");
+//        notificationInfo.sendAlert("erickuan970810edu@gmail.com"
+//                , "Js95816973edu"
+//                , "ntutlab1321mmc@gmail.com"
+//                , "Inventory less"
+//                , "need more");
     }//GEN-LAST:event_sendMailBtnActionPerformed
 
 

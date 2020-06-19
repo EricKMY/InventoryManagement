@@ -21,35 +21,7 @@ public class NotificationInfo implements INotificationInfo {
 
     public NotificationInfo(String inventoryName) {
         this.inventoryName = inventoryName;
-//        notificationList = new ArrayList<String>();
     }
-
-//    public boolean setNotificationInfo(String limitAmount, String taxId, String replenishmentAmount, String personInCharge) {
-//        this.limitAmount = limitAmount;
-//        this.replenishmentAmount = replenishmentAmount;
-//        this.labMemberInfo = personInCharge;
-//        this.taxID = taxId;
-//        return true;
-//    }
-
-
-//    public Boolean setInventoryNotificationInfo(String name, List<String> info) {
-//        inventoryName = name;
-//        labMemberInfo = info.get(0);
-//        inventoryPrice = info.get(1);
-//        taxID = info.get(2);
-//        currentAmount = info.get(3);
-//        replenishmentAmount = info.get(4);
-//
-//        String str = info.get(5);
-//        String[] tokens = str.split(",");
-//        for(String token:tokens) {
-//            notificationList.add(token);
-//        }
-//
-//        return  true;
-//    }
-
 
     public String getLimitAmount() {
         return limitAmount;
@@ -107,7 +79,21 @@ public class NotificationInfo implements INotificationInfo {
         this.replenishmentAmount = replenishmentAmount;
     }
 
-    public void sendAlert(final String from, final String password, String to, String sub, String msg) {
+    public void sendAlert() {
+
+        final String from = "erickuan970810edu@gmail.com";
+        final String password = "Js95816973edu";
+        final String to = "ntutlab1321mmc@gmail.com";
+        String sub;
+        String msg;
+
+        sub = "Please replenish " + inventoryName;
+        msg = "Inventory Name: " + inventoryName + "\n"
+            + "Current Amount: " + currentAmount + "\n"
+            + "Replenishment Amount: " + replenishmentAmount + "\n"
+            + "Price: " + inventoryPrice + "\n"
+            + "Tax ID: " + taxID;
+
         //Get properties object
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -120,13 +106,13 @@ public class NotificationInfo implements INotificationInfo {
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(from,password);
+                        return new PasswordAuthentication(from, password);
                     }
                 });
         //compose message
         try {
             MimeMessage message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(sub);
             message.setText(msg);
             //send message
@@ -136,11 +122,33 @@ public class NotificationInfo implements INotificationInfo {
 
     }
 
-//    public List<String> getNotificationList() {
-//        return notificationList;
-//    }
+//    public void sendAlert(final String from, final String password, String to, String sub, String msg) {
+//        //Get properties object
+//        Properties props = new Properties();
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.socketFactory.port", "465");
+//        props.put("mail.smtp.socketFactory.class",
+//                "javax.net.ssl.SSLSocketFactory");
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.port", "465");
+//        //get Session
+//        Session session = Session.getDefaultInstance(props,
+//                new javax.mail.Authenticator() {
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(from,password);
+//                    }
+//                });
+//        //compose message
+//        try {
+//            MimeMessage message = new MimeMessage(session);
+//            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+//            message.setSubject(sub);
+//            message.setText(msg);
+//            //send message
+//            Transport.send(message);
+//            System.out.println("message sent successfully");
+//        } catch (MessagingException e) {throw new RuntimeException(e);}
 //
-//    public void setNotificationList(List<String> notification) {
-//        this.notificationList = notification;
 //    }
+
 }
