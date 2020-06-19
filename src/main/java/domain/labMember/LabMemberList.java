@@ -27,4 +27,25 @@ public class LabMemberList implements ILabMemberList {
     public ILabMember findLabMemberById(String id) {
         return labMemberMap.get(id);
     }
+
+    //change
+    @Override
+    public boolean changeUserPermission(String permission, ILabMember labMember) {
+        labMemberMap.get(labMember.getId()).setPermission(permission);
+        return true;
+    }
+
+    @Override
+    public boolean changePassword(String password, ILabMember labMember) {
+        labMemberMap.get(labMember.getId()).setPassword(password);
+        return true;
+    }
+
+    @Override
+    public boolean updateUserInfo(String name, String email, String phone, ILabMember labMember) {
+        labMemberMap.get(labMember.getId()).setName(name);
+        labMemberMap.get(labMember.getId()).setEmail(email);
+        labMemberMap.get(labMember.getId()).setPhone(phone);
+        return true;
+    }
 }

@@ -1,6 +1,7 @@
 package domain.labMember;
 
 public class Admin extends LabMember {
+    //Using DB need;
     public Admin() {
         super();
     }
@@ -10,9 +11,11 @@ public class Admin extends LabMember {
         this.permission = "Admin";
     }
 
-    public boolean setUserPermission(ILabMember labMember, String permission) {
-
-        labMember.setPermission(permission);
-        return true;
-    }
+    //remove
+//    public boolean setUserPermission(ILabMember labMember, String permission) {
+//        DataBaseConnector dataBaseConnector = new DataBaseConnector();
+//        Connection connection = dataBaseConnector.connect();
+//        labMember.setPermission(permission);
+//        return true;
+//    }
 }

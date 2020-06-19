@@ -3,21 +3,26 @@ package domain.controller;
 import domain.inventory.ILabInventory;
 import domain.inventory.ILabInventoryList;
 import domain.inventory.LabInventoryList;
-import domain.labMember.ILabMember;
-import domain.labMember.LabMember;
+import domain.labMember.*;
 
 import java.util.List;
 
 public class Controller implements IController {
 
     private ILabInventoryList labInventoryList;
+    private ILabMemberList labMemberList;
 
     public Controller(){
         labInventoryList = new LabInventoryList();
+        labMemberList = new LabMemberList();
     }
 
     public ILabInventoryList getLabInventoryList(){
         return labInventoryList;
+    }
+
+    public ILabMemberList getLabMemberList() {
+        return labMemberList;
     }
 
     public boolean createCategory(String category, ILabMember labMember){
@@ -65,7 +70,24 @@ public class Controller implements IController {
         return labInventoryList.readInventory(category, inventoryName).isUnderLimit();
     }
 
-    public boolean setUserPermission(ILabMember labMember, String permission, ILabMember targetLabMember){
-        return labMember.setUserPermission(targetLabMember, permission);
+    //Change
+    public boolean changeUserPermission(String permission, ILabMember labMember) {
+        return labMemberList.changeUserPermission(permission, labMember);
     }
+
+    public boolean changePassword(String password, ILabMember labMember) {
+        return labMemberList.changePassword(password, labMember);
+    }
+
+    @Override
+    public boolean updateUserInfo(String name, String email, String phone, ILabMember labMember) {
+        return labMemberList.updateUserInfo(name, email, phone, labMember);
+    }
+
+    @Override
+    public boolean addLabMember(ILabMember labMember) {
+        return labMemberList.addLabMember(labMember);
+    }
+
+
 }

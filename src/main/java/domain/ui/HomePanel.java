@@ -127,8 +127,11 @@ public class HomePanel extends javax.swing.JPanel {
     private void settingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingBtnActionPerformed
         // TODO add your handling code here:
         mainFrame.getSettingPanel().addLabMemberBtn.setVisible(false);
-        if(labMember.getPermission().equals("Admin"))
+        mainFrame.getSettingPanel().changePermissionBtn.setVisible(false);
+        if(labMember.getPermission().equals("Admin")) {
             mainFrame.getSettingPanel().addLabMemberBtn.setVisible(true);
+            mainFrame.getSettingPanel().changePermissionBtn.setVisible(true);
+        }
         mainFrame.getContentPane().remove(mainFrame.getHomePanel());
         mainFrame.getContentPane().add(mainFrame.getSettingPanel());
         mainFrame.getSettingPanel().setVisible(true);
