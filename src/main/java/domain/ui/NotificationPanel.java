@@ -5,7 +5,6 @@
  */
 package domain.ui;
 
-import domain.controller.Controller;
 import domain.controller.IController;
 import domain.notificationInfo.INotificationInfo;
 import javax.swing.JOptionPane;

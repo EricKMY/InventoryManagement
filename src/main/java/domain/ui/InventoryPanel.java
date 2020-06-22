@@ -173,7 +173,7 @@ public class InventoryPanel extends javax.swing.JPanel {
         categoryTitle.setFont(new java.awt.Font("YuMincho +36p Kana", 3, 14)); // NOI18N
         categoryTitle.setForeground(new java.awt.Color(9, 9, 228));
         categoryTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        categoryTitle.setText("CATEGORY");
+        categoryTitle.setText("INVENTORY LIST");
 
         inventoryTitle.setBackground(new java.awt.Color(255, 255, 0));
         inventoryTitle.setFont(new java.awt.Font("YuMincho +36p Kana", 3, 14)); // NOI18N
