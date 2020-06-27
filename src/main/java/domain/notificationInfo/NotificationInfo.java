@@ -89,7 +89,6 @@ public class NotificationInfo implements INotificationInfo {
 
         sub = "Please replenish " + inventoryName;
         msg = "Inventory Name: " + inventoryName + "\n"
-            + "Current Amount: " + currentAmount + "\n"
             + "Replenishment Amount: " + replenishmentAmount + "\n"
             + "Price: " + inventoryPrice + "\n"
             + "Tax ID: " + taxID;

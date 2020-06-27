@@ -80,7 +80,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void init() {
-        Admin admin = new Admin("Admin", "admin@gmail.com", "admin");
+        Admin admin = new Admin("Admin", "erickuan970810edu@gmail.com", "admin");
         admin.setPhone("0909123456");
         Manager manager = new Manager("Manager", "manager@gmail.com", "manager");
         manager.setPhone("0909123456");

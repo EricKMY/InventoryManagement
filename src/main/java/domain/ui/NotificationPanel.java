@@ -56,7 +56,6 @@ public class NotificationPanel extends javax.swing.JPanel {
         okBtn1 = new javax.swing.JButton();
         pricePanel = new javax.swing.JLabel();
         replenishmentAmountField = new javax.swing.JTextField();
-        sendMailBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -133,14 +132,6 @@ public class NotificationPanel extends javax.swing.JPanel {
             }
         });
 
-        sendMailBtn.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        sendMailBtn.setText("Send Mail");
-        sendMailBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendMailBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,13 +146,13 @@ public class NotificationPanel extends javax.swing.JPanel {
                     .addComponent(taxIdPanel))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(limitAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .addComponent(limitAmountField)
                     .addComponent(personnChargeField)
-                    .addComponent(replenishmentAmountField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                    .addComponent(priceField, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .addComponent(replenishmentAmountField)
+                    .addComponent(priceField)
                     .addComponent(taxIdField)))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(139, Short.MAX_VALUE)
                 .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126)
                 .addComponent(okBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,22 +160,14 @@ public class NotificationPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sendMailBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(sendMailBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)))
+                .addGap(37, 37, 37)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(personInChargeLabel)
                     .addComponent(personnChargeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -297,15 +280,6 @@ public class NotificationPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_replenishmentAmountFieldActionPerformed
 
-    private void sendMailBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMailBtnActionPerformed
-        // TODO add your handling code here:
-//        notificationInfo.sendAlert("erickuan970810edu@gmail.com"
-//                , "Js95816973edu"
-//                , "ntutlab1321mmc@gmail.com"
-//                , "Inventory less"
-//                , "need more");
-    }//GEN-LAST:event_sendMailBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelBtn;
@@ -319,7 +293,6 @@ public class NotificationPanel extends javax.swing.JPanel {
     private javax.swing.JLabel pricePanel;
     protected javax.swing.JTextField replenishmentAmountField;
     private javax.swing.JLabel replenishmentAmountPanel;
-    private javax.swing.JButton sendMailBtn;
     protected javax.swing.JTextField taxIdField;
     private javax.swing.JLabel taxIdPanel;
     private javax.swing.JLabel titleLabel;
